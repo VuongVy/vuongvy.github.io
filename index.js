@@ -22,9 +22,6 @@ noBtn.addEventListener("click", () => {
 okBtn.addEventListener("click", () => {
   const thankYouPopup = document.getElementById("thankYouPopup");
   thankYouPopup.classList.add("popup-show");
-  setTimeout(() => {
-    thankYouPopup.classList.remove("popup-show");
-  }, 2000); // 2 seconds
 });
 
 function getRandomNumber(min, max) {

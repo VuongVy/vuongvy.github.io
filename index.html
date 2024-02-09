@@ -72,15 +72,21 @@
       border-radius: 5px;
       z-index: 999;
       opacity: 0;
-      transform: scale(0);
       transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
       display: none; /* Initially hidden */
+      display: flex; /* Sử dụng Flexbox */
+      flex-direction: column; /* Các items được xếp theo chiều dọc */
+      justify-content: center; /* Căn giữa các items theo chiều dọc */
+      align-items: center; /* Căn giữa các items theo chiều ngang */
     }
+    
     .popup-show {
       opacity: 1;
-      transform: scale(1);
-      display: flex;
+      transform: translate(-50%, -50%) scale(1); /* Hiển thị popup */
+      display: flex; /* Đảm bảo flex layout được kích hoạt */
     }
+    
+    
     .thanks-title {
       font-weight: bold;
       font-size: 22px;
@@ -92,6 +98,12 @@
       margin: auto; /* Căn giữa ảnh theo chiều ngang trong container của nó */
     }
     #image2 {
+      width: 200px; /* Chiều rộng của ảnh */
+      height: auto; /* Điều chỉnh chiều cao tự động để tránh méo ảnh */
+      display: block; /* Đặt ảnh dưới dạng block để margin:auto có thể hoạt động */
+      margin: auto; /* Căn giữa ảnh theo chiều ngang trong container của nó */
+    }
+    #image3 {
       width: 200px; /* Chiều rộng của ảnh */
       height: auto; /* Điều chỉnh chiều cao tự động để tránh méo ảnh */
       display: block; /* Đặt ảnh dưới dạng block để margin:auto có thể hoạt động */
