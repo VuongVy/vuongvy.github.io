@@ -24,6 +24,18 @@ okBtn.addEventListener("click", () => {
   thankYouPopup.classList.add("popup-show");
 });
 
+document.getElementById('accountNumber').addEventListener('click', function() {
+  const accountNumber = this.textContent; 
+  navigator.clipboard.writeText(accountNumber).then(function() {
+    // Thông báo cho người dùng biết số tài khoản đã được copy
+    alert('Số tài khoản đã được copy!');
+  }, function(err) {
+    // Xử lý lỗi nếu có
+    console.error('error', err);
+  });
+});
+
+
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
