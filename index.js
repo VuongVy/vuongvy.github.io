@@ -16,9 +16,7 @@ noBtn.addEventListener("click", () => {
     area.style.justifyContent = "center";
     image1.style.display = "none";
     image2.style.display = "block";
-    if (clickCount > 5) {
-      noBtn.style.display = "none"; // Ẩn noBtn sau lần click thứ 5
-  }
+
 });
 
 okBtn.addEventListener("click", () => {
