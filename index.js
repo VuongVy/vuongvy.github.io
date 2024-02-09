@@ -5,29 +5,19 @@ const image1 = document.getElementById("image1");
 const image2 = document.getElementById("image2");
 
 let clickCount = 0;
-let countSc = 4;
+let scale = 0.9; // Giảm dần từ 0.9
 
 noBtn.addEventListener("click", () => {
-  clickCount++;
-  if (clickCount === 1) {
-    const btnBlock = document.getElementById("area");
-    const btn1 = document.querySelector(".btn1");
-    const btn2 = document.querySelector(".btn2");
-    btnBlock.insertBefore(btn2, btn1); // Đổi chỗ vị trí của hai button
-  } else if (clickCount === 2) {
-    setRandomPosition(clickCount);
-    noBtn.style.transform = "scale(0.8)";
-    okBtn.style.transform = "scale(1.2)";
+    clickCount++;
+    setRandomPosition(); // Cập nhật để sử dụng kích thước của 'area'
+    noBtn.style.transform = `scale(${scale})`;
+    scale -= 0.1; // Giảm kích thước cho lần tiếp theo
+    okBtn.style.transform = "scale(1.2)"; // Đặt lại nếu muốn okBtn thay đổi kích thước
     area.style.justifyContent = "center";
     image1.style.display = "none";
     image2.style.display = "block";
-  } else if (clickCount <= 7) {
-    setRandomPosition(clickCount);
-    countSc++;
-    noBtn.style.transform = "scale(0.6)";
-    okBtn.style.transform = `scale(1.${countSc})`;
-  } else {
-    noBtn.style.display = "none";
+    if (clickCount > 5) {
+      noBtn.style.display = "none"; // Ẩn noBtn sau lần click thứ 5
   }
 });
 
@@ -43,16 +33,18 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function setRandomPosition(clickCount) {
-  if (clickCount >= 2) {
-    const screenWidth = window.innerWidth - 90;
-    const screenHeight = window.innerHeight - 90;
-    const btnWidth = noBtn.offsetWidth;
-    const btnHeight = noBtn.offsetHeight;
-    const left = getRandomNumber(0, screenWidth - btnWidth);
-    const top = getRandomNumber(0, screenHeight - btnHeight);
-    noBtn.style.position = "absolute";
-    noBtn.style.left = `${left}px`;
-    noBtn.style.top = `${top}px`;
-  }
+function setRandomPosition() {
+  const areaRect = area.getBoundingClientRect();
+  // Đảm bảo tính toán không gian có sẵn sau khi trừ đi kích thước của nút
+  const maxX = areaRect.width - noBtn.offsetWidth;
+  const maxY = areaRect.height - noBtn.offsetHeight;
+
+  // Tính toán vị trí mới dựa trên không gian có sẵn
+  const newX = getRandomNumber(0, maxX);
+  const newY = getRandomNumber(0, maxY);
+
+  // Sử dụng position: absolute; để nút có thể di chuyển tự do trong #area
+  noBtn.style.position = 'absolute'; // Đảm bảo nút có thể di chuyển tự do
+  noBtn.style.left = `${newX}px`;
+  noBtn.style.top = `${newY}px`;
 }
