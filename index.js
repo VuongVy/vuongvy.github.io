@@ -21,6 +21,7 @@ noBtn.addEventListener("click", () => {
 
 okBtn.addEventListener("click", () => {
   const thankYouPopup = document.getElementById("thankYouPopup");
+  thankYouPopup.style.height = '340px';
   thankYouPopup.classList.add("popup-show");
 });
 
