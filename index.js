@@ -26,15 +26,18 @@ okBtn.addEventListener("click", () => {
 });
 
 document.getElementById('accountNumber').addEventListener('click', function() {
-  const accountNumber = this.textContent; 
-  navigator.clipboard.writeText(accountNumber).then(function() {
-    // Thông báo cho người dùng biết số tài khoản đã được copy
-    alert('Số tài khoản đã được copy!');
-  }, function(err) {
-    // Xử lý lỗi nếu có
-    console.error('error', err);
-  });
+  const accountNumber = this.innerText; // Lấy số tài khoản từ nội dung của span
+  const el = document.createElement('textarea'); // Tạo một textarea tạm thời
+  el.value = accountNumber; // Đặt giá trị của nó thành số tài khoản
+  document.body.appendChild(el); // Thêm vào body
+  el.select(); // Chọn nội dung của textarea
+  document.execCommand('copy'); // Sao chép nội dung vào clipboard
+  document.body.removeChild(el); // Xóa textarea tạm thời
+
+  // Tùy chọn: Hiển thị thông báo đã sao chép
+  alert('Đã sao chép số tài khoản: ' + accountNumber);
 });
+
 
 
 function getRandomNumber(min, max) {
