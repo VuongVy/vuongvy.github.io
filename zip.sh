@@ -1,1 +1,0 @@
-zip -r9 project.zip . -x node_modules/\* .output/\* .nuxt/\* .git/\* dist/\* .vscode/\* .zip.sh .DS_Store
