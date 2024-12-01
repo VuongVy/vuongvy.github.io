@@ -31,6 +31,14 @@
             max-width: 300px;
         }
 
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1.2rem;
+            margin-right: 10px;
+            width: 70%;
+            max-width: 300px;
+        }
+
         button {
             padding: 10px 20px;
             background-color: #007BFF;
@@ -129,7 +137,8 @@
 
     <!-- Upload Form -->
     <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
+        <input type="file" name="file" required>
+        <input type="text" name="new_filename" placeholder="Nhập tên tệp mới" required>
         <button type="submit">Upload</button>
     </form>
 

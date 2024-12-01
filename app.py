@@ -1,5 +1,4 @@
 from flask import Flask, request, send_from_directory, render_template, jsonify
-
 import os
 from datetime import datetime
 
@@ -55,13 +54,23 @@ def upload_file():
     file = request.files['file']
     if file.filename == '':
         return "Không có file nào được chọn!"
+    
+    # Get the new filename from the form
+    new_filename = request.form.get('new_filename')  # The name entered by the user
+
+    if not new_filename:
+        return "Bạn chưa nhập tên mới cho tệp!"
 
     # Automatically create today's folder if it doesn't exist
     today_folder = create_today_folder()
 
-    # Save the file in the today folder
-    file.save(os.path.join(today_folder, file.filename))
-    return "Upload thành công!"
+    # Ensure the new filename has the correct extension
+    file_extension = os.path.splitext(file.filename)[1]
+    new_filename_with_extension = f"{new_filename}{file_extension}"
+
+    # Save the file with the new name
+    file.save(os.path.join(today_folder, new_filename_with_extension))
+    return f"Upload thành công với tên file: {new_filename_with_extension}"
 
 # Start the server
 if __name__ == '__main__':
