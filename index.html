@@ -1,0 +1,332 @@
+<!-- No changes to be made to index.html -->
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rexon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: -2;
+        }
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, rgba(125, 0, 255, 0.2) 0%, rgba(0, 191, 255, 0.2) 50%, rgba(255, 0, 255, 0.2) 100%), rgba(10, 10, 10, 0.7);
+        }
+        .scanline-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.05) 0px,
+                rgba(255, 255, 255, 0.05) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2b6cee",
+              "background-light": "#f6f6f8",
+              "background-dark": "#0A0A0A",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-dark font-display text-[#F5F5F5] antialiased">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<video autoplay="" class="video-bg" data-alt="Abstract 3D rendering of a futuristic environment from an Unreal Engine demo, featuring dynamic lighting and complex geometry." loop="" muted="" playsinline="">
+<source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-long-tunnel-with-light-changing-from-blue-to-39474-large.mp4" type="video/mp4"/>
+            Your browser does not support the video tag.
+        </video>
+<div class="bg-overlay"></div>
+<div class="scanline-effect"></div>
+<div class="relative z-10 flex h-full grow flex-col">
+<header class="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-sm">
+<nav class="container mx-auto flex items-center justify-between whitespace-nowrap px-6 py-4 lg:px-8">
+<div class="flex items-center gap-4 text-white">
+  <a href="/" class="flex items-center gap-2">
+    <span class="text-2xl font-bold leading-tight tracking-[-0.015em] text-[#00BFFF]">Rexon</span>
+  </a>
+</div>
+<div class="hidden items-center gap-9 lg:flex">
+<a class="text-sm font-medium text-gray-300 transition-colors hover:text-[#00BFFF]" href="/solutions-page.html">Solutions</a>
+<a class="text-sm font-medium text-gray-300 transition-colors hover:text-[#00BFFF]" href="/showcase-page.html">Showcase</a>
+<a class="text-sm font-medium text-gray-300 transition-colors hover:text-[#00BFFF]" href="/coretech-page.html">Technologies</a>
+<a class="text-sm font-medium text-gray-300 transition-colors hover:text-[#00BFFF]" href="/about">About Us</a>
+<div class="relative" id="workwithus-dropdown">
+  <a href="/whychoose.html" class="text-sm font-bold px-5 py-2 rounded-lg bg-[#00BFFF] text-background-dark shadow-lg transition-transform hover:scale-105 cursor-pointer flex items-center gap-2">
+    Work with Us
+  </a>
+</div>
+</div>
+<button class="lg:hidden" data-alt="Menu icon">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+<div id="mobile-menu" class="fixed top-0 right-0 left-0 z-50 hidden flex-col bg-black lg:hidden shadow-2xl">
+  <a href="/solutions-page.html" class="block px-6 py-4 text-white text-base border-b border-gray-800 hover:bg-[#00BFFF] hover:text-background-dark transition">Solutions</a>
+  <a href="/showcase-page.html" class="block px-6 py-4 text-white text-base border-b border-gray-800 hover:bg-[#00BFFF] hover:text-background-dark transition">Showcase</a>
+  <a href="/coretech-page.html" class="block px-6 py-4 text-white text-base border-b border-gray-800 hover:bg-[#00BFFF] hover:text-background-dark transition">Technologies</a>
+  <a href="/about" class="block px-6 py-4 text-white text-base border-b border-gray-800 hover:bg-[#00BFFF] hover:text-background-dark transition">About Us</a>
+  <div class="border-b border-gray-800">
+    <button id="mobile-workwithus-btn" type="button" class="w-full text-left px-6 py-4 text-background-dark bg-[#00BFFF] text-base font-bold flex items-center gap-2 shadow-lg transition-transform hover:scale-105">
+      Work with Us
+      <span class="material-symbols-outlined text-base">expand_more</span>
+    </button>
+    <div id="mobile-workwithus-menu" class="hidden flex-col bg-black">
+      <a href="#workflow" class="block px-8 py-3 text-white text-sm hover:bg-[#00BFFF] hover:text-background-dark transition">Workflow</a>
+      <a href="/whychoose.html" class="block px-8 py-3 text-white text-sm hover:bg-[#00BFFF] hover:text-background-dark transition">Why Choose Rexon</a>
+      <a href="#contact" class="block px-8 py-3 text-white text-sm hover:bg-[#00BFFF] hover:text-background-dark transition">Contact</a>
+    </div>
+  </div>
+  <button id="mobile-menu-close" class="w-full px-6 py-4 text-gray-400 text-base hover:bg-[#00BFFF] hover:text-background-dark transition">Đóng</button>
+</div>
+</nav>
+</header>
+<main class="flex flex-1 items-center justify-center">
+<div class="container mx-auto px-6 py-20 text-center">
+<div class="mx-auto max-w-4xl">
+<h1 class="text-4xl font-bold leading-tight tracking-tighter text-[#F5F5F5] drop-shadow-lg md:text-5xl lg:text-6xl">
+                            Interactive 3D Experiences for Real Estate, Automotive &amp; Product Configuration
+                        </h1>
+<p class="mt-4 text-base font-normal leading-normal text-gray-300 md:text-lg">
+                            Chúng tôi mang sản phẩm và dự án trở nên sống động bằng công nghệ 3D tương tác real-time.
+                        </p>
+<div class="mt-8 flex flex-col flex-wrap items-center justify-center gap-4 sm:flex-row">
+<a href="/showcase-page.html" class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-[#00BFFF] text-background-dark text-base font-bold leading-normal tracking-wide transition-transform hover:scale-105">
+<span class="truncate">View Demos</span>
+</a>
+<a href="/whychoose.html" class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 border border-[#F5F5F5] bg-transparent text-[#F5F5F5] text-base font-bold leading-normal tracking-wide transition-colors hover:bg-white/10">
+<span class="truncate">Work With Us</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+
+<!-- Scroll Down Button -->
+<div class="flex justify-center mt-8 animate-bounce">
+  <a aria-label="Scroll down" href="#more-content">
+    <span class="material-symbols-outlined text-4xl text-white/50 transition-colors hover:text-white">keyboard_arrow_down</span>
+  </a>
+</div>
+
+</div>
+</div>
+<div class="h-screen bg-background-dark" id="more-content">
+<!-- Our Process Section with Gradient Background -->
+<div class="relative flex h-auto min-h-screen w-full flex-col items-center justify-center p-4 sm:p-6 md:p-8" style="background: linear-gradient(135deg, rgba(125, 0, 255, 0.2) 0%, rgba(0, 191, 255, 0.2) 50%, rgba(255, 0, 255, 0.2) 100%), rgba(10, 10, 10, 0.7);">
+  <div class="layout-container flex h-full w-full max-w-6xl grow flex-col">
+    <div class="layout-content-container flex flex-col items-center gap-4 py-16 sm:py-20 md:py-24">
+      <!-- SectionHeader -->
+      <h2 class="text-3xl font-bold leading-tight tracking-tighter text-zinc-900 dark:text-white sm:text-4xl text-center">From Concept to Reality in 4 Steps</h2>
+      <!-- BodyText -->
+      <p class="text-zinc-600 dark:text-zinc-400 text-base font-normal leading-normal max-w-2xl text-center sm:text-lg">From concept to reality, our streamlined process ensures a seamless journey from initial idea to final deployment of your interactive 3D experience.</p>
+      <!-- TextGrid / Infographic -->
+      <div class="mt-12 grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-4 xl:gap-6">
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <div class="flex h-16 w-16 items-center justify-center rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/50">
+            <span class="material-symbols-outlined text-3xl text-primary">groups</span>
+          </div>
+          <div class="mt-4 flex flex-col gap-1">
+            <h3 class="text-lg font-bold leading-tight text-zinc-900 dark:text-white">01. Project Consulting</h3>
+            <p class="text-sm font-normal leading-normal text-zinc-600 dark:text-zinc-400">We start by understanding your vision, defining project scope, and crafting a detailed strategy for success.</p>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <div class="flex h-16 w-16 items-center justify-center rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/50">
+            <span class="material-symbols-outlined text-3xl text-primary">view_in_ar</span>
+          </div>
+          <div class="mt-4 flex flex-col gap-1">
+            <h3 class="text-lg font-bold leading-tight text-zinc-900 dark:text-white">02. Modeling &amp; Optimization</h3>
+            <p class="text-sm font-normal leading-normal text-zinc-600 dark:text-zinc-400">Our experts create and optimize high-quality 3D assets, ensuring they are primed for flawless real-time web performance.</p>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <div class="flex h-16 w-16 items-center justify-center rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/50">
+            <span class="material-symbols-outlined text-3xl text-primary">integration_instructions</span>
+          </div>
+          <div class="mt-4 flex flex-col gap-1">
+            <h3 class="text-lg font-bold leading-tight text-zinc-900 dark:text-white">03. Interaction Programming</h3>
+            <p class="text-sm font-normal leading-normal text-zinc-600 dark:text-zinc-400">We bring your models to life by programming custom interactivity, dynamic animations, and intuitive user interfaces.</p>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <div class="flex h-16 w-16 items-center justify-center rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/50">
+            <span class="material-symbols-outlined text-3xl text-primary">cloud_upload</span>
+          </div>
+          <div class="mt-4 flex flex-col gap-1">
+            <h3 class="text-lg font-bold leading-tight text-zinc-900 dark:text-white">04. Deploy &amp; Integrate</h3>
+            <p class="text-sm font-normal leading-normal text-zinc-600 dark:text-zinc-400">The final experience is launched on web, mobile, or cloud platforms, with seamless integration into your existing ecosystem.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+// Dropdown toggle for 'Work with Us' (click to open/close)
+document.addEventListener('DOMContentLoaded', function () {
+  var btn = document.getElementById('workwithus-btn');
+  var menu = document.getElementById('workwithus-menu');
+  var dropdown = document.getElementById('workwithus-dropdown');
+  if (btn && menu) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      menu.classList.toggle('hidden');
+    });
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!dropdown.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+    // Optional: close on ESC
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        menu.classList.add('hidden');
+      }
+    });
+  }
+
+  // Mobile menu logic
+  var mobileMenuBtn = document.querySelector('button.lg\\:hidden');
+  var mobileMenu = document.getElementById('mobile-menu');
+  var mobileMenuClose = document.getElementById('mobile-menu-close');
+  var mobileWorkBtn = document.getElementById('mobile-workwithus-btn');
+  var mobileWorkMenu = document.getElementById('mobile-workwithus-menu');
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      mobileMenu.classList.remove('hidden');
+    });
+    mobileMenuClose.addEventListener('click', function () {
+      mobileMenu.classList.add('hidden');
+      mobileWorkMenu.classList.add('hidden');
+    });
+    // Toggle Work with Us submenu
+    mobileWorkBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      mobileWorkMenu.classList.toggle('hidden');
+    });
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function (e) {
+      if (mobileMenu && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+        mobileWorkMenu.classList.add('hidden');
+      }
+    });
+    // Optional: close on ESC
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        mobileMenu.classList.add('hidden');
+        mobileWorkMenu.classList.add('hidden');
+      }
+    });
+  }
+});
+</script>
+</script>
+<footer class="w-full bg-[#121212] py-16 px-4 sm:px-6 lg:px-8 text-[#EAEAEA] mt-40 md:mt-0">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:grid md:grid-cols-3 gap-12 mb-12">
+      <!-- Column 1: Brand & Social -->
+      <div class="flex flex-col space-y-6">
+        <div class="flex items-center space-x-3">
+          <svg class="h-8 w-8 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="text-2xl font-bold text-white pt-2 sm:pt-0 block">Rexon</span>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Crafting immersive digital realities for tomorrow's industries.
+        </p>
+        <div class="flex space-x-4">
+          <a aria-label="LinkedIn" class="text-gray-400 hover:text-primary transition-colors duration-300" href="#">
+            <!-- LinkedIn SVG -->
+          </a>
+          <a aria-label="Twitter" class="text-gray-400 hover:text-primary transition-colors duration-300" href="#">
+            <!-- Twitter SVG -->
+          </a>
+          <a aria-label="Facebook" class="text-gray-400 hover:text-primary transition-colors duration-300" href="#">
+            <!-- Facebook SVG -->
+          </a>
+        </div>
+      </div>
+      <!-- Column 2: Contact Information -->
+      <div class="flex flex-col space-y-4">
+        <h3 class="text-lg font-semibold text-white">Contact Us</h3>
+        <ul class="space-y-3 text-gray-400">
+          <li class="flex items-start">
+            <span class="material-symbols-outlined text-primary mr-3 mt-1">location_on</span>
+            <a class="hover:text-primary transition-colors duration-300" href="#">123 Tech Avenue, Suite 100<br/>Innovate City, CA 90210</a>
+          </li>
+          <li class="flex items-center">
+            <span class="material-symbols-outlined text-primary mr-3">call</span>
+            <a class="hover:text-primary transition-colors duration-300" href="tel:+1234567890">+1 (234) 567-890</a>
+          </li>
+          <li class="flex items-center">
+            <span class="material-symbols-outlined text-primary mr-3">email</span>
+            <a class="hover:text-primary transition-colors duration-300" href="mailto:support@innovate3d.com">support@innovate3d.com</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Column 3: Location -->
+      <div class="flex flex-col space-y-4">
+        <h3 class="text-lg font-semibold text-white">Our Location</h3>
+        <div class="w-full h-48 bg-center bg-no-repeat bg-cover rounded-lg overflow-hidden border border-gray-700">
+          <div class="w-full h-full bg-cover" data-alt="A dark-themed map showing the location of Innovate City." data-location="Los Angeles" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCwzzYgK5z2gdqer3W2PhHr81qn86-E_6z1klHVwvjTWUqduWx0KB_AnPuuwYOt_CP2xe8_lanTzw562VotsmsQ-DkJpgH6S9jeb5aY0x-KrjiCe9kbACWnlmZvfPSpT-DH6KApM3xxFHJlKDT7V6kK5JqhfwvuWUme1f8ABHL-kThzKlBP9yQ_GGRI2nZGgotf9CWNeOchYJsWYSNcWdg2N22aAuxjz8sUSngVOooM_94H5N6uPslsfmVbODyF60D3a9kjJi5U_8k");'></div>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-800 pt-8 mt-8 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500">
+      <p class="mb-4 sm:mb-0">© 2024 Rexon. All Rights Reserved.</p>
+      <div class="flex space-x-6">
+        <a class="hover:text-primary transition-colors duration-300" href="#">Privacy Policy</a>
+        <a class="hover:text-primary transition-colors duration-300" href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body></html>

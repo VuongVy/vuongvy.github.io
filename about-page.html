@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rexon - Interactive 3D Experiences</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2b6cee",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 md:px-10">
+<header class="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-sm">
+<nav class="container mx-auto flex items-center justify-between whitespace-nowrap px-6 py-4 lg:px-8">
+  <div class="flex items-center gap-4 text-white">
+    <a href="/" class="flex items-center gap-2">
+      <span class="text-2xl font-bold leading-tight tracking-[-0.015em] text-[#00BFFF]">Rexon</span>
+    </a>
+  </div>
+  <div class="hidden items-center gap-9 lg:flex">
+    <a class="text-sm font-medium text-gray-300 transition-colors hover:text-[#00BFFF]" href="/solutions-page.html">Solutions</a>
+    <a class="text-sm font-medium text-gray-300 transition-colors hover:text-[#00BFFF]" href="/showcase-page.html">Showcase</a>
+    <a class="text-sm font-medium text-gray-300 transition-colors hover:text-[#00BFFF]" href="/coretech-page.html">Technologies</a>
+    <a class="text-sm font-medium text-gray-300 transition-colors hover:text-[#00BFFF]" href="/about">About Us</a>
+    <a class="text-sm font-bold px-5 py-2 rounded-lg bg-[#00BFFF] text-background-dark shadow-lg transition-transform hover:scale-105" href="/whychoose.html">Work with Us</a>
+  </div>
+  <button class="lg:hidden" data-alt="Menu icon">
+    <span class="material-symbols-outlined text-3xl">menu</span>
+  </button>
+</nav>
+</header>
+<!-- HeroSection -->
+<div class="@container py-10 md:py-20">
+<div class="flex flex-col gap-6 px-4 py-10 @[480px]:gap-8 @[864px]:flex-row">
+<div class="flex flex-col gap-6 text-center @[864px]:text-left @[480px]:gap-8 @[864px]:justify-center">
+<div class="flex flex-col gap-2">
+<h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl">Interactive 3D Experiences, Redefined.</h1>
+<h2 class="text-white/80 text-sm font-normal leading-normal @[480px]:text-base">We build immersive real-time 3D solutions that bring your vision to life.</h2>
+</div>
+<div class="flex justify-center @[864px]:justify-start">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base">
+<a href="/showcase-page.html" class="w-full h-full flex items-center justify-center">
+  <span class="truncate">Get a Demo</span>
+</a>
+</button>
+</div>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl @[480px]:h-auto @[480px]:min-w-[400px] @[864px]:w-full" data-alt="Abstract 3D rendering of geometric shapes with a blue and purple gradient." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAC_Am0OR9I9YhqOvXt0T8HC-Vs3L98oPw3cJToCmsa0PVPkybNX6ZY-uOIPKnmEf1ojvSxm2nMU_lUsBOdthBTqc8BXgqQt2oqU5Oo1GLnayxPcWoACLYyZxlKN3UR1eYxdyJNbH_IfuBPHSa1HphOKagJy1KjZCQtG4omTdOPSS3tU4wZPCVGgdiCeYjBeQYYkDRfcgGiG0E6s43sSWQ5eb_FdgzV-2fhq3bab5BXSMXnkND0uw1JteB1B7cxfQB4R7D4QGOX9vg');"></div>
+</div>
+</div>
+<!-- About Us Section -->
+<div class="py-10">
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 text-center">Pioneering 3D Technology from Vietnam</h2>
+<p class="text-white/80 text-base font-normal leading-normal pb-3 pt-1 px-4 max-w-3xl mx-auto text-center">Rexon is a Vietnamese 3D technology company specializing in real-time interactive solutions on Unreal Engine and WebGL for the real estate, automotive, and product configuration industries.</p>
+</div>
+<!-- Mission & Vision Section -->
+<div class="flex flex-col gap-10 px-4 py-10 @container">
+<div class="grid grid-cols-1 @[480px]:grid-cols-2 gap-6 p-0">
+<div class="flex flex-1 gap-4 rounded-xl border border-white/10 bg-[#161d2a] p-6 flex-col">
+<div class="text-primary"><span class="material-symbols-outlined" style="font-size: 32px;">rocket_launch</span></div>
+<div class="flex flex-col gap-2">
+<h2 class="text-white text-xl font-bold leading-tight">Our Mission</h2>
+<p class="text-white/70 text-base font-normal leading-normal">To bring products &amp; projects closer to customers through vivid, immersive 3D experiences that bridge the gap between imagination and reality.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-4 rounded-xl border border-white/10 bg-[#161d2a] p-6 flex-col">
+<div class="text-primary"><span class="material-symbols-outlined" style="font-size: 32px;">visibility</span></div>
+<div class="flex flex-col gap-2">
+<h2 class="text-white text-xl font-bold leading-tight">Our Vision</h2>
+<p class="text-white/70 text-base font-normal leading-normal">To become the pioneering 3D technology partner for businesses across Southeast Asia, driving innovation and setting new standards for digital engagement.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Core Values Section -->
+<div class="flex flex-col gap-10 px-4 py-10 @container">
+<div class="flex flex-col gap-4 text-center">
+<h1 class="text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl">Our Core Values</h1>
+<p class="text-white/80 text-base font-normal leading-normal max-w-[720px] mx-auto">The principles that guide our work and define our commitment to excellence.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="flex flex-1 gap-4 rounded-xl border border-white/10 bg-[#161d2a] p-6 flex-col text-center items-center">
+<div class="text-primary"><span class="material-symbols-outlined" style="font-size: 32px;">layers</span></div>
+<div class="flex flex-col gap-1">
+<h2 class="text-white text-base font-bold leading-tight">Transparency</h2>
+<p class="text-white/70 text-sm font-normal leading-normal">Open communication and clear processes are the foundation of our partnerships.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-4 rounded-xl border border-white/10 bg-[#161d2a] p-6 flex-col text-center items-center">
+<div class="text-primary"><span class="material-symbols-outlined" style="font-size: 32px;">trending_up</span></div>
+<div class="flex flex-col gap-1">
+<h2 class="text-white text-base font-bold leading-tight">Proactivity</h2>
+<p class="text-white/70 text-sm font-normal leading-normal">We anticipate challenges and innovate solutions to stay ahead of the curve.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-4 rounded-xl border border-white/10 bg-[#161d2a] p-6 flex-col text-center items-center">
+<div class="text-primary"><span class="material-symbols-outlined" style="font-size: 32px;">groups</span></div>
+<div class="flex flex-col gap-1">
+<h2 class="text-white text-base font-bold leading-tight">Customer-centricity</h2>
+<p class="text-white/70 text-sm font-normal leading-normal">Your success is our ultimate goal. We are dedicated to your vision.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-4 rounded-xl border border-white/10 bg-[#161d2a] p-6 flex-col text-center items-center">
+<div class="text-primary"><span class="material-symbols-outlined" style="font-size: 32px;">lightbulb</span></div>
+<div class="flex flex-col gap-1">
+<h2 class="text-white text-base font-bold leading-tight">Continuous Innovation</h2>
+<p class="text-white/70 text-sm font-normal leading-normal">We constantly push the boundaries of what's possible in 3D technology.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Technology Icons Bar -->
+<div class="py-16">
+<h3 class="text-center text-white/60 text-sm font-semibold tracking-wider uppercase mb-8">Powered by Industry-Leading Technologies</h3>
+<div class="flex justify-center items-center gap-8 sm:gap-12 flex-wrap">
+<img class="h-8 sm:h-10 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all" data-alt="Unreal Engine logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkk47ABNOQPXF8xWpllBjN4EjiRd6piAW-toBIXj8sp1B-zu0fd6L-Kgs3xO3Kv0iyNkasQKKhTGsVXBbTV-BB8DNRzcD69HLHAX2Ox33rTJY5h6ju_2VyLKg1HgWBxpQpQzhyNTVzhLjEdsFZl5ubiaOtVO95fRLRNBSub9IwvT1HRRQ8FORq8NutWAyINDI_MpvW0ES4aAFf49kHXX4tzRziJoEoz7ZXaTBVgHpCjj5uF7y5WP8740o6X1snCRlfn6EcXbgWolA"/>
+<img class="h-8 sm:h-10 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all" data-alt="WebGL logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwNLQVgzDMbfiuSwMy-t5LxU7x-6AAUPVvBpBCYtVV2o9QUua5Ol8BmXRuovoUCFU5YGPWBV1gFlW5xIvAS_yQniA_WmP3JdccpdRam-VFaEiV5QwessGeyj41Hi1g_txECL06kXYfsPLNq3uMf8QioiwM_bb4SHAcqiqrQVUQ3dBZo0jHL_RcVBGc7zDG60C7GcwHa4gE9F-pHTYWY4QamKq8KdL7JC6JH_t7bZ8Iln6DR8eIKjD6t_Mehi46qcRJl64BzImd97M"/>
+<img class="h-8 sm:h-10 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all" data-alt="Unity logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5DL18IciUdBffzD6peJ9m4hqb2uH-YucIMK1oJmjJ8LYa8Q_Tp1i5oV9Lmfj545E4kLzEGlMaECp0xhtdxkXk2OBlkfcnB_2Qd0D6TkN9W4T7h3CZdbnzmKtO_4b8IqUybw_aOrLSYOdnhrBFQREUsgwdu5aJLfvHKQra8rkeRraS-avYlxHCDFtZwYNfpW0feFANYZLf4OoQqL65RUD0vVjAfZTc6S8mV2M8_KEITyMxQO086qn34TetRLRklw745mw5iWtmbXA"/>
+<img class="h-8 sm:h-10 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all" data-alt="Blender logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqr-rKrVOy8ik3jDHAO7JwKlA9dZxaThtQxveW184qPCr5FlNFfLsjeuBSmrVaGEboxA6zgq523mBY8D_7VnU-jPObdgxGJ5VgUL7u9v-sn6-_rn1Zcm9XQCveJGWtL8N8VyaCHLiiltyAwlQSW6ydlN5y69TNbq5fii37h76oyV5xsY0Pn6GQDfYcjJj2TwQ9lO0KNouZnOwYgaf3mhTBOg2sjpDTKwO0vdWVxK8OMsx9Zh3PS8dYLiFwUOssWCneMW7SIZCteo0"/>
+</div>
+</div>
+<!-- Footer -->
+<footer class="text-white/60 body-font">
+<div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+<a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z" fill="currentColor"></path>
+<path d="M39.998 12.236C39.9944 12.2537 39.9875 12.2845 39.9748 12.3294C39.9436 12.4399 39.8949 12.5741 39.8346 12.7175C39.8168 12.7597 39.7989 12.8007 39.7813 12.8398C38.5103 13.7113 35.9788 14.9393 33.7095 15.4811C30.9875 16.131 27.6413 16.5217 24 16.5217C20.3587 16.5217 17.0125 16.131 14.2905 15.4811C12.0012 14.9346 9.44505 13.6897 8.18538 12.8168C8.17384 12.7925 8.16216 12.767 8.15052 12.7408C8.09919 12.6249 8.05721 12.5114 8.02977 12.411C8.00356 12.3152 8.00039 12.2667 8.00004 12.2612C8.00004 12.261 8 12.2607 8.00004 12.2612C8.00004 12.2359 8.0104 11.9233 8.68485 11.3686C9.34546 10.8254 10.4222 10.2469 11.9291 9.72276C14.9242 8.68098 19.1919 8 24 8C28.8081 8 33.0758 8.68098 36.0709 9.72276C37.5778 10.2469 38.6545 10.8254 39.3151 11.3686C39.9006 11.8501 39.9857 12.1489 39.998 12.236Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="ml-3 text-xl">Rexon</span>
+</a>
+<p class="text-sm text-white/50 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-white/20 sm:py-2 sm:mt-0 mt-4">© 2024 Rexon —
+                                <a class="text-white/60 ml-1" href="#" rel="noopener noreferrer" target="_blank">@rexon3d</a>
+</p>
+<span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+<a class="text-white/50">
+<svg class="w-5 h-5" fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+</svg>
+</a>
+<a class="ml-3 text-white/50">
+<svg class="w-5 h-5" fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+</svg>
+</a>
+<a class="ml-3 text-white/50">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect>
+<path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+</svg>
+</a>
+<a class="ml-3 text-white/50">
+<svg class="w-5 h-5" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" viewbox="0 0 24 24">
+<path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" stroke="none"></path>
+<circle cx="4" cy="4" r="2" stroke="none"></circle>
+</svg>
+</a>
+</span>
+</div>
+</footer>
+</div>
+</div>
+</div>
+</div>
+</body></html>
