@@ -7,7 +7,12 @@ app.use(express.static(path.join(__dirname)));
 
 // Route for homepage (hero-page)
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'hero-page.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Route for bill tool
+app.get('/bill', (req, res) => {
+  res.sendFile(path.join(__dirname, 'bill.html'));
 });
 
 // Route for About Us page

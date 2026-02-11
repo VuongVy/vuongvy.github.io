@@ -1,332 +1,451 @@
-<!-- No changes to be made to index.html -->
 <!DOCTYPE html>
+<html class="dark" lang="en" style="color-scheme: dark;">
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Rexon</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-<style>
-        .video-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            min-width: 100%;
-            min-height: 100%;
-            object-fit: cover;
-            transform: translate(-50%, -50%);
-            z-index: -2;
-        }
-        .bg-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, rgba(125, 0, 255, 0.2) 0%, rgba(0, 191, 255, 0.2) 50%, rgba(255, 0, 255, 0.2) 100%), rgba(10, 10, 10, 0.7);
-        }
-        .scanline-effect {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: repeating-linear-gradient(
-                to bottom,
-                rgba(255, 255, 255, 0.05) 0px,
-                rgba(255, 255, 255, 0.05) 1px,
-                transparent 1px,
-                transparent 3px
-            );
-            z-index: 0;
-            pointer-events: none;
-        }
-    </style>
-<script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "primary": "#2b6cee",
-              "background-light": "#f6f6f8",
-              "background-dark": "#0A0A0A",
-            },
-            fontFamily: {
-              "display": ["Space Grotesk", "sans-serif"]
-            },
-            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-          },
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Yêu Bi-A</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Outfit:wght@300;400;600;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <style>
+    .video-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: -2;
+    }
+
+    .bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, rgba(88, 28, 255, 0.4) 0%, rgba(0, 50, 150, 0.4) 100%), rgba(0, 0, 0, 0.8);
+    }
+
+    .scanline-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 3px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .glass-card {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .input-control {
+      background-color: rgba(0, 0, 0, 0.6) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      color: white !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    input,
+    select,
+    textarea {
+      background-color: rgba(0, 0, 0, 0.6) !important;
+      color: white !important;
+    }
+
+    .input-control:focus {
+      border-color: #00BFFF;
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+      outline: none;
+    }
+
+    .player-avatar {
+      background: linear-gradient(135deg, #00BFFF, #7d00ff);
+    }
+
+    .positive {
+      color: #4ade80;
+      text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+    }
+
+    .negative {
+      color: #f87171;
+      text-shadow: 0 0 10px rgba(248, 113, 113, 0.3);
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #444;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: { "primary": "#00BFFF", "accent": "#7d00ff", "background-dark": "#0A0A0A" },
+          fontFamily: { "display": ["Space Grotesk", "sans-serif"], "body": ["Outfit", "sans-serif"] }
         },
-      }
-    </script>
+      },
+    }
+  </script>
 </head>
-<body class="bg-background-dark font-display text-[#F5F5F5] antialiased">
-<div class="relative flex h-screen w-full flex-col overflow-hidden">
-<video autoplay="" class="video-bg" data-alt="Abstract 3D rendering of a futuristic environment from an Unreal Engine demo, featuring dynamic lighting and complex geometry." loop="" muted="" playsinline="">
-<source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-long-tunnel-with-light-changing-from-blue-to-39474-large.mp4" type="video/mp4"/>
-            Your browser does not support the video tag.
-        </video>
-<div class="bg-overlay"></div>
-<div class="scanline-effect"></div>
-<div class="relative z-10 flex h-full grow flex-col">
-<header class="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-sm">
-<nav class="container mx-auto flex items-center justify-between whitespace-nowrap px-6 py-4 lg:px-8">
-<div class="flex items-center gap-4 text-white">
-  <a href="/" class="flex items-center gap-2">
-    <span class="text-2xl font-bold leading-tight tracking-[-0.015em] text-[#00BFFF]">Rexon</span>
-  </a>
-</div>
-<div class="hidden items-center gap-9 lg:flex">
-<a class="text-sm font-medium text-gray-300 transition-colors hover:text-[#00BFFF]" href="/solutions-page.html">Solutions</a>
-<a class="text-sm font-medium text-gray-300 transition-colors hover:text-[#00BFFF]" href="/showcase-page.html">Showcase</a>
-<a class="text-sm font-medium text-gray-300 transition-colors hover:text-[#00BFFF]" href="/coretech-page.html">Technologies</a>
-<a class="text-sm font-medium text-gray-300 transition-colors hover:text-[#00BFFF]" href="/about">About Us</a>
-<div class="relative" id="workwithus-dropdown">
-  <a href="/whychoose.html" class="text-sm font-bold px-5 py-2 rounded-lg bg-[#00BFFF] text-background-dark shadow-lg transition-transform hover:scale-105 cursor-pointer flex items-center gap-2">
-    Work with Us
-  </a>
-</div>
-</div>
-<button class="lg:hidden" data-alt="Menu icon">
-<span class="material-symbols-outlined text-3xl">menu</span>
-</button>
-<div id="mobile-menu" class="fixed top-0 right-0 left-0 z-50 hidden flex-col bg-black lg:hidden shadow-2xl">
-  <a href="/solutions-page.html" class="block px-6 py-4 text-white text-base border-b border-gray-800 hover:bg-[#00BFFF] hover:text-background-dark transition">Solutions</a>
-  <a href="/showcase-page.html" class="block px-6 py-4 text-white text-base border-b border-gray-800 hover:bg-[#00BFFF] hover:text-background-dark transition">Showcase</a>
-  <a href="/coretech-page.html" class="block px-6 py-4 text-white text-base border-b border-gray-800 hover:bg-[#00BFFF] hover:text-background-dark transition">Technologies</a>
-  <a href="/about" class="block px-6 py-4 text-white text-base border-b border-gray-800 hover:bg-[#00BFFF] hover:text-background-dark transition">About Us</a>
-  <div class="border-b border-gray-800">
-    <button id="mobile-workwithus-btn" type="button" class="w-full text-left px-6 py-4 text-background-dark bg-[#00BFFF] text-base font-bold flex items-center gap-2 shadow-lg transition-transform hover:scale-105">
-      Work with Us
-      <span class="material-symbols-outlined text-base">expand_more</span>
-    </button>
-    <div id="mobile-workwithus-menu" class="hidden flex-col bg-black">
-      <a href="#workflow" class="block px-8 py-3 text-white text-sm hover:bg-[#00BFFF] hover:text-background-dark transition">Workflow</a>
-      <a href="/whychoose.html" class="block px-8 py-3 text-white text-sm hover:bg-[#00BFFF] hover:text-background-dark transition">Why Choose Rexon</a>
-      <a href="#contact" class="block px-8 py-3 text-white text-sm hover:bg-[#00BFFF] hover:text-background-dark transition">Contact</a>
-    </div>
-  </div>
-  <button id="mobile-menu-close" class="w-full px-6 py-4 text-gray-400 text-base hover:bg-[#00BFFF] hover:text-background-dark transition">Đóng</button>
-</div>
-</nav>
-</header>
-<main class="flex flex-1 items-center justify-center">
-<div class="container mx-auto px-6 py-20 text-center">
-<div class="mx-auto max-w-4xl">
-<h1 class="text-4xl font-bold leading-tight tracking-tighter text-[#F5F5F5] drop-shadow-lg md:text-5xl lg:text-6xl">
-                            Interactive 3D Experiences for Real Estate, Automotive &amp; Product Configuration
-                        </h1>
-<p class="mt-4 text-base font-normal leading-normal text-gray-300 md:text-lg">
-                            Chúng tôi mang sản phẩm và dự án trở nên sống động bằng công nghệ 3D tương tác real-time.
-                        </p>
-<div class="mt-8 flex flex-col flex-wrap items-center justify-center gap-4 sm:flex-row">
-<a href="/showcase-page.html" class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-[#00BFFF] text-background-dark text-base font-bold leading-normal tracking-wide transition-transform hover:scale-105">
-<span class="truncate">View Demos</span>
-</a>
-<a href="/whychoose.html" class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 border border-[#F5F5F5] bg-transparent text-[#F5F5F5] text-base font-bold leading-normal tracking-wide transition-colors hover:bg-white/10">
-<span class="truncate">Work With Us</span>
-</a>
-</div>
-</div>
-</div>
-</main>
 
-<!-- Scroll Down Button -->
-<div class="flex justify-center mt-8 animate-bounce">
-  <a aria-label="Scroll down" href="#more-content">
-    <span class="material-symbols-outlined text-4xl text-white/50 transition-colors hover:text-white">keyboard_arrow_down</span>
-  </a>
-</div>
+<body class="bg-background-dark text-[#F5F5F5] antialiased overflow-x-hidden">
+  <div class="relative min-h-screen w-full flex flex-col">
+    <video autoplay class="video-bg" loop muted playsinline>
+      <source
+        src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-long-tunnel-with-light-changing-from-blue-to-39474-large.mp4"
+        type="video/mp4" />
+    </video>
+    <div class="bg-overlay"></div>
+    <div class="scanline-effect"></div>
 
-</div>
-</div>
-<div class="h-screen bg-background-dark" id="more-content">
-<!-- Our Process Section with Gradient Background -->
-<div class="relative flex h-auto min-h-screen w-full flex-col items-center justify-center p-4 sm:p-6 md:p-8" style="background: linear-gradient(135deg, rgba(125, 0, 255, 0.2) 0%, rgba(0, 191, 255, 0.2) 50%, rgba(255, 0, 255, 0.2) 100%), rgba(10, 10, 10, 0.7);">
-  <div class="layout-container flex h-full w-full max-w-6xl grow flex-col">
-    <div class="layout-content-container flex flex-col items-center gap-4 py-16 sm:py-20 md:py-24">
-      <!-- SectionHeader -->
-      <h2 class="text-3xl font-bold leading-tight tracking-tighter text-zinc-900 dark:text-white sm:text-4xl text-center">From Concept to Reality in 4 Steps</h2>
-      <!-- BodyText -->
-      <p class="text-zinc-600 dark:text-zinc-400 text-base font-normal leading-normal max-w-2xl text-center sm:text-lg">From concept to reality, our streamlined process ensures a seamless journey from initial idea to final deployment of your interactive 3D experience.</p>
-      <!-- TextGrid / Infographic -->
-      <div class="mt-12 grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-4 xl:gap-6">
-        <!-- Step 1 -->
-        <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <div class="flex h-16 w-16 items-center justify-center rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/50">
-            <span class="material-symbols-outlined text-3xl text-primary">groups</span>
-          </div>
-          <div class="mt-4 flex flex-col gap-1">
-            <h3 class="text-lg font-bold leading-tight text-zinc-900 dark:text-white">01. Project Consulting</h3>
-            <p class="text-sm font-normal leading-normal text-zinc-600 dark:text-zinc-400">We start by understanding your vision, defining project scope, and crafting a detailed strategy for success.</p>
-          </div>
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-md border-b border-white/5">
+      <nav class="container mx-auto grid grid-cols-3 items-center px-6 py-4">
+        <div></div>
+        <div class="flex justify-center">
+          <span class="text-2xl font-bold tracking-tighter text-primary">YÊU BI-A</span>
         </div>
-        <!-- Step 2 -->
-        <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <div class="flex h-16 w-16 items-center justify-center rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/50">
-            <span class="material-symbols-outlined text-3xl text-primary">view_in_ar</span>
-          </div>
-          <div class="mt-4 flex flex-col gap-1">
-            <h3 class="text-lg font-bold leading-tight text-zinc-900 dark:text-white">02. Modeling &amp; Optimization</h3>
-            <p class="text-sm font-normal leading-normal text-zinc-600 dark:text-zinc-400">Our experts create and optimize high-quality 3D assets, ensuring they are primed for flawless real-time web performance.</p>
-          </div>
+        <div class="flex justify-end">
+          <span id="current-time" class="text-xs text-gray-400 font-mono hidden md:block"></span>
         </div>
-        <!-- Step 3 -->
-        <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <div class="flex h-16 w-16 items-center justify-center rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/50">
-            <span class="material-symbols-outlined text-3xl text-primary">integration_instructions</span>
-          </div>
-          <div class="mt-4 flex flex-col gap-1">
-            <h3 class="text-lg font-bold leading-tight text-zinc-900 dark:text-white">03. Interaction Programming</h3>
-            <p class="text-sm font-normal leading-normal text-zinc-600 dark:text-zinc-400">We bring your models to life by programming custom interactivity, dynamic animations, and intuitive user interfaces.</p>
-          </div>
-        </div>
-        <!-- Step 4 -->
-        <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <div class="flex h-16 w-16 items-center justify-center rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/50">
-            <span class="material-symbols-outlined text-3xl text-primary">cloud_upload</span>
-          </div>
-          <div class="mt-4 flex flex-col gap-1">
-            <h3 class="text-lg font-bold leading-tight text-zinc-900 dark:text-white">04. Deploy &amp; Integrate</h3>
-            <p class="text-sm font-normal leading-normal text-zinc-600 dark:text-zinc-400">The final experience is launched on web, mobile, or cloud platforms, with seamless integration into your existing ecosystem.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<script>
-// Dropdown toggle for 'Work with Us' (click to open/close)
-document.addEventListener('DOMContentLoaded', function () {
-  var btn = document.getElementById('workwithus-btn');
-  var menu = document.getElementById('workwithus-menu');
-  var dropdown = document.getElementById('workwithus-dropdown');
-  if (btn && menu) {
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      menu.classList.toggle('hidden');
-    });
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function (e) {
-      if (!dropdown.contains(e.target)) {
-        menu.classList.add('hidden');
-      }
-    });
-    // Optional: close on ESC
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        menu.classList.add('hidden');
-      }
-    });
-  }
+      </nav>
+    </header>
 
-  // Mobile menu logic
-  var mobileMenuBtn = document.querySelector('button.lg\\:hidden');
-  var mobileMenu = document.getElementById('mobile-menu');
-  var mobileMenuClose = document.getElementById('mobile-menu-close');
-  var mobileWorkBtn = document.getElementById('mobile-workwithus-btn');
-  var mobileWorkMenu = document.getElementById('mobile-workwithus-menu');
-  if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      mobileMenu.classList.remove('hidden');
-    });
-    mobileMenuClose.addEventListener('click', function () {
-      mobileMenu.classList.add('hidden');
-      mobileWorkMenu.classList.add('hidden');
-    });
-    // Toggle Work with Us submenu
-    mobileWorkBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      mobileWorkMenu.classList.toggle('hidden');
-    });
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function (e) {
-      if (mobileMenu && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-        mobileMenu.classList.add('hidden');
-        mobileWorkMenu.classList.add('hidden');
-      }
-    });
-    // Optional: close on ESC
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        mobileMenu.classList.add('hidden');
-        mobileWorkMenu.classList.add('hidden');
-      }
-    });
-  }
-});
-</script>
-</script>
-<footer class="w-full bg-[#121212] py-16 px-4 sm:px-6 lg:px-8 text-[#EAEAEA] mt-40 md:mt-0">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex flex-col md:grid md:grid-cols-3 gap-12 mb-12">
-      <!-- Column 1: Brand & Social -->
-      <div class="flex flex-col space-y-6">
-        <div class="flex items-center space-x-3">
-          <svg class="h-8 w-8 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-          <span class="text-2xl font-bold text-white pt-2 sm:pt-0 block">Rexon</span>
+    <main class="relative z-10 flex-1 pt-24 pb-12 px-4">
+      <div class="container mx-auto max-w-4xl space-y-6">
+        <!-- Config Card -->
+        <div class="glass-card rounded-2xl p-6 md:p-8">
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary">payments</span>
+              <h2 class="text-xl font-bold">Cấu Hình & Bill</h2>
+            </div>
+            <div class="space-y-1 text-left md:text-right w-full md:w-auto">
+              <label class="text-[10px] font-bold uppercase text-gray-400">Người trả tổng (Người ứng tiền)</label>
+              <select id="bill-payer-select"
+                class="input-control w-full md:w-auto rounded-lg px-3 py-1.5 text-xs text-white">
+                <option value="">Chưa ai trả / Quỹ</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="space-y-2 md:col-span-1">
+              <label class="text-xs font-semibold uppercase tracking-wider text-gray-400">Mệnh giá (x1000đ/điểm)</label>
+              <div class="relative">
+                <input id="point-value-input" type="number" placeholder="Ví dụ: 30"
+                  class="input-control w-full rounded-xl pl-4 pr-10 py-3 text-white">
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-500 font-bold">.000đ</span>
+              </div>
+            </div>
+            <div class="md:col-span-3 space-y-4">
+              <label class="text-xs font-semibold uppercase tracking-wider text-gray-400 block">Các khoản Bill cần chia
+                (đơn vị: .000đ)</label>
+              <div id="bill-parts-container" class="space-y-3"></div>
+              <button onclick="addBillPart()"
+                class="flex items-center gap-2 text-xs font-bold text-primary hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-sm">add_circle</span>
+                THÊM KHOẢN CHIA MỚI
+              </button>
+            </div>
+          </div>
         </div>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Crafting immersive digital realities for tomorrow's industries.
-        </p>
-        <div class="flex space-x-4">
-          <a aria-label="LinkedIn" class="text-gray-400 hover:text-primary transition-colors duration-300" href="#">
-            <!-- LinkedIn SVG -->
-          </a>
-          <a aria-label="Twitter" class="text-gray-400 hover:text-primary transition-colors duration-300" href="#">
-            <!-- Twitter SVG -->
-          </a>
-          <a aria-label="Facebook" class="text-gray-400 hover:text-primary transition-colors duration-300" href="#">
-            <!-- Facebook SVG -->
-          </a>
-        </div>
-      </div>
-      <!-- Column 2: Contact Information -->
-      <div class="flex flex-col space-y-4">
-        <h3 class="text-lg font-semibold text-white">Contact Us</h3>
-        <ul class="space-y-3 text-gray-400">
-          <li class="flex items-start">
-            <span class="material-symbols-outlined text-primary mr-3 mt-1">location_on</span>
-            <a class="hover:text-primary transition-colors duration-300" href="#">123 Tech Avenue, Suite 100<br/>Innovate City, CA 90210</a>
-          </li>
-          <li class="flex items-center">
-            <span class="material-symbols-outlined text-primary mr-3">call</span>
-            <a class="hover:text-primary transition-colors duration-300" href="tel:+1234567890">+1 (234) 567-890</a>
-          </li>
-          <li class="flex items-center">
-            <span class="material-symbols-outlined text-primary mr-3">email</span>
-            <a class="hover:text-primary transition-colors duration-300" href="mailto:support@innovate3d.com">support@innovate3d.com</a>
-          </li>
-        </ul>
-      </div>
-      <!-- Column 3: Location -->
-      <div class="flex flex-col space-y-4">
-        <h3 class="text-lg font-semibold text-white">Our Location</h3>
-        <div class="w-full h-48 bg-center bg-no-repeat bg-cover rounded-lg overflow-hidden border border-gray-700">
-          <div class="w-full h-full bg-cover" data-alt="A dark-themed map showing the location of Innovate City." data-location="Los Angeles" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCwzzYgK5z2gdqer3W2PhHr81qn86-E_6z1klHVwvjTWUqduWx0KB_AnPuuwYOt_CP2xe8_lanTzw562VotsmsQ-DkJpgH6S9jeb5aY0x-KrjiCe9kbACWnlmZvfPSpT-DH6KApM3xxFHJlKDT7V6kK5JqhfwvuWUme1f8ABHL-kThzKlBP9yQ_GGRI2nZGgotf9CWNeOchYJsWYSNcWdg2N22aAuxjz8sUSngVOooM_94H5N6uPslsfmVbODyF60D3a9kjJi5U_8k");'></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          <!-- Players Section -->
+          <div class="lg:col-span-3 space-y-4">
+            <div class="glass-card rounded-2xl p-6">
+              <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-primary">groups</span>
+                  <h2 class="text-xl font-bold">Người Chơi & Điểm</h2>
+                </div>
+                <div class="flex w-full md:w-auto gap-2">
+                  <input id="new-user-input" type="text" placeholder="Thêm bạn mới..."
+                    class="input-control flex-1 md:w-48 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-primary/50">
+                  <button onclick="addUser()"
+                    class="bg-primary hover:bg-primary/80 text-black font-bold px-5 py-2 rounded-lg text-xs transition-all active:scale-95">THÊM</button>
+                </div>
+              </div>
+              <div id="players-list" class="space-y-3"></div>
+            </div>
+          </div>
+
+          <!-- Results Section -->
+          <div class="lg:col-span-2 space-y-4">
+            <div class="glass-card rounded-2xl p-6 sticky top-24">
+              <div class="flex items-center gap-3 mb-6">
+                <span class="material-symbols-outlined text-primary">receipt_long</span>
+                <h2 class="text-xl font-bold">Thanh Toán</h2>
+              </div>
+              <div id="transactions-container" class="space-y-3 min-h-[100px]"></div>
+              <div class="mt-6 pt-6 border-t border-white/10 space-y-2 text-sm">
+                <div class="flex justify-between items-center text-gray-400">
+                  <span>Tổng tiền Bill:</span>
+                  <span id="total-bill-display" class="text-white font-medium">0 ₫</span>
+                </div>
+                <div class="flex justify-between items-center pt-2">
+                  <span class="text-gray-400 font-bold uppercase text-[10px]">Tổng lưu chuyển:</span>
+                  <span id="total-flow-display" class="text-primary font-bold">0 ₫</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- Bottom Bar -->
-    <div class="border-t border-gray-800 pt-8 mt-8 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500">
-      <p class="mb-4 sm:mb-0">© 2024 Rexon. All Rights Reserved.</p>
-      <div class="flex space-x-6">
-        <a class="hover:text-primary transition-colors duration-300" href="#">Privacy Policy</a>
-        <a class="hover:text-primary transition-colors duration-300" href="#">Terms of Service</a>
-      </div>
-    </div>
+    </main>
+
+    <footer class="relative z-10 py-8 text-center text-xs text-gray-500 uppercase tracking-widest">
+      © 2026 Yêu Bi-A • Crafted with Precision
+    </footer>
   </div>
-</footer>
-</body></html>
+
+  <script>
+    const DEFAULT_USERS = ["A Long", "A Thành", "A Hiến", "A Vũ", "Vỹ"];
+    let state = {
+      users: [...DEFAULT_USERS],
+      scores: {},
+      pointValue: 30, // Representing 30,000đ
+      billParts: [{ id: Date.now(), amount: 0, participants: [...DEFAULT_USERS] }],
+      billPayer: ""
+    };
+
+    const STORAGE_KEY = 'yeubia_app_state_v3';
+
+    function load() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          state = { ...state, ...parsed };
+          // Migration check for pointValue
+          if (state.pointValue > 1000) state.pointValue = Math.round(state.pointValue / 1000);
+        } catch (e) { console.error("Load failed", e); }
+      }
+    }
+
+    function save() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    const dom = {
+      parts: document.getElementById('bill-parts-container'),
+      players: document.getElementById('players-list'),
+      payer: document.getElementById('bill-payer-select'),
+      point: document.getElementById('point-value-input'),
+      trans: document.getElementById('transactions-container'),
+      totalBill: document.getElementById('total-bill-display'),
+      totalFlow: document.getElementById('total-flow-display'),
+      newUser: document.getElementById('new-user-input'),
+      time: document.getElementById('current-time')
+    };
+
+    function format(n) {
+      return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(n);
+    }
+
+    function init() {
+      load();
+      dom.point.value = state.pointValue;
+      dom.point.oninput = () => { state.pointValue = Number(dom.point.value) || 0; save(); calc(); };
+      dom.payer.onchange = () => { state.billPayer = dom.payer.value; save(); calc(); };
+
+      updatePayerList();
+      renderParts();
+      renderPlayers();
+      calc();
+
+      setInterval(() => { dom.time.textContent = new Date().toLocaleTimeString('vi-VN'); }, 1000);
+    }
+
+    function updatePayerList() {
+      const cur = state.billPayer;
+      dom.payer.innerHTML = '<option value="">Chưa ai trả / Quỹ</option>';
+      state.users.forEach(u => {
+        const o = document.createElement('option');
+        o.value = u; o.textContent = u; o.selected = (u === cur);
+        dom.payer.appendChild(o);
+      });
+    }
+
+    function addUser() {
+      const name = dom.newUser.value.trim();
+      if (!name) return;
+      if (state.users.includes(name)) { alert("Đã có tên này!"); return; }
+      state.users.push(name);
+      state.scores[name] = 0;
+      dom.newUser.value = '';
+      save(); updatePayerList(); renderPlayers(); renderParts(); calc();
+    }
+
+    function removeUser(name) {
+      if (!confirm(`Xóa ${name}?`)) return;
+      state.users = state.users.filter(u => u !== name);
+      delete state.scores[name];
+      if (state.billPayer === name) state.billPayer = "";
+      state.billParts.forEach(p => p.participants = p.participants.filter(u => u !== name));
+      save(); updatePayerList(); renderPlayers(); renderParts(); calc();
+    }
+
+    function addBillPart() {
+      state.billParts.push({ id: Date.now(), amount: 0, participants: [...state.users] });
+      save(); renderParts(); calc();
+    }
+
+    function removeBillPart(id) {
+      if (state.billParts.length <= 1) state.billParts[0].amount = 0;
+      else state.billParts = state.billParts.filter(p => p.id !== id);
+      save(); renderParts(); calc();
+    }
+
+    function renderParts() {
+      dom.parts.innerHTML = '';
+      state.billParts.forEach(p => {
+        const div = document.createElement('div');
+        div.className = "flex flex-col md:flex-row gap-3 bg-black/40 p-4 rounded-xl border border-white/5 animate-in fade-in duration-300";
+
+        const usersHtml = state.users.map(u => {
+          const active = p.participants.includes(u);
+          const initial = u.split(' ').pop().slice(0, 1).toUpperCase();
+          return `<button onclick="toggleP(${p.id}, '${u}')" class="w-8 h-8 rounded-full text-[10px] font-bold transition-all ${active ? 'bg-primary text-black scale-110 shadow-lg' : 'bg-white/5 text-gray-500'}">${initial}</button>`;
+        }).join('');
+
+        div.innerHTML = `
+                    <div class="flex-1 flex gap-2">
+                        <div class="relative flex-1">
+                            <input type="number" value="${p.amount}" class="input-control w-full rounded-lg pl-3 pr-10 py-2 text-sm" oninput="updatePart(${p.id}, this.value)">
+                            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-500 font-bold">.000đ</span>
+                        </div>
+                        <button onclick="removeBillPart(${p.id})" class="text-gray-600 hover:text-red-500 transition-colors"><span class="material-symbols-outlined">delete</span></button>
+                    </div>
+                    <div class="flex gap-1 items-center flex-wrap justify-center md:justify-end">${usersHtml}</div>
+                `;
+        dom.parts.appendChild(div);
+      });
+    }
+
+    window.updatePart = (id, v) => { const p = state.billParts.find(x => x.id === id); if (p) p.amount = Number(v) || 0; save(); calc(); };
+    window.toggleP = (id, u) => {
+      const p = state.billParts.find(x => x.id === id);
+      if (p) {
+        p.participants = p.participants.includes(u) ? p.participants.filter(x => x !== u) : [...p.participants, u];
+        save(); renderParts(); calc();
+      }
+    };
+
+    function renderPlayers() {
+      dom.players.innerHTML = '';
+      state.users.forEach((u, i) => {
+        const div = document.createElement('div');
+        div.className = "flex items-center justify-between p-4 bg-black/20 rounded-xl border border-white/5 transition-colors hover:border-white/20";
+        div.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <button onclick="removeUser('${u}')" class="text-gray-600 hover:text-red-500"><span class="material-symbols-outlined text-sm">close</span></button>
+                        <div class="player-avatar w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs">${u.split(' ').pop().slice(0, 2).toUpperCase()}</div>
+                        <p class="font-bold text-sm text-gray-200">${u}</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex flex-col items-center">
+                            <label class="text-[9px] text-gray-500 uppercase font-black mb-1">Điểm</label>
+                            <input type="number" value="${state.scores[u] || 0}" class="input-control w-16 md:w-20 rounded-lg px-2 py-1.5 text-center text-sm" oninput="updateS('${u}', this.value)">
+                        </div>
+                        <div class="text-right min-w-[100px]">
+                            <label class="text-[9px] text-gray-500 uppercase font-black block mb-1">Kết quả</label>
+                            <div id="net-${i}" class="font-mono text-sm">0 ₫</div>
+                        </div>
+                    </div>
+                `;
+        dom.players.appendChild(div);
+      });
+    }
+
+    window.updateS = (u, v) => { state.scores[u] = Number(v) || 0; save(); calc(); };
+
+    function calc() {
+      let totalB = 0, debts = {};
+      state.users.forEach(u => debts[u] = 0);
+      state.billParts.forEach(part => {
+        const amountInVND = part.amount * 1000;
+        totalB += amountInVND;
+        const share = part.participants.length > 0 ? amountInVND / part.participants.length : 0;
+        part.participants.forEach(u => { debts[u] += share; });
+      });
+
+      dom.totalBill.textContent = format(totalB);
+      let balances = {};
+      state.users.forEach((u, i) => {
+        const gameMoney = (state.scores[u] || 0) * (state.pointValue * 1000);
+        let net = gameMoney - (debts[u] || 0);
+
+        if (state.billPayer === u) {
+          net += totalB;
+        }
+
+        // Làm tròn đến hàng chục nghìn (10.000đ)
+        const finalAmount = Math.round(net / 10000) * 10000;
+        balances[u] = finalAmount;
+
+        const el = document.getElementById(`net-${i}`);
+        if (el) {
+          el.textContent = format(finalAmount);
+          el.className = `font-mono text-sm ${finalAmount > 0 ? 'positive' : finalAmount < 0 ? 'negative' : 'text-gray-500'}`;
+        }
+      });
+
+      const debtors = Object.entries(balances).filter(x => x[1] < -1).sort((a, b) => a[1] - b[1]);
+      const creditors = Object.entries(balances).filter(x => x[1] > 1).sort((a, b) => b[1] - a[1]);
+
+      dom.trans.innerHTML = '';
+      let flow = 0, i = 0, j = 0;
+      while (i < debtors.length && j < creditors.length) {
+        let amt = Math.min(Math.abs(debtors[i][1]), creditors[j][1]);
+        const card = document.createElement('div');
+        card.className = "p-3 bg-white/5 border-l-2 border-primary rounded-r-lg text-xs slide-in-from-right-2 animate-in duration-300";
+        card.innerHTML = `<div class="flex justify-between items-center"><span class="text-gray-400 font-medium">${debtors[i][0]} <span class="text-white/20">→</span> ${creditors[j][0]}</span><span class="text-white font-bold">${format(amt)}</span></div>`;
+        dom.trans.appendChild(card);
+        flow += amt; debtors[i][1] += amt; creditors[j][1] -= amt;
+        if (Math.abs(debtors[i][1]) < 1) i++; if (creditors[j][1] < 1) j++;
+      }
+      if (!dom.trans.innerHTML) dom.trans.innerHTML = '<div class="text-center py-8 text-gray-500 text-[10px] uppercase tracking-widest italic">Hòa cả làng</div>';
+      dom.totalFlow.textContent = format(flow);
+    }
+
+    init();
+  </script>
+</body>
+
+</html>
