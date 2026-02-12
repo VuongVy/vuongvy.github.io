@@ -12,6 +12,14 @@
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Outfit:wght@300;400;600;700&display=swap"
     rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <!-- PWA Settings -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00BFFF">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Yêu Bi-A">
+  <link rel="apple-touch-icon" href="icon.svg">
   <style>
     .video-bg {
       position: absolute;
@@ -445,6 +453,15 @@
     }
 
     init();
+
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(req => console.log('Service Worker Registered'))
+          .catch(err => console.log('Service Worker Failed', err));
+      });
+    }
   </script>
 </body>
 
