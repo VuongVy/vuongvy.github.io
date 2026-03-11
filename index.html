@@ -91,6 +91,13 @@
             class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
         </div>
 
+        <!-- Report Month -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-600 mb-1">Tháng báo cáo</label>
+          <input id="exp-month" type="month" required
+            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+        </div>
+
         <!-- Amount -->
         <div>
           <label class="block text-sm font-semibold text-gray-600 mb-1">Số tiền (VNĐ)</label>
@@ -166,6 +173,7 @@
     const dom = {
       form: document.getElementById('expense-form'),
       empName: document.getElementById('emp-name'),
+      month: document.getElementById('exp-month'),
       amount: document.getElementById('exp-amount'),
       note: document.getElementById('exp-note'),
       photoInput: document.getElementById('exp-photo'),
@@ -185,6 +193,12 @@
     // Formatting
     const formatMoney = (n) => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(n);
     const formatDate = (d) => new Date(d).toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' });
+    const formatMonth = (m) => {
+        if (!m) return 'Không rõ';
+        const parts = m.split('-');
+        if (parts.length === 2) return `Tháng ${parts[1]}/${parts[0]}`;
+        return m;
+    };
 
     const BASE_URL = ''; // Gọi API nội bộ trên cùng Domain
 
@@ -299,7 +313,7 @@
         item.innerHTML = `
                     <div class="flex justify-between items-start mb-2">
                         <div class="flex-1">
-                            <div class="text-xs text-gray-400 mb-1">${formatDate(req.createdAt)}</div>
+                            <div class="text-xs text-gray-500 font-bold mb-1"><span class="material-icons-round text-[12px] inline-block align-middle pb-[2px]">event</span> ${formatMonth(req.reportMonth)}</div>
                             <div class="font-bold text-gray-800">${formatMoney(req.amount)}</div>
                             <div class="text-sm text-gray-600 mt-1">${req.note}</div>
                         </div>
@@ -346,6 +360,7 @@
 
       dom.editId.value = id;
       dom.empName.value = req.employeeId;
+      dom.month.value = req.reportMonth || '';
       dom.amount.value = req.amount;
       dom.note.value = req.note;
       dom.photoBase64.value = req.photo || '';
@@ -370,6 +385,7 @@
 
     function resetForm() {
       dom.editId.value = '';
+      dom.month.value = '';
       dom.amount.value = '';
       dom.note.value = '';
       dom.photoInput.value = '';
@@ -389,6 +405,7 @@
 
       const payload = {
         employeeId: name,
+        reportMonth: dom.month.value,
         amount: Number(dom.amount.value),
         note: dom.note.value.trim(),
         photo: dom.photoBase64.value,

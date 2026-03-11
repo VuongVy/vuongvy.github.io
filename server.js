@@ -52,6 +52,7 @@ app.post('/api/requests', (req, res) => {
     photo: req.body.photo || null,
     status: 'pending', // 'pending', 'approved', 'rejected'
     reason: '',
+    reportMonth: req.body.reportMonth || '',
     createdAt: new Date().toISOString()
   };
   requests.push(newRequest);
@@ -69,6 +70,7 @@ app.put('/api/requests/:id', (req, res) => {
   if (req.body.note !== undefined) request.note = req.body.note;
   if (req.body.amount !== undefined) request.amount = req.body.amount;
   if (req.body.photo !== undefined) request.photo = req.body.photo;
+  if (req.body.reportMonth !== undefined) request.reportMonth = req.body.reportMonth;
 
   saveData();
   res.json(request);

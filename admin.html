@@ -200,6 +200,12 @@
         // Formatting
         const formatMoney = (n) => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(n);
         const formatDate = (d) => new Date(d).toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' });
+        const formatMonth = (m) => {
+            if (!m) return 'Không rõ tháng';
+            const parts = m.split('-');
+            if (parts.length === 2) return `Tháng ${parts[1]}/${parts[0]}`;
+            return m;
+        };
 
         // Show toast
         const showToast = (msg, isError = false) => {
@@ -365,8 +371,8 @@
                         </div>
                         <div class="text-lg font-bold text-primary">${formatMoney(req.amount)}</div>
                     </div>
-                    <div class="text-xs text-gray-400 mb-2 flex items-center gap-1">
-                        <span class="material-icons-round text-[14px]">schedule</span> ${formatDate(req.createdAt)}
+                    <div class="text-xs text-gray-500 font-bold mb-2 flex items-center gap-1">
+                        <span class="material-icons-round text-[14px]">event</span> ${formatMonth(req.reportMonth)}
                     </div>
                     <div class="text-sm text-gray-600 bg-gray-50 p-2 rounded-lg border border-gray-100">${req.note}</div>
                 </div>
