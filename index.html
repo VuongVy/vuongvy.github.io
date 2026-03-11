@@ -1,467 +1,438 @@
 <!DOCTYPE html>
-<html class="dark" lang="en" style="color-scheme: dark;">
+<html lang="vi">
 
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Yêu Bi-A</title>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com" rel="preconnect" />
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Outfit:wght@300;400;600;700&display=swap"
-    rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
-  <!-- PWA Settings -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#00BFFF">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Yêu Bi-A">
-  <link rel="apple-touch-icon" href="icon.svg">
-  <style>
-    .video-bg {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      transform: translate(-50%, -50%);
-      z-index: -2;
-    }
-
-    .bg-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: linear-gradient(135deg, rgba(88, 28, 255, 0.4) 0%, rgba(0, 50, 150, 0.4) 100%), rgba(0, 0, 0, 0.8);
-    }
-
-    .scanline-effect {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 3px);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    body {
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .glass-card {
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    }
-
-    .input-control {
-      background-color: rgba(0, 0, 0, 0.6) !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
-      color: white !important;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    input,
-    select,
-    textarea {
-      background-color: rgba(0, 0, 0, 0.6) !important;
-      color: white !important;
-    }
-
-    .input-control:focus {
-      border-color: #00BFFF;
-      background: rgba(0, 0, 0, 0.6);
-      box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
-      outline: none;
-    }
-
-    .player-avatar {
-      background: linear-gradient(135deg, #00BFFF, #7d00ff);
-    }
-
-    .positive {
-      color: #4ade80;
-      text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
-    }
-
-    .negative {
-      color: #f87171;
-      text-shadow: 0 0 10px rgba(248, 113, 113, 0.3);
-    }
-
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #333;
-      border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #444;
-    }
-  </style>
+  <title>CoreTeam HR - Logbook Chi Phí</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <script>
     tailwind.config = {
-      darkMode: "class",
       theme: {
         extend: {
-          colors: { "primary": "#00BFFF", "accent": "#7d00ff", "background-dark": "#0A0A0A" },
-          fontFamily: { "display": ["Space Grotesk", "sans-serif"], "body": ["Outfit", "sans-serif"] }
-        },
-      },
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: { primary: '#6366f1', secondary: '#4f46e5' }
+        }
+      }
     }
   </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f3f4f6;
+    }
+
+    .glass-panel {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .photo-preview {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      border-radius: 8px;
+      display: none;
+      margin-top: 10px;
+    }
+
+    .spinner {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    #toast {
+      transition: opacity 0.3s ease-in-out;
+    }
+  </style>
 </head>
 
-<body class="bg-background-dark text-[#F5F5F5] antialiased overflow-x-hidden">
-  <div class="relative min-h-screen w-full flex flex-col">
-    <video autoplay class="video-bg" loop muted playsinline>
-      <source
-        src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-long-tunnel-with-light-changing-from-blue-to-39474-large.mp4"
-        type="video/mp4" />
-    </video>
-    <div class="bg-overlay"></div>
-    <div class="scanline-effect"></div>
+<body class="text-gray-800 antialiased min-h-screen pb-10">
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-md border-b border-white/5">
-      <nav class="container mx-auto grid grid-cols-3 items-center px-6 py-4">
-        <div></div>
-        <div class="flex justify-center">
-          <span class="text-2xl font-bold tracking-tighter text-primary">YÊU BI-A</span>
-        </div>
-        <div class="flex justify-end">
-          <span id="current-time" class="text-xs text-gray-400 font-mono hidden md:block"></span>
-        </div>
-      </nav>
-    </header>
-
-    <main class="relative z-10 flex-1 pt-24 pb-12 px-4">
-      <div class="container mx-auto max-w-4xl space-y-6">
-        <!-- Config Card -->
-        <div class="glass-card rounded-2xl p-6 md:p-8">
-          <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
-            <div class="flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary">payments</span>
-              <h2 class="text-xl font-bold">Cấu Hình & Bill</h2>
-            </div>
-            <div class="space-y-1 text-left md:text-right w-full md:w-auto">
-              <label class="text-[10px] font-bold uppercase text-gray-400">Người trả tổng (Người ứng tiền)</label>
-              <select id="bill-payer-select"
-                class="input-control w-full md:w-auto rounded-lg px-3 py-1.5 text-xs text-white">
-                <option value="">Chưa ai trả / Quỹ</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div class="space-y-2 md:col-span-1">
-              <label class="text-xs font-semibold uppercase tracking-wider text-gray-400">Mệnh giá (x1000đ/điểm)</label>
-              <div class="relative">
-                <input id="point-value-input" type="number" placeholder="Ví dụ: 30"
-                  class="input-control w-full rounded-xl pl-4 pr-10 py-3 text-white">
-                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-500 font-bold">.000đ</span>
-              </div>
-            </div>
-            <div class="md:col-span-3 space-y-4">
-              <label class="text-xs font-semibold uppercase tracking-wider text-gray-400 block">Các khoản Bill cần chia
-                (đơn vị: .000đ)</label>
-              <div id="bill-parts-container" class="space-y-3"></div>
-              <button onclick="addBillPart()"
-                class="flex items-center gap-2 text-xs font-bold text-primary hover:text-white transition-colors">
-                <span class="material-symbols-outlined text-sm">add_circle</span>
-                THÊM KHOẢN CHIA MỚI
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-          <!-- Players Section -->
-          <div class="lg:col-span-3 space-y-4">
-            <div class="glass-card rounded-2xl p-6">
-              <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
-                <div class="flex items-center gap-3">
-                  <span class="material-symbols-outlined text-primary">groups</span>
-                  <h2 class="text-xl font-bold">Người Chơi & Điểm</h2>
-                </div>
-                <div class="flex w-full md:w-auto gap-2">
-                  <input id="new-user-input" type="text" placeholder="Thêm bạn mới..."
-                    class="input-control flex-1 md:w-48 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-primary/50">
-                  <button onclick="addUser()"
-                    class="bg-primary hover:bg-primary/80 text-black font-bold px-5 py-2 rounded-lg text-xs transition-all active:scale-95">THÊM</button>
-                </div>
-              </div>
-              <div id="players-list" class="space-y-3"></div>
-            </div>
-          </div>
-
-          <!-- Results Section -->
-          <div class="lg:col-span-2 space-y-4">
-            <div class="glass-card rounded-2xl p-6 sticky top-24">
-              <div class="flex items-center gap-3 mb-6">
-                <span class="material-symbols-outlined text-primary">receipt_long</span>
-                <h2 class="text-xl font-bold">Thanh Toán</h2>
-              </div>
-              <div id="transactions-container" class="space-y-3 min-h-[100px]"></div>
-              <div class="mt-6 pt-6 border-t border-white/10 space-y-2 text-sm">
-                <div class="flex justify-between items-center text-gray-400">
-                  <span>Tổng tiền Bill:</span>
-                  <span id="total-bill-display" class="text-white font-medium">0 ₫</span>
-                </div>
-                <div class="flex justify-between items-center pt-2">
-                  <span class="text-gray-400 font-bold uppercase text-[10px]">Tổng lưu chuyển:</span>
-                  <span id="total-flow-display" class="text-primary font-bold">0 ₫</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- Header -->
+  <header class="bg-primary text-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="material-icons-round text-3xl">account_balance_wallet</span>
+        <span class="text-xl font-bold tracking-tight">Logbook Chi Phí</span>
       </div>
-    </main>
+      <div class="text-sm border border-white/30 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm">
+        Nhân viên
+      </div>
+    </div>
+  </header>
 
-    <footer class="relative z-10 py-8 text-center text-xs text-gray-500 uppercase tracking-widest">
-      © 2026 Yêu Bi-A • Crafted with Precision
-    </footer>
+  <main class="container mx-auto max-w-lg mt-6 px-4 space-y-6">
+
+    <!-- Upload Form -->
+    <section class="glass-panel p-6">
+      <h2 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-700">
+        <span class="material-icons-round text-primary">add_circle</span> Tạo Báo Cáo Mới
+      </h2>
+      <form id="expense-form" class="space-y-4">
+        <input type="hidden" id="edit-id" value="">
+
+        <!-- Employee Name (Saved in local storage for convenience) -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-600 mb-1">Tên của bạn</label>
+          <input id="emp-name" type="text" required placeholder="Nhập tên..."
+            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+        </div>
+
+        <!-- Amount -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-600 mb-1">Số tiền (VNĐ)</label>
+          <input id="exp-amount" type="number" required placeholder="Ví dụ: 500000"
+            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+        </div>
+
+        <!-- Note -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-600 mb-1">Diễn giải</label>
+          <textarea id="exp-note" required rows="2" placeholder="Chi phí tiếp khách, mua văn phòng phẩm..."
+            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all resize-none"></textarea>
+        </div>
+
+        <!-- Photo Upload -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-600 mb-1">Ảnh Bill / Hóa đơn</label>
+          <div
+            class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:bg-gray-50 transition-colors relative cursor-pointer"
+            onclick="document.getElementById('exp-photo').click()">
+            <div class="space-y-1 text-center" id="upload-placeholder">
+              <span class="material-icons-round text-4xl text-gray-400">add_a_photo</span>
+              <div class="flex text-sm text-gray-600 justify-center">
+                <span class="relative font-medium text-primary hover:text-secondary group-focus-within:outline-none">
+                  <span>Chụp ảnh hoặc chọn file</span>
+                </span>
+              </div>
+              <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+            </div>
+            <img id="photo-preview" class="photo-preview" />
+          </div>
+          <input id="exp-photo" type="file" accept="image/*" capture="environment" class="sr-only">
+          <input type="hidden" id="photo-base64">
+        </div>
+
+        <button type="submit" id="submit-btn"
+          class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-4 rounded-lg shadow-md transition-all flex justify-center items-center gap-2 active:scale-95">
+          <span class="material-icons-round text-sm">send</span>
+          <span>Gửi Yêu Cầu</span>
+        </button>
+        <button type="button" id="cancel-edit-btn"
+          class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 px-4 rounded-lg shadow-sm transition-all flex justify-center items-center gap-2 hidden mt-2">
+          Hủy Cập Nhật
+        </button>
+      </form>
+    </section>
+
+    <!-- Listing -->
+    <section class="glass-panel p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-bold flex items-center gap-2 text-gray-700">
+          <span class="material-icons-round text-primary">history</span> Lịch Sử Của Bạn
+        </h2>
+        <button onclick="fetchRequests()" class="text-gray-500 hover:text-primary"><span
+            class="material-icons-round">refresh</span></button>
+      </div>
+
+      <div id="requests-list" class="space-y-4">
+        <!-- Items will be injected here -->
+        <div class="text-center text-gray-500 text-sm py-4">Đang tải dữ liệu...</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast"
+    class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 opacity-0 pointer-events-none z-50">
+    <span class="material-icons-round text-green-400" id="toast-icon">check_circle</span>
+    <span id="toast-msg">Thành công!</span>
   </div>
 
   <script>
-    const DEFAULT_USERS = ["A Long", "A Thành", "A Hiến", "A Vũ", "Vỹ"];
-    let state = {
-      users: [...DEFAULT_USERS],
-      scores: {},
-      pointValue: 30, // Representing 30,000đ
-      billParts: [{ id: Date.now(), amount: 0, participants: [...DEFAULT_USERS] }],
-      billPayer: ""
-    };
-
-    const STORAGE_KEY = 'yeubia_app_state_v3';
-
-    function load() {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        try {
-          const parsed = JSON.parse(saved);
-          state = { ...state, ...parsed };
-          // Migration check for pointValue
-          if (state.pointValue > 1000) state.pointValue = Math.round(state.pointValue / 1000);
-        } catch (e) { console.error("Load failed", e); }
-      }
-    }
-
-    function save() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    }
-
     const dom = {
-      parts: document.getElementById('bill-parts-container'),
-      players: document.getElementById('players-list'),
-      payer: document.getElementById('bill-payer-select'),
-      point: document.getElementById('point-value-input'),
-      trans: document.getElementById('transactions-container'),
-      totalBill: document.getElementById('total-bill-display'),
-      totalFlow: document.getElementById('total-flow-display'),
-      newUser: document.getElementById('new-user-input'),
-      time: document.getElementById('current-time')
+      form: document.getElementById('expense-form'),
+      empName: document.getElementById('emp-name'),
+      amount: document.getElementById('exp-amount'),
+      note: document.getElementById('exp-note'),
+      photoInput: document.getElementById('exp-photo'),
+      photoPreview: document.getElementById('photo-preview'),
+      photoBase64: document.getElementById('photo-base64'),
+      placeholder: document.getElementById('upload-placeholder'),
+      list: document.getElementById('requests-list'),
+      submitBtn: document.getElementById('submit-btn'),
+      cancelEditBtn: document.getElementById('cancel-edit-btn'),
+      editId: document.getElementById('edit-id'),
+      toast: document.getElementById('toast'),
+      toastMsg: document.getElementById('toast-msg')
     };
 
-    function format(n) {
-      return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(n);
+    let requestsData = [];
+
+    // Formatting
+    const formatMoney = (n) => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(n);
+    const formatDate = (d) => new Date(d).toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' });
+
+    // Show toast
+    const showToast = (msg, isError = false) => {
+      dom.toastMsg.textContent = msg;
+      document.getElementById('toast-icon').textContent = isError ? 'error' : 'check_circle';
+      document.getElementById('toast-icon').className = `material-icons-round ${isError ? 'text-red-400' : 'text-green-400'}`;
+      dom.toast.classList.remove('opacity-0');
+      setTimeout(() => dom.toast.classList.add('opacity-0'), 3000);
+    };
+
+    // Initialize Name
+    const savedName = localStorage.getItem('coreteam_emp_name');
+    if (savedName) dom.empName.value = savedName;
+
+    // Compress and encode image
+    dom.photoInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const MAX_WIDTH = 800;
+          const scaleSize = MAX_WIDTH / img.width;
+          canvas.width = MAX_WIDTH;
+          canvas.height = img.height * scaleSize;
+
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          const base64 = canvas.toDataURL('image/jpeg', 0.7);
+
+          dom.photoBase64.value = base64;
+          dom.photoPreview.src = base64;
+          dom.photoPreview.style.display = 'block';
+          dom.placeholder.style.display = 'none';
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Fetch Requests
+    async function fetchRequests() {
+      try {
+        const res = await fetch('/api/requests');
+        requestsData = await res.json();
+        renderRequests();
+      } catch (err) {
+        dom.list.innerHTML = '<div class="text-center text-red-500 text-sm py-4">Lỗi kết nối máy chủ!</div>';
+      }
     }
 
-    function init() {
-      load();
-      dom.point.value = state.pointValue;
-      dom.point.oninput = () => { state.pointValue = Number(dom.point.value) || 0; save(); calc(); };
-      dom.payer.onchange = () => { state.billPayer = dom.payer.value; save(); calc(); };
+    // Status Badge UI
+    const statusConfig = {
+      'pending': { color: 'bg-yellow-100 text-yellow-800 border-yellow-200', icon: 'pending', text: 'Chờ duyệt' },
+      'approved': { color: 'bg-green-100 text-green-800 border-green-200', icon: 'check_circle', text: 'Đã duyệt' },
+      'rejected': { color: 'bg-red-100 text-red-800 border-red-200', icon: 'cancel', text: 'Từ chối' }
+    };
 
-      updatePayerList();
-      renderParts();
-      renderPlayers();
-      calc();
+    function renderRequests() {
+      dom.list.innerHTML = '';
+      const myName = dom.empName.value.trim().toLowerCase();
 
-      setInterval(() => { dom.time.textContent = new Date().toLocaleTimeString('vi-VN'); }, 1000);
-    }
+      // Filter by my name loosely, or show all if empty (just for demo simplicity)
+      let myReqs = requestsData;
+      if (myName) {
+        myReqs = requestsData.filter(r => r.employeeId.toLowerCase().includes(myName) || myName.includes(r.employeeId.toLowerCase()));
+      }
 
-    function updatePayerList() {
-      const cur = state.billPayer;
-      dom.payer.innerHTML = '<option value="">Chưa ai trả / Quỹ</option>';
-      state.users.forEach(u => {
-        const o = document.createElement('option');
-        o.value = u; o.textContent = u; o.selected = (u === cur);
-        dom.payer.appendChild(o);
-      });
-    }
+      // Sort newest first
+      myReqs.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-    function addUser() {
-      const name = dom.newUser.value.trim();
-      if (!name) return;
-      if (state.users.includes(name)) { alert("Đã có tên này!"); return; }
-      state.users.push(name);
-      state.scores[name] = 0;
-      dom.newUser.value = '';
-      save(); updatePayerList(); renderPlayers(); renderParts(); calc();
-    }
+      if (myReqs.length === 0) {
+        dom.list.innerHTML = `<div class="text-center text-gray-500 text-sm py-6">
+                    <span class="material-icons-round text-4xl block mb-2 opacity-50">receipt_long</span>
+                    Bạn chưa có báo cáo nào.
+                </div>`;
+        return;
+      }
 
-    function removeUser(name) {
-      if (!confirm(`Xóa ${name}?`)) return;
-      state.users = state.users.filter(u => u !== name);
-      delete state.scores[name];
-      if (state.billPayer === name) state.billPayer = "";
-      state.billParts.forEach(p => p.participants = p.participants.filter(u => u !== name));
-      save(); updatePayerList(); renderPlayers(); renderParts(); calc();
-    }
+      myReqs.forEach(req => {
+        const conf = statusConfig[req.status] || statusConfig['pending'];
+        let rejectUI = '';
+        let updateUI = '';
 
-    function addBillPart() {
-      state.billParts.push({ id: Date.now(), amount: 0, participants: [...state.users] });
-      save(); renderParts(); calc();
-    }
-
-    function removeBillPart(id) {
-      if (state.billParts.length <= 1) state.billParts[0].amount = 0;
-      else state.billParts = state.billParts.filter(p => p.id !== id);
-      save(); renderParts(); calc();
-    }
-
-    function renderParts() {
-      dom.parts.innerHTML = '';
-      state.billParts.forEach(p => {
-        const div = document.createElement('div');
-        div.className = "flex flex-col md:flex-row gap-3 bg-black/40 p-4 rounded-xl border border-white/5 animate-in fade-in duration-300";
-
-        const usersHtml = state.users.map(u => {
-          const active = p.participants.includes(u);
-          const initial = u.split(' ').pop().slice(0, 1).toUpperCase();
-          return `<button onclick="toggleP(${p.id}, '${u}')" class="w-8 h-8 rounded-full text-[10px] font-bold transition-all ${active ? 'bg-primary text-black scale-110 shadow-lg' : 'bg-white/5 text-gray-500'}">${initial}</button>`;
-        }).join('');
-
-        div.innerHTML = `
-                    <div class="flex-1 flex gap-2">
-                        <div class="relative flex-1">
-                            <input type="number" value="${p.amount}" class="input-control w-full rounded-lg pl-3 pr-10 py-2 text-sm" oninput="updatePart(${p.id}, this.value)">
-                            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-500 font-bold">.000đ</span>
+        if (req.status === 'rejected') {
+          rejectUI = `
+                        <div class="mt-3 p-3 bg-red-50 rounded-lg text-sm border border-red-100">
+                            <strong class="text-red-700">Lý do từ chối:</strong> 
+                            <span class="text-red-600">${req.reason || 'Không có lý do rõ ràng.'}</span>
                         </div>
-                        <button onclick="removeBillPart(${p.id})" class="text-gray-600 hover:text-red-500 transition-colors"><span class="material-symbols-outlined">delete</span></button>
+                    `;
+          updateUI = `
+                        <button onclick="editRequest('${req.id}')" class="mt-3 w-full border border-primary text-primary hover:bg-primary/10 font-semibold py-2 rounded-lg text-sm transition-colors flex justify-center items-center gap-1">
+                            <span class="material-icons-round text-sm">edit</span> Cập nhật & Gửi lại
+                        </button>
+                    `;
+        } else if (req.status === 'pending') {
+          updateUI = `
+                        <button onclick="cancelRequest('${req.id}')" class="mt-3 w-full border border-red-400 text-red-500 hover:bg-red-50 font-semibold py-2 rounded-lg text-sm transition-colors flex justify-center items-center gap-1">
+                            <span class="material-icons-round text-sm">delete</span> Hủy Yêu Cầu
+                        </button>
+                    `;
+        }
+
+        const item = document.createElement('div');
+        item.className = 'border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow bg-white';
+        item.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <div class="flex-1">
+                            <div class="text-xs text-gray-400 mb-1">${formatDate(req.createdAt)}</div>
+                            <div class="font-bold text-gray-800">${formatMoney(req.amount)}</div>
+                            <div class="text-sm text-gray-600 mt-1">${req.note}</div>
+                        </div>
+                        <div class="text-xs font-semibold px-2 py-1 rounded-full border flex items-center gap-1 ${conf.color}">
+                            <span class="material-icons-round text-[12px]">${conf.icon}</span> ${conf.text}
+                        </div>
                     </div>
-                    <div class="flex gap-1 items-center flex-wrap justify-center md:justify-end">${usersHtml}</div>
+                    ${req.photo ? `
+                        <div class="mt-3">
+                            <img src="${req.photo}" class="w-24 h-24 object-cover rounded-lg border border-gray-200 cursor-pointer hover:opacity-80 transition-opacity" onclick="window.open('${req.photo}')" alt="Bill Photo" />
+                        </div>
+                    `: ''}
+                    ${rejectUI}
+                    ${updateUI}
                 `;
-        dom.parts.appendChild(div);
+        dom.list.appendChild(item);
       });
     }
 
-    window.updatePart = (id, v) => { const p = state.billParts.find(x => x.id === id); if (p) p.amount = Number(v) || 0; save(); calc(); };
-    window.toggleP = (id, u) => {
-      const p = state.billParts.find(x => x.id === id);
-      if (p) {
-        p.participants = p.participants.includes(u) ? p.participants.filter(x => x !== u) : [...p.participants, u];
-        save(); renderParts(); calc();
+    dom.empName.addEventListener('input', () => {
+      renderRequests();
+    });
+
+    // Cancel Request
+    window.cancelRequest = async (id) => {
+      if (!confirm('Bạn có chắc chắn muốn hủy yêu cầu này không?')) return;
+      try {
+        const res = await fetch('/api/requests/' + id, { method: 'DELETE' });
+        if (res.ok) {
+          showToast('Đã hủy yêu cầu!');
+          fetchRequests();
+        } else {
+          showToast('Có lỗi xảy ra', true);
+        }
+      } catch (err) {
+        showToast('Lỗi kết nối', true);
       }
     };
 
-    function renderPlayers() {
-      dom.players.innerHTML = '';
-      state.users.forEach((u, i) => {
-        const div = document.createElement('div');
-        div.className = "flex items-center justify-between p-4 bg-black/20 rounded-xl border border-white/5 transition-colors hover:border-white/20";
-        div.innerHTML = `
-                    <div class="flex items-center gap-3">
-                        <button onclick="removeUser('${u}')" class="text-gray-600 hover:text-red-500"><span class="material-symbols-outlined text-sm">close</span></button>
-                        <div class="player-avatar w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs">${u.split(' ').pop().slice(0, 2).toUpperCase()}</div>
-                        <p class="font-bold text-sm text-gray-200">${u}</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="flex flex-col items-center">
-                            <label class="text-[9px] text-gray-500 uppercase font-black mb-1">Điểm</label>
-                            <input type="number" value="${state.scores[u] || 0}" class="input-control w-16 md:w-20 rounded-lg px-2 py-1.5 text-center text-sm" oninput="updateS('${u}', this.value)">
-                        </div>
-                        <div class="text-right min-w-[100px]">
-                            <label class="text-[9px] text-gray-500 uppercase font-black block mb-1">Kết quả</label>
-                            <div id="net-${i}" class="font-mono text-sm">0 ₫</div>
-                        </div>
-                    </div>
-                `;
-        dom.players.appendChild(div);
-      });
-    }
+    // Edit Mode
+    window.editRequest = (id) => {
+      const req = requestsData.find(r => r.id === id);
+      if (!req) return;
 
-    window.updateS = (u, v) => { state.scores[u] = Number(v) || 0; save(); calc(); };
+      dom.editId.value = id;
+      dom.empName.value = req.employeeId;
+      dom.amount.value = req.amount;
+      dom.note.value = req.note;
+      dom.photoBase64.value = req.photo || '';
 
-    function calc() {
-      let totalB = 0, debts = {};
-      state.users.forEach(u => debts[u] = 0);
-      state.billParts.forEach(part => {
-        const amountInVND = part.amount * 1000;
-        totalB += amountInVND;
-        const share = part.participants.length > 0 ? amountInVND / part.participants.length : 0;
-        part.participants.forEach(u => { debts[u] += share; });
-      });
-
-      dom.totalBill.textContent = format(totalB);
-      let balances = {};
-      state.users.forEach((u, i) => {
-        const gameMoney = (state.scores[u] || 0) * (state.pointValue * 1000);
-        let net = gameMoney - (debts[u] || 0);
-
-        if (state.billPayer === u) {
-          net += totalB;
-        }
-
-        // Làm tròn đến hàng chục nghìn (10.000đ)
-        const finalAmount = Math.round(net / 10000) * 10000;
-        balances[u] = finalAmount;
-
-        const el = document.getElementById(`net-${i}`);
-        if (el) {
-          el.textContent = format(finalAmount);
-          el.className = `font-mono text-sm ${finalAmount > 0 ? 'positive' : finalAmount < 0 ? 'negative' : 'text-gray-500'}`;
-        }
-      });
-
-      const debtors = Object.entries(balances).filter(x => x[1] < -1).sort((a, b) => a[1] - b[1]);
-      const creditors = Object.entries(balances).filter(x => x[1] > 1).sort((a, b) => b[1] - a[1]);
-
-      dom.trans.innerHTML = '';
-      let flow = 0, i = 0, j = 0;
-      while (i < debtors.length && j < creditors.length) {
-        let amt = Math.min(Math.abs(debtors[i][1]), creditors[j][1]);
-        const card = document.createElement('div');
-        card.className = "p-3 bg-white/5 border-l-2 border-primary rounded-r-lg text-xs slide-in-from-right-2 animate-in duration-300";
-        card.innerHTML = `<div class="flex justify-between items-center"><span class="text-gray-400 font-medium">${debtors[i][0]} <span class="text-white/20">→</span> ${creditors[j][0]}</span><span class="text-white font-bold">${format(amt)}</span></div>`;
-        dom.trans.appendChild(card);
-        flow += amt; debtors[i][1] += amt; creditors[j][1] -= amt;
-        if (Math.abs(debtors[i][1]) < 1) i++; if (creditors[j][1] < 1) j++;
+      if (req.photo) {
+        dom.photoPreview.src = req.photo;
+        dom.photoPreview.style.display = 'block';
+        dom.placeholder.style.display = 'none';
+      } else {
+        dom.photoPreview.style.display = 'none';
+        dom.placeholder.style.display = 'block';
       }
-      if (!dom.trans.innerHTML) dom.trans.innerHTML = '<div class="text-center py-8 text-gray-500 text-[10px] uppercase tracking-widest italic">Hòa cả làng</div>';
-      dom.totalFlow.textContent = format(flow);
+
+      dom.submitBtn.innerHTML = '<span class="material-icons-round text-sm">update</span> <span>Cập Nhật Báo Cáo</span>';
+      dom.cancelEditBtn.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    dom.cancelEditBtn.addEventListener('click', () => {
+      resetForm();
+    });
+
+    function resetForm() {
+      dom.editId.value = '';
+      dom.amount.value = '';
+      dom.note.value = '';
+      dom.photoInput.value = '';
+      dom.photoBase64.value = '';
+      dom.photoPreview.style.display = 'none';
+      dom.placeholder.style.display = 'block';
+      dom.submitBtn.innerHTML = '<span class="material-icons-round text-sm">send</span> <span>Gửi Yêu Cầu</span>';
+      dom.cancelEditBtn.classList.add('hidden');
     }
 
-    init();
+    // Submit Form
+    dom.form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    // Register Service Worker for PWA
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-          .then(req => console.log('Service Worker Registered'))
-          .catch(err => console.log('Service Worker Failed', err));
-      });
-    }
+      const name = dom.empName.value.trim();
+      localStorage.setItem('coreteam_emp_name', name);
+
+      const payload = {
+        employeeId: name,
+        amount: Number(dom.amount.value),
+        note: dom.note.value.trim(),
+        photo: dom.photoBase64.value,
+        status: 'pending' // Force pending on new/update
+      };
+
+      const isEdit = dom.editId.value;
+
+      try {
+        dom.submitBtn.disabled = true;
+        dom.submitBtn.classList.add('opacity-50');
+
+        let res;
+        if (isEdit) {
+          res = await fetch('/api/requests/' + isEdit, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        } else {
+          res = await fetch('/api/requests', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        }
+
+        if (res.ok) {
+          showToast(isEdit ? 'Đã cập nhật!' : 'Đã gửi thành công!');
+          resetForm();
+          fetchRequests();
+        } else {
+          showToast('Có lỗi xảy ra', true);
+        }
+
+      } catch (err) {
+        showToast('Lỗi kết nối', true);
+      } finally {
+        dom.submitBtn.disabled = false;
+        dom.submitBtn.classList.remove('opacity-50');
+      }
+    });
+
+    // Init
+    fetchRequests();
+
   </script>
 </body>
 
