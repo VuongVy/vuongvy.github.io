@@ -1,7 +1,19 @@
-# Use official Node.js image
 FROM node:20-alpine
-WORKDIR /app
+
+# Cài đặt thư mục làm việc trong container
+WORKDIR /usr/src/app
+
+# Copy package.json và package-lock.json (nếu có)
+COPY package*.json ./
+
+# Cài đặt các thư viện Node.js (Express)
+RUN npm install
+
+# Copy toàn bộ mã nguồn vào container
 COPY . .
-RUN npm install express
+
+# Mở cổng 3000 để truy cập
 EXPOSE 3000
-CMD ["node", "server.js"]
+
+# Chạy server
+CMD ["npm", "start"]

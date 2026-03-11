@@ -186,6 +186,8 @@
     const formatMoney = (n) => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(n);
     const formatDate = (d) => new Date(d).toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' });
 
+    const BASE_URL = ''; // Gọi API nội bộ trên cùng Domain
+
     // Show toast
     const showToast = (msg, isError = false) => {
       dom.toastMsg.textContent = msg;
@@ -231,7 +233,7 @@
     // Fetch Requests
     async function fetchRequests() {
       try {
-        const res = await fetch('/api/requests');
+        const res = await fetch(`${BASE_URL}/api/requests`);
         requestsData = await res.json();
         renderRequests();
       } catch (err) {
@@ -325,7 +327,7 @@
     window.cancelRequest = async (id) => {
       if (!confirm('Bạn có chắc chắn muốn hủy yêu cầu này không?')) return;
       try {
-        const res = await fetch('/api/requests/' + id, { method: 'DELETE' });
+        const res = await fetch(`${BASE_URL}/api/requests/` + id, { method: 'DELETE' });
         if (res.ok) {
           showToast('Đã hủy yêu cầu!');
           fetchRequests();
@@ -401,13 +403,13 @@
 
         let res;
         if (isEdit) {
-          res = await fetch('/api/requests/' + isEdit, {
+          res = await fetch(`${BASE_URL}/api/requests/` + isEdit, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
         } else {
-          res = await fetch('/api/requests', {
+          res = await fetch(`${BASE_URL}/api/requests`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)

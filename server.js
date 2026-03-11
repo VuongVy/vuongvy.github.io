@@ -9,6 +9,17 @@ app.use(express.static(path.join(__dirname)));
 
 const dataFile = path.join(__dirname, 'data.json');
 
+// Cho phép CORS (quan trọng khi web chạy từ Github Pages nhưng API lấy ở một nơi khác / localhost)
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 let requests = [];
 if (fs.existsSync(dataFile)) {
   try { requests = JSON.parse(fs.readFileSync(dataFile, 'utf8')); }
