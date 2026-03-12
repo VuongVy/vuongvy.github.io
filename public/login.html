@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-light: #1E293B;
+            --accent: #3B82F6;
+            --accent-hover: #2563EB;
+            --surface: #FFFFFF;
+            --bg: #F8FAFC;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-card {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-card h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #E2E8F0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: #F8FAFC;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+            background: #FFFFFF;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--primary-light);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .error-message {
+            color: #EF4444;
+            font-size: 0.875rem;
+            text-align: center;
+            margin-top: 1rem;
+            min-height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-card">
+        <h2>Đăng Nhập Quản Trị</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label>Tài khoản</label>
+                <input type="text" id="username" class="form-control" placeholder="Nhập tài khoản" required autofocus>
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu</label>
+                <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu" required>
+            </div>
+            <button type="submit" class="btn">Đăng nhập</button>
+            <div class="error-message" id="error"></div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('login-form');
+        const token = localStorage.getItem('token');
+        if (token) {
+            window.location.href = '/admin';
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+            const errDiv = document.getElementById('error');
+            errDiv.innerText = '';
+
+            try {
+                const res = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: u, password: p })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    localStorage.setItem('token', data.token);
+                    window.location.href = '/admin';
+                } else {
+                    errDiv.innerText = data.error || 'Sai thông tin đăng nhập';
+                }
+            } catch (err) {
+                errDiv.innerText = 'Lỗi kết nối';
+            }
+        });
+    </script>
+</body>
+
+</html>

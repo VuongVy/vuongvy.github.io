@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Giải pháp | REXON</title>
+    <meta name="description"
+        content="Giải pháp Digital Twin chuyên sâu của REXON cho tòa nhà thông minh, hạ tầng đô thị, nhà máy và logistics giúp tối ưu hóa vận hành." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="preconnect" href="https://www.canva.com">
+    <link rel="preload" as="document" href="https://www.canva.com/design/DAG-d_ujYBM/Buywc8Tmv44Mp0qnom5-Vg/view?embed">
+    <style>
+        .group .group-hover\:block {
+            display: none;
+        }
+
+        .group:hover .group-hover\:block {
+            display: block;
+        }
+
+        .group .group-hover\:flex {
+            display: none;
+        }
+
+        .group:hover .group-hover\:flex {
+            display: flex;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ffffff",
+                        "background-light": "#ffffff",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="font-display">
+    <div class="relative flex h-auto min-h-screen w-full flex-col bg-black">
+        <!-- Header -->
+        <header class="sticky top-4 z-50 mx-auto w-full max-w-5xl px-4">
+            <nav
+                class="flex items-center justify-between whitespace-nowrap rounded-full border border-white/10 bg-black/50 px-6 py-1 text-white backdrop-blur-md">
+                <div class="flex items-center gap-4">
+                    <div class="size-6 text-white">
+                        <a href="index.html">
+                            <img src="logo.png" alt="Logo" class="ml-4"
+                                style="max-width:100px; height:auto; object-fit:contain; margin-top:9px;" />
+                        </a>
+                    </div>
+                    <h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-white"></h2>
+                </div>
+                <!-- Hamburger button for mobile -->
+                <button id="hamburger-btn"
+                    class="md:hidden flex items-center justify-center p-2 rounded text-white focus:outline-none"
+                    aria-label="Mở menu">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <div class="hidden items-center gap-8 md:flex justify-center w-full">
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="index.html">Home</a>
+                    <div class="group relative">
+                        <a class="flex cursor-pointer items-center gap-1 text-sm font-medium text-white/100 transition-colors hover:text-white"
+                            href="solutions.html">
+                            Solutions
+                            <span
+                                class="material-symbols-outlined text-base transition-transform group-hover:rotate-180">expand_more</span>
+                        </a>
+                        <div
+                            class="group-hover:block absolute left-0 top-full hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
+                            <div class="group/sub relative">
+                                <a class="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                    href="#digital-twin">
+                                    Digital Twin
+                                    <span
+                                        class="material-symbols-outlined text-base transition-transform group-hover/sub:-rotate-90">chevron_right</span>
+                                </a>
+                                <div
+                                    class="group-hover/sub:block absolute left-full top-0 hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="waiting.html">Smart Campus</a>
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="waiting.html">Smart Building</a>
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="smart-infrastructure.html">Smart Infrastructure</a>
+                                </div>
+                            </div>
+                            <div class="group/sub relative">
+                                <a class="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                    href="#interactive">
+                                    Interactive Product Experience
+                                    <span
+                                        class="material-symbols-outlined text-base transition-transform group-hover/sub:-rotate-90">chevron_right</span>
+                                </a>
+                                <div
+                                    class="group-hover/sub:block absolute left-full top-0 hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="waiting.html">Virtual Showrooms & 3D Web1</a>
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="waiting.html">Interactive Product Configurator</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="product.html">Product</a>
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="presentation.html">Presentation</a>
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="about.html">About Us</a>
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="contact.html">Contact Us</a>
+                </div>
+            </nav>
+
+            <!-- Mobile menu - Kept consistent with index.html -->
+            <div id="mobile-menu"
+                class="md:hidden absolute left-1/2 top-[60px] -translate-x-1/2 w-11/12 max-w-sm bg-black/90 border border-white/10 rounded-xl shadow-2xl z-[999] flex flex-col items-center gap-4 py-8 text-white text-lg font-medium transition-all duration-300 ease-in-out hidden backdrop-blur-lg">
+                <a href="index.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Home</a>
+                <div class="w-full">
+                    <button id="mobile-solutions-btn"
+                        class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded flex items-center justify-between">
+                        <span class="block w-full text-center">Solutions</span>
+                    </button>
+                    <div id="mobile-solutions-menu" class="flex-col gap-2 mt-2 hidden">
+                        <a class="block rounded-md px-6 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                            href="solutions.html#digital-twin">Digital Twin</a>
+                        <a class="block rounded-md px-6 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                            href="solutions.html#interactive">Interactive Product Experience</a>
+                    </div>
+                </div>
+                <a href="product.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Product</a>
+                <a href="presentation.html"
+                    class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Presentation</a>
+                <a href="about.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">About Us</a>
+                <a href="contact.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Contact Us</a>
+            </div>
+        </header>
+
+        <main class="flex flex-grow flex-col items-center">
+            <!-- Hero Section -->
+            <div class="w-full max-w-5xl px-4 mt-16 mb-20 text-center relative">
+                <!-- Decorative background glow -->
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/20 blur-[100px] rounded-full pointer-events-none">
+                </div>
+
+                <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white mb-6 leading-tight relative z-10">
+                    <span class="text-white">System-Level</span>
+                    <br />Intelligence
+                </h1>
+                <p class="text-white/70 max-w-2xl mx-auto text-lg mb-10 relative z-10">
+                    Nền tảng Digital Twin tích hợp dữ liệu thời gian thực và AI, xóa bỏ điểm mù vận hành,
+                    giúp doanh nghiệp chuyển dịch từ "Phản ứng" sang "Dự báo".
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+                    <button onclick="document.getElementById('digital-twin').scrollIntoView()"
+                        class="px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-gray-100 transition-colors">
+                        Khám phá Giải pháp
+                    </button>
+                    <button onclick="window.location.href='contact.html'"
+                        class="px-8 py-3 rounded-full border border-white/20 text-white font-medium hover:bg-white/10 transition-colors">
+                        Liên hệ Demo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Key Benefits (Problem vs Solution) -->
+            <section class="w-full bg-white/5 border-y border-white/5 py-16 backdrop-blur-sm">
+                <div class="max-w-5xl mx-auto px-4">
+                    <h2 class="text-2xl font-bold text-white text-center mb-12">Tại sao chọn REXON Digital Twin?</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Benefit 1 -->
+                        <div
+                            class="p-6 rounded-2xl bg-black/40 border border-white/10 hover:border-primary/40 transition-colors">
+                            <div class="h-12 w-12 rounded-lg bg-white/10 flex items-center justify-center mb-4">
+                                <span class="material-symbols-outlined text-white">eco</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Tối ưu Năng lượng & ESG</h3>
+                            <p class="text-white/60 text-sm">
+                                Giảm <span class="text-white font-bold">5-25%</span> tiêu thụ năng lượng. Tối ưu hóa
+                                hiệu suất làm mát (CUE) và hỗ trợ đạt chứng chỉ LEED/Green Building.
+                            </p>
+                        </div>
+                        <!-- Benefit 2 -->
+                        <div
+                            class="p-6 rounded-2xl bg-black/40 border border-white/10 hover:border-primary/40 transition-colors">
+                            <div class="h-12 w-12 rounded-lg bg-white/10 flex items-center justify-center mb-4">
+                                <span class="material-symbols-outlined text-white">query_stats</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Dữ liệu hợp nhất</h3>
+                            <p class="text-white/60 text-sm">
+                                Phá vỡ rào cản dữ liệu giữa các hệ thống rời rạc (BMS, IoT, ERP). Mang lại góc nhìn toàn
+                                cảnh (Single Source of Truth) theo thời gian thực.
+                            </p>
+                        </div>
+                        <!-- Benefit 3 -->
+                        <div
+                            class="p-6 rounded-2xl bg-black/40 border border-white/10 hover:border-primary/40 transition-colors">
+                            <div class="h-12 w-12 rounded-lg bg-white/10 flex items-center justify-center mb-4">
+                                <span class="material-symbols-outlined text-white">precision_manufacturing</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Bảo trì Dự đoán</h3>
+                            <p class="text-white/60 text-sm">
+                                Ứng dụng AI để dự báo sự cố trước khi xảy ra, kéo dài tuổi thọ tài sản và giảm thiểu
+                                thời gian ngừng hoạt động (downtime).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Digital Twin Solutions -->
+            <section id="digital-twin" class="w-full max-w-5xl px-4 py-20">
+                <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-4">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Hệ sinh thái Digital Twin</h2>
+                        <p class="text-white/60 max-w-xl">Giải pháp chuyên sâu cho từng lĩnh vực, từ tòa nhà thông minh
+                            đến logistics phức tạp.</p>
+                    </div>
+                    <div class="h-px flex-grow bg-white/10 ml-8 hidden md:block mb-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- Smart Buildings -->
+                    <a href="waiting.html"
+                        class="group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 transition-all duration-300">
+                        <div class="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity">
+                            <span class="material-symbols-outlined text-6xl text-white">apartment</span>
+                        </div>
+                        <div class="p-8 relative z-10 h-full flex flex-col">
+                            <h3 class="text-2xl font-bold text-white mb-3 group-hover:underline transition-colors">
+                                Smart Buildings & Real Estate</h3>
+                            <p class="text-white/70 mb-6 flex-grow">
+                                Tối ưu hóa vận hành tòa nhà, giám sát năng lượng và nâng cao trải nghiệm cư dân. Tích
+                                hợp trực tiếp với hệ thống BMS hiện hữu.
+                            </p>
+                            <div
+                                class="flex items-center text-sm font-bold text-white/50 group-hover:text-white transition-colors">
+                                XEM CHI TIẾT <span
+                                    class="material-symbols-outlined text-lg ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </div>
+                        </div>
+                        <!-- Gradient Hover Effect -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-white/0 to-white/0 group-hover:from-white/5 group-hover:to-transparent transition-all duration-500">
+                        </div>
+                    </a>
+
+                    <!-- Smart Infrastructure -->
+                    <a href="smart-infrastructure.html"
+                        class="group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 transition-all duration-300">
+                        <div class="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity">
+                            <span class="material-symbols-outlined text-6xl text-white">domain</span>
+                        </div>
+                        <div class="p-8 relative z-10 h-full flex flex-col">
+                            <h3 class="text-2xl font-bold text-white mb-3 group-hover:underline transition-colors">
+                                Smart Infrastructure & Cities</h3>
+                            <p class="text-white/70 mb-6 flex-grow">
+                                Quản lý hạ tầng đô thị và khu công nghiệp trên quy mô lớn. Giám sát an ninh, giao thông
+                                và tiện ích công cộng thời gian thực.
+                            </p>
+                            <div
+                                class="flex items-center text-sm font-bold text-white/50 group-hover:text-white transition-colors">
+                                XEM CHI TIẾT <span
+                                    class="material-symbols-outlined text-lg ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-white/0 to-white/0 group-hover:from-white/5 group-hover:to-transparent transition-all duration-500">
+                        </div>
+                    </a>
+
+                    <!-- Smart Factories -->
+                    <a href="waiting.html"
+                        class="group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 transition-all duration-300">
+                        <div class="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity">
+                            <span class="material-symbols-outlined text-6xl text-white">factory</span>
+                        </div>
+                        <div class="p-8 relative z-10 h-full flex flex-col">
+                            <h3 class="text-2xl font-bold text-white mb-3 group-hover:underline transition-colors">
+                                Smart Factories & Industrial</h3>
+                            <p class="text-white/70 mb-6 flex-grow">
+                                Mô phỏng dây chuyền sản xuất, phát hiện điểm nghẽn và tối ưu hóa quy trình. Giảm thiểu
+                                rủi ro khi thay đổi quy trình thực tế.
+                            </p>
+                            <div
+                                class="flex items-center text-sm font-bold text-white/50 group-hover:text-white transition-colors">
+                                XEM CHI TIẾT <span
+                                    class="material-symbols-outlined text-lg ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-white/0 to-white/0 group-hover:from-white/5 group-hover:to-transparent transition-all duration-500">
+                        </div>
+                    </a>
+
+                    <!-- Smart Logistics -->
+                    <a href="waiting.html"
+                        class="group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 transition-all duration-300">
+                        <div class="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity">
+                            <span class="material-symbols-outlined text-6xl text-white">local_shipping</span>
+                        </div>
+                        <div class="p-8 relative z-10 h-full flex flex-col">
+                            <h3 class="text-2xl font-bold text-white mb-3 group-hover:underline transition-colors">
+                                Smart Logistics</h3>
+                            <p class="text-white/70 mb-6 flex-grow">
+                                Theo dõi dòng chảy hàng hóa và tối ưu chuỗi cung ứng. Mô phỏng kịch bản vận chuyển để
+                                giảm chi phí và thời gian.
+                            </p>
+                            <div
+                                class="flex items-center text-sm font-bold text-white/50 group-hover:text-white transition-colors">
+                                XEM CHI TIẾT <span
+                                    class="material-symbols-outlined text-lg ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-white/0 to-white/0 group-hover:from-white/5 group-hover:to-transparent transition-all duration-500">
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <!-- Interactive Product Experience Section -->
+            <section id="interactive" class="w-full border-t border-white/10 bg-black/20 py-20">
+                <div class="max-w-5xl mx-auto px-4">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Trải nghiệm Tương tác Đa chiều</h2>
+                        <p class="text-white/60 max-w-2xl mx-auto">
+                            Nâng tầm thương hiệu với công nghệ 3D và AR tiên tiến. Biến người xem thành khách hàng thông
+                            qua những trải nghiệm thị giác sống động và chân thực nhất.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Interactive Solution 1 -->
+                        <div
+                            class="group relative rounded-xl bg-white/5 p-6 border border-white/5 hover:border-white/30 hover:-translate-y-1 transition-all duration-300">
+                            <div
+                                class="h-12 w-12 rounded-lg bg-white/10 flex items-center justify-center mb-4 text-white group-hover:bg-white/20 group-hover:text-white transition-colors">
+                                <span class="material-symbols-outlined text-2xl">storefront</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-3">Showroom 3D Online</h3>
+                            <p class="text-white/60 text-sm">
+                                Không gian triển lãm ảo 24/7, xóa bỏ giới hạn địa lý. Khách hàng có thể tham quan và mua
+                                sắm mọi lúc, mọi nơi.
+                            </p>
+                        </div>
+
+                        <!-- Interactive Solution 2 -->
+                        <div
+                            class="group relative rounded-xl bg-white/5 p-6 border border-white/5 hover:border-white/30 hover:-translate-y-1 transition-all duration-300">
+                            <div
+                                class="h-12 w-12 rounded-lg bg-white/10 flex items-center justify-center mb-4 text-white group-hover:bg-white/20 group-hover:text-white transition-colors">
+                                <span class="material-symbols-outlined text-2xl">tune</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-3">3D Configurator</h3>
+                            <p class="text-white/60 text-sm">
+                                Cho phép khách hàng tự do tùy chỉnh màu sắc, chất liệu và tính năng sản phẩm trực quan
+                                ngay trên trình duyệt web.
+                            </p>
+                        </div>
+
+                        <!-- Interactive Solution 3 -->
+                        <div
+                            class="group relative rounded-xl bg-white/5 p-6 border border-white/5 hover:border-white/30 hover:-translate-y-1 transition-all duration-300">
+                            <div
+                                class="h-12 w-12 rounded-lg bg-white/10 flex items-center justify-center mb-4 text-white group-hover:bg-white/20 group-hover:text-white transition-colors">
+                                <span class="material-symbols-outlined text-2xl">360</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-3">360° Interactive Tour</h3>
+                            <p class="text-white/60 text-sm">
+                                Tour tham quan thực tế ảo cho Bất động sản và Nhà máy, mang lại cái nhìn toàn cảnh và
+                                chi tiết nhất.
+                            </p>
+                        </div>
+
+                        <!-- Interactive Solution 4 -->
+                        <div
+                            class="group relative rounded-xl bg-white/5 p-6 border border-white/5 hover:border-white/30 hover:-translate-y-1 transition-all duration-300">
+                            <div
+                                class="h-12 w-12 rounded-lg bg-white/10 flex items-center justify-center mb-4 text-white group-hover:bg-white/20 group-hover:text-white transition-colors">
+                                <span class="material-symbols-outlined text-2xl">view_in_ar</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-3">AR Solutions</h3>
+                            <p class="text-white/60 text-sm">
+                                Công nghệ thực tế tăng cường (AR) giúp ướm thử sản phẩm nội thất, máy móc vào không gian
+                                thực của khách hàng.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <div class="mx-auto w-full max-w-5xl">
+            <footer
+                class="flex flex-col items-center gap-8 border-t border-gray-200 px-5 py-10 text-center dark:border-white/10 @container">
+                <div class="flex flex-col items-center gap-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                    <p>Contact: 0934 697 600 | Email: rexondigitaltwin.tech@gmail.com</p>
+                    <p>© 2025 REXON. All rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        hamburgerBtn.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileSolutionsBtn = document.getElementById('mobile-solutions-btn');
+        const mobileSolutionsMenu = document.getElementById('mobile-solutions-menu');
+        if (mobileSolutionsBtn) {
+            mobileSolutionsBtn.addEventListener('click', function () {
+                if (mobileSolutionsMenu) mobileSolutionsMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+
+</html>

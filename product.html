@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sản phẩm | REXON</title>
+    <meta name="description"
+        content="Khám phá hệ sinh thái sản phẩm REXON: Từ nền tảng Digital Twin tích hợp IoT đến các công cụ hiển thị 3D và Mobile App hiện trường." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="preconnect" href="https://www.canva.com">
+    <link rel="preload" as="document" href="https://www.canva.com/design/DAG-d_ujYBM/Buywc8Tmv44Mp0qnom5-Vg/view?embed">
+    <style>
+        .group .group-hover\:block {
+            display: none;
+        }
+
+        .group:hover .group-hover\:block {
+            display: block;
+        }
+
+        .group .group-hover\:flex {
+            display: none;
+        }
+
+        .group:hover .group-hover\:flex {
+            display: flex;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ffffff",
+                        "background-light": "#ffffff",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="font-display">
+    <div class="relative flex h-auto min-h-screen w-full flex-col bg-black">
+        <!-- Header -->
+        <header class="sticky top-4 z-50 mx-auto w-full max-w-5xl px-4">
+            <nav
+                class="flex items-center justify-between whitespace-nowrap rounded-full border border-white/10 bg-black/50 px-6 py-1 text-white backdrop-blur-md">
+                <div class="flex items-center gap-4">
+                    <div class="size-6 text-white">
+                        <a href="index.html">
+                            <img src="logo.png" alt="Logo" class="ml-4"
+                                style="max-width:100px; height:auto; object-fit:contain; margin-top:9px;" />
+                        </a>
+                    </div>
+                    <h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-white"></h2>
+                </div>
+                <!-- Hamburger button for mobile -->
+                <button id="hamburger-btn"
+                    class="md:hidden flex items-center justify-center p-2 rounded text-white focus:outline-none"
+                    aria-label="Mở menu">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <div class="hidden items-center gap-8 md:flex justify-center w-full">
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="index.html">Home</a>
+                    <div class="group relative">
+                        <a class="flex cursor-pointer items-center gap-1 text-sm font-medium text-white/100 transition-colors hover:text-white"
+                            href="solutions.html">
+                            Solutions
+                            <span
+                                class="material-symbols-outlined text-base transition-transform group-hover:rotate-180">expand_more</span>
+                        </a>
+                        <div
+                            class="group-hover:block absolute left-0 top-full hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
+                            <div class="group/sub relative">
+                                <a class="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                    href="solutions.html#digital-twin">
+                                    Digital Twin
+                                    <span
+                                        class="material-symbols-outlined text-base transition-transform group-hover/sub:-rotate-90">chevron_right</span>
+                                </a>
+                                <div
+                                    class="group-hover/sub:block absolute left-full top-0 hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="waiting.html">Smart Campus</a>
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="waiting.html">Smart Building</a>
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="smart-infrastructure.html">Smart Infrastructure</a>
+                                </div>
+                            </div>
+                            <div class="group/sub relative">
+                                <a class="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                    href="solutions.html#interactive">
+                                    Interactive Product Experience
+                                    <span
+                                        class="material-symbols-outlined text-base transition-transform group-hover/sub:-rotate-90">chevron_right</span>
+                                </a>
+                                <div
+                                    class="group-hover/sub:block absolute left-full top-0 hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="waiting.html">Virtual Showrooms & 3D Web1</a>
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="waiting.html">Interactive Product Configurator</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="product.html">Product</a>
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="presentation.html">Presentation</a>
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="about.html">About Us</a>
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="contact.html">Contact Us</a>
+                </div>
+            </nav>
+
+            <!-- Mobile menu - Kept consistent -->
+            <div id="mobile-menu"
+                class="md:hidden absolute left-1/2 top-[60px] -translate-x-1/2 w-11/12 max-w-sm bg-black/90 border border-white/10 rounded-xl shadow-2xl z-[999] flex flex-col items-center gap-4 py-8 text-white text-lg font-medium transition-all duration-300 ease-in-out hidden backdrop-blur-lg">
+                <a href="index.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Home</a>
+                <div class="w-full">
+                    <button id="mobile-solutions-btn"
+                        class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded flex items-center justify-between">
+                        <span class="block w-full text-center">Solutions</span>
+                    </button>
+                    <div id="mobile-solutions-menu" class="flex-col gap-2 mt-2 hidden">
+                        <a class="block rounded-md px-6 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                            href="solutions.html#digital-twin">Digital Twin</a>
+                        <a class="block rounded-md px-6 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                            href="solutions.html#interactive">Interactive Product Experience</a>
+                    </div>
+                </div>
+                <a href="product.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Product</a>
+                <a href="presentation.html"
+                    class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Presentation</a>
+                <a href="about.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">About Us</a>
+                <a href="contact.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Contact Us</a>
+            </div>
+        </header>
+
+        <main class="flex flex-grow flex-col items-center">
+            <!-- Hero Section -->
+            <div class="w-full max-w-5xl px-4 mt-16 mb-20 text-center relative">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Nền tảng & Sản phẩm</h1>
+                <p class="text-white/70 max-w-2xl mx-auto text-lg mb-8">
+                    Bộ công cụ mạnh mẽ được thiết kế để số hóa tài sản, tối ưu vận hành và nâng cao trải nghiệm khách
+                    hàng.
+                </p>
+                <div class="h-1 w-24 bg-white/20 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Product 1: Digital Twin Platform -->
+            <section class="w-full max-w-5xl px-4 mb-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="p-2 bg-white/10 rounded-lg text-white material-symbols-outlined">hub</span>
+                            <span class="text-white font-bold tracking-wider text-sm uppercase">NỀN TẢNG CỐT
+                                LÕI</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white mb-4">Rexon Digital Twin Platform</h2>
+                        <p class="text-white/70 mb-6 leading-relaxed">
+                            Nền tảng tích hợp dữ liệu tập trung (Centralized Data Platform) cho phép kết nối IoT, BMS,
+                            ERP vào một mô hình 3D duy nhất.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
+                                <span class="text-white/80">Trực quan hóa dữ liệu thời gian thực trên bản đồ 3D.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
+                                <span class="text-white/80">Phân tích nâng cao với AI để dự báo sự cố.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
+                                <span class="text-white/80">Quản lý đa điểm (Multi-site Management) trên một giao
+                                    diện.</span>
+                            </li>
+                        </ul>
+                        <button onclick="window.location.href='waiting.html'"
+                            class="px-6 py-2 rounded-lg bg-white/10 text-white font-medium hover:bg-white/20 transition-colors">
+                            Yêu cầu Demo
+                        </button>
+                    </div>
+                    <div class="order-1 md:order-2 relative group">
+                        <div class="absolute inset-0 bg-white/5 blur-3xl rounded-full"></div>
+                        <div
+                            class="relative bg-[#1a1c2e] border border-white/10 rounded-2xl p-6 aspect-video flex items-center justify-center overflow-hidden">
+                            <!-- Placeholder for Dashboard UI -->
+                            <div class="text-center">
+                                <span class="material-symbols-outlined text-6xl text-white/20 mb-4">monitoring</span>
+                                <p class="text-white/40 text-sm">Giao diện Dashboard Quản lý</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product 2: 3D Visualization Engine -->
+            <section class="w-full max-w-5xl px-4 mb-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-white/5 blur-3xl rounded-full"></div>
+                        <div
+                            class="relative bg-[#1a1c2e] border border-white/10 rounded-2xl p-6 aspect-video flex items-center justify-center overflow-hidden">
+                            <!-- Placeholder for 3D Viewer UI -->
+                            <div class="text-center">
+                                <span class="material-symbols-outlined text-6xl text-white/20 mb-4">view_in_ar</span>
+                                <p class="text-white/40 text-sm">Trình xem 3D tương tác</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span
+                                class="p-2 bg-white/10 rounded-lg text-white material-symbols-outlined">deployed_code</span>
+                            <span class="text-white font-bold tracking-wider text-sm uppercase">CÔNG CỤ HIỂN
+                                THỊ</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white mb-4">Rexon 3D Viewer & Configurator</h2>
+                        <p class="text-white/70 mb-6 leading-relaxed">
+                            Bộ công cụ hiển thị 3D mạnh mẽ chạy trực tiếp trên trình duyệt web, không cần cài đặt. Tối
+                            ưu hóa cho tốc độ tải nhanh và chất lượng hình ảnh cao.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
+                                <span class="text-white/80">Hỗ trợ cấu hình sản phẩm (Màu sắc, Vật liệu) theo thời gian
+                                    thực.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
+                                <span class="text-white/80">Tích hợp dễ dàng vào website bán hàng (E-commerce).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-green-400 mt-1">check_circle</span>
+                                <span class="text-white/80">Tương thích mọi thiết bị: PC, Mobile, Tablet.</span>
+                            </li>
+                        </ul>
+                        <button onclick="window.location.href='waiting.html'"
+                            class="px-6 py-2 rounded-lg bg-white/10 text-white font-medium hover:bg-white/20 transition-colors">
+                            Xem mẫu thử
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product 3: CMS & Mobile App -->
+            <section class="w-full max-w-5xl px-4 py-12 border-t border-white/10">
+                <h2 class="text-2xl font-bold text-white text-center mb-12">Hệ sinh thái hỗ trợ</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-8 hover:bg-white/10 transition-colors">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="material-symbols-outlined text-3xl text-white">smartphone</span>
+                            <h3 class="text-xl font-bold text-white">Rexon Mobile App</h3>
+                        </div>
+                        <p class="text-white/60 mb-4">
+                            Ứng dụng hiện trường cho nhân viên kỹ thuật và quản lý. Tích hợp tính năng AR để quét mã QR
+                            tài sản và xem thông tin bảo trì ngay trên thiết bị thực.
+                        </p>
+                        <a href="waiting.html" class="text-white text-sm font-bold flex items-center hover:underline">
+                            TÌM HIỂU THÊM <span class="material-symbols-outlined text-base ml-1">arrow_forward</span>
+                        </a>
+                    </div>
+
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-8 hover:bg-white/10 transition-colors">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="material-symbols-outlined text-3xl text-white">dns</span>
+                            <h3 class="text-xl font-bold text-white">Asset CMS</h3>
+                        </div>
+                        <p class="text-white/60 mb-4">
+                            Hệ thống quản trị nội dung chuyên dụng cho dữ liệu 3D và IoT. Giúp doanh nghiệp dễ dàng cập
+                            nhật model, thông số kỹ thuật mà không cần biết lập trình.
+                        </p>
+                        <a href="waiting.html" class="text-white text-sm font-bold flex items-center hover:underline">
+                            TÌM HIỂU THÊM <span class="material-symbols-outlined text-base ml-1">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <div class="mx-auto w-full max-w-5xl">
+            <footer
+                class="flex flex-col items-center gap-8 border-t border-gray-200 px-5 py-10 text-center dark:border-white/10 @container">
+                <div class="flex flex-col items-center gap-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                    <p>Contact: 0934 697 600 | Email: rexondigitaltwin.tech@gmail.com</p>
+                    <p>© 2025 REXON. All rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        hamburgerBtn.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileSolutionsBtn = document.getElementById('mobile-solutions-btn');
+        const mobileSolutionsMenu = document.getElementById('mobile-solutions-menu');
+        if (mobileSolutionsBtn) {
+            mobileSolutionsBtn.addEventListener('click', function () {
+                if (mobileSolutionsMenu) mobileSolutionsMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+
+</html>

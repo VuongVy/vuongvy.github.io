@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Giải pháp Hạ tầng thông minh | REXON Digital Twin</title>
+    <meta name="description"
+        content="Giải pháp Digital Twin cho hạ tầng đô thị và khu công nghiệp. Giám sát thời gian thực, tối ưu hóa năng lượng và quản lý an ninh thông minh." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="preconnect" href="https://www.canva.com">
+    <link rel="preload" as="document" href="https://www.canva.com/design/DAG-d_ujYBM/Buywc8Tmv44Mp0qnom5-Vg/view?embed">
+    <style>
+        .group .group-hover\:block {
+            display: none;
+        }
+
+        .group:hover .group-hover\:block {
+            display: block;
+        }
+
+        .group .group-hover\:flex {
+            display: none;
+        }
+
+        .group:hover .group-hover\:flex {
+            display: flex;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ffffff",
+                        "background-light": "#ffffff",
+                        "background-dark": "#000000",
+                        "accent-blue": "#3b82f6",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="font-display bg-black text-white">
+    <div class="relative flex h-auto min-h-screen w-full flex-col">
+        <!-- Header -->
+        <header class="sticky top-4 z-50 mx-auto w-full max-w-5xl px-4">
+            <nav
+                class="flex items-center justify-between whitespace-nowrap rounded-full border border-white/10 bg-black/50 px-6 py-1 text-white backdrop-blur-md">
+                <div class="flex items-center gap-4">
+                    <div class="size-6 text-white">
+                        <a href="index.html">
+                            <img src="logo.png" alt="Logo" class="ml-4"
+                                style="max-width:100px; height:auto; object-fit:contain; margin-top:9px;" />
+                        </a>
+                    </div>
+                    <h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-white"></h2>
+                </div>
+                <!-- Hamburger button for mobile -->
+                <button id="hamburger-btn"
+                    class="md:hidden flex items-center justify-center p-2 rounded text-white focus:outline-none"
+                    aria-label="Mở menu">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <div class="hidden items-center gap-8 md:flex justify-center w-full">
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="index.html">Home</a>
+                    <div class="group relative">
+                        <a class="flex cursor-pointer items-center gap-1 text-sm font-medium text-white/100 transition-colors hover:text-white"
+                            href="solutions.html">
+                            Solutions
+                            <span
+                                class="material-symbols-outlined text-base transition-transform group-hover:rotate-180">expand_more</span>
+                        </a>
+                        <div
+                            class="group-hover:block absolute left-0 top-full hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
+                            <div class="group/sub relative">
+                                <a class="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                    href="solutions.html#digital-twin">
+                                    Digital Twin
+                                    <span
+                                        class="material-symbols-outlined text-base transition-transform group-hover/sub:-rotate-90">chevron_right</span>
+                                </a>
+                                <div
+                                    class="group-hover/sub:block absolute left-full top-0 hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="waiting.html">Smart Campus</a>
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="waiting.html">Smart Building</a>
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="smart-infrastructure.html">Smart Infrastructure</a>
+                                </div>
+                            </div>
+                            <div class="group/sub relative">
+                                <a class="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                    href="solutions.html#interactive">
+                                    Interactive Product Experience
+                                    <span
+                                        class="material-symbols-outlined text-base transition-transform group-hover/sub:-rotate-90">chevron_right</span>
+                                </a>
+                                <div
+                                    class="group-hover/sub:block absolute left-full top-0 hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="waiting.html">Virtual Showrooms & 3D Web1</a>
+                                    <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                                        href="waiting.html">Interactive Product Configurator</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="product.html">Product</a>
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="presentation.html">Presentation</a>
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="about.html">About Us</a>
+                    <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+                        href="contact.html">Contact Us</a>
+                </div>
+            </nav>
+
+            <!-- Mobile menu -->
+            <div id="mobile-menu"
+                class="md:hidden absolute left-1/2 top-[60px] -translate-x-1/2 w-11/12 max-w-sm bg-black/90 border border-white/10 rounded-xl shadow-2xl z-[999] flex flex-col items-center gap-4 py-8 text-white text-lg font-medium transition-all duration-300 ease-in-out hidden backdrop-blur-lg">
+                <a href="index.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Home</a>
+                <div class="w-full">
+                    <button id="mobile-solutions-btn"
+                        class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded flex items-center justify-between">
+                        <span class="block w-full text-center">Solutions</span>
+                    </button>
+                    <div id="mobile-solutions-menu" class="flex-col gap-2 mt-2 hidden">
+                        <a class="block rounded-md px-6 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                            href="solutions.html#digital-twin">Digital Twin</a>
+                        <a class="block rounded-md px-6 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                            href="solutions.html#interactive">Interactive Product Experience</a>
+                    </div>
+                </div>
+                <a href="product.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Product</a>
+                <a href="presentation.html"
+                    class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Presentation</a>
+                <a href="about.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">About Us</a>
+                <a href="contact.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Contact Us</a>
+            </div>
+        </header>
+
+        <main class="flex flex-grow flex-col">
+            <!-- Hero Section -->
+            <section class="relative w-full h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 z-0">
+                    <img src="smart_infrastructure_hero.png" alt="Smart Infrastructure Hero"
+                        class="w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black"></div>
+                </div>
+
+                <div class="relative z-10 max-w-5xl px-4 text-center">
+                    <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">Smart Infrastructure</h1>
+                    <p class="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+                        Số hóa và quản lý hạ tầng đô thị trên nền tảng Digital Twin. Tối ưu vận hành, tăng cường an ninh
+                        và hướng tới phát triển bền vững.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Features Grid -->
+            <section class="w-full max-w-6xl mx-auto px-4 py-20">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold mb-4">Các tính năng trọng tâm</h2>
+                    <div class="h-1 w-20 bg-accent-blue mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="glass-card p-8 rounded-2xl hover:border-accent-blue/50 transition-all group">
+                        <div
+                            class="w-12 h-12 bg-accent-blue/10 rounded-lg flex items-center justify-center mb-6 text-accent-blue group-hover:bg-accent-blue group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">traffic</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Giám sát Giao thông</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">
+                            Phân tích lưu lượng giao thông thời gian thực, quản lý đèn tín hiệu thông minh và dự báo ùn
+                            tắc dựa trên AI.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="glass-card p-8 rounded-2xl hover:border-accent-blue/50 transition-all group">
+                        <div
+                            class="w-12 h-12 bg-accent-blue/10 rounded-lg flex items-center justify-center mb-6 text-accent-blue group-hover:bg-accent-blue group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">bolt</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Quản lý Năng lượng</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">
+                            Giám sát hệ thống chiếu sáng công cộng và lưới điện. Tự động điều chỉnh công suất giúp tiết
+                            kiệm từ 15-30% điện năng.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="glass-card p-8 rounded-2xl hover:border-accent-blue/50 transition-all group">
+                        <div
+                            class="w-12 h-12 bg-accent-blue/10 rounded-lg flex items-center justify-center mb-6 text-accent-blue group-hover:bg-accent-blue group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">security</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">An ninh Đô thị</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">
+                            Kết nối hệ thống camera thông minh, nhận diện hành vi bất thường và tự động gửi cảnh báo cho
+                            trung tâm điều hành.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="glass-card p-8 rounded-2xl hover:border-accent-blue/50 transition-all group">
+                        <div
+                            class="w-12 h-12 bg-accent-blue/10 rounded-lg flex items-center justify-center mb-6 text-accent-blue group-hover:bg-accent-blue group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">query_stats</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Phân tích Dữ liệu</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">
+                            Hợp nhất dữ liệu từ hàng ngàn cảm biến IoT vào một bản đồ 3D duy nhất, hỗ trợ ra quyết định
+                            dựa trên dữ liệu thực.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detailed Content -->
+            <section class="w-full bg-[#050505] py-20">
+                <div class="max-w-5xl mx-auto px-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <h2 class="text-3xl font-bold mb-6">Giải pháp 3D tương tác toàn diện</h2>
+                            <p class="text-white/70 mb-6 leading-relaxed">
+                                Không chỉ là các con số khô khan, REXON mang đến một trải nghiệm quản trị trực quan. Bạn
+                                có thể "bay" qua thành phố số, zoom sâu vào các nút giao thông hoặc kiểm tra trạng thái
+                                của từng cột đèn chỉ bằng vài cú nhấp chuột.
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-accent-blue text-sm">circle</span>
+                                    <span>Tích hợp dữ liệu GIS và BIM quy mô lớn.</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-accent-blue text-sm">circle</span>
+                                    <span>Mô phỏng kịch bản khẩn cấp (Cháy nổ, ngập lụt).</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-accent-blue text-sm">circle</span>
+                                    <span>Báo cáo hiệu suất tự động hàng ngày.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -inset-4 bg-accent-blue/20 blur-3xl opacity-30"></div>
+                            <img src="smart_infrastructure_hero.png" alt="Advanced Analytics"
+                                class="relative rounded-2xl border border-white/10 shadow-2xl">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="w-full max-w-5xl mx-auto px-4 py-20 text-center">
+                <div class="glass-card p-12 rounded-3xl border border-white/5">
+                    <h2 class="text-3xl font-bold mb-6">Sẵn sàng để số hóa hạ tầng của bạn?</h2>
+                    <p class="text-white/60 mb-8 max-w-xl mx-auto">
+                        Liên hệ với đội ngũ chuyên gia của chúng tôi ngay hôm nay để được tư vấn miễn phí về lộ trình
+                        triển khai Digital Twin.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="contact.html"
+                            class="px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition-all">Nhận
+                            báo giá ngay</a>
+                        <a href="product.html"
+                            class="px-8 py-3 rounded-full border border-white/20 hover:bg-white/5 transition-all">Xem
+                            các sản phẩm khác</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <div class="mx-auto w-full max-w-5xl">
+            <footer
+                class="flex flex-col items-center gap-8 border-t border-gray-200 px-5 py-10 text-center dark:border-white/10 @container">
+                <div class="flex flex-col items-center gap-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                    <p>Contact: 0934 697 600 | Email: rexondigitaltwin.tech@gmail.com</p>
+                    <p>© 2025 REXON. All rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        hamburgerBtn.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileSolutionsBtn = document.getElementById('mobile-solutions-btn');
+        const mobileSolutionsMenu = document.getElementById('mobile-solutions-menu');
+        if (mobileSolutionsBtn) {
+            mobileSolutionsBtn.addEventListener('click', function () {
+                if (mobileSolutionsMenu) mobileSolutionsMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+
+</html>

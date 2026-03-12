@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Anatomy Touch Interface</title>
+    <!-- Use Inter font for a minimalist clean look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="anatomy.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+<body>
+    <!-- Fullscreen Model Viewer -->
+    <div class="model-container">
+        <model-viewer 
+            id="anatomy-model"
+            src="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb" 
+            alt="3D Anatomy Model" 
+            auto-rotate 
+            camera-controls 
+            interaction-prompt="none"
+            shadow-intensity="1"
+            environment-image="neutral">
+        </model-viewer>
+    </div>
+
+    <!-- Transparent Float UI -->
+    <div class="ui-layer">
+
+        <!-- Top Right: Minimalist Camera Control -->
+        <div class="camera-controls">
+            <button class="icon-text-btn" id="btn-reset">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                <span>Reset View</span>
+            </button>
+        </div>
+
+        <!-- Bottom Left: Main Interactive Panel -->
+        <div class="bottom-controls">
+            <!-- Top Section of Bottom Panel: Information & Toggles -->
+            <div class="info-toggles-row">
+                <!-- Context Info (Like "Muscular system : Right myomeres") -->
+                <div class="context-info">
+                    <span id="system-title" class="system-name">Muscular system</span>
+                    <span class="separator"> : </span>
+                    <span id="part-name" class="part-name">Right myomeres</span>
+                </div>
+                
+                <!-- Toggles aligned to the right or next to it -->
+                <div class="toggles">
+                    <label class="toggle-control">
+                        <span class="toggle-label">Hide other elements</span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="toggle-others">
+                            <span class="slider"></span>
+                        </div>
+                    </label>
+                    <label class="toggle-control">
+                        <span class="toggle-label">Hide selected element</span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="toggle-selected">
+                            <span class="slider"></span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Bottom Section: The System Icons Row -->
+            <div class="system-icons">
+                <button class="minimal-icon-btn" data-target="skeletal">
+                    <img class="medical-icon-img" src="ref/icon_skeletal_cyan_1773300966249.png" alt="Skeletal">
+                </button>
+                <button class="minimal-icon-btn active" data-target="muscular">
+                    <img class="medical-icon-img" src="ref/icon_muscular_red_1773300987462.png" alt="Muscular">
+                </button>
+                <button class="minimal-icon-btn" data-target="cardio">
+                    <img class="medical-icon-img" src="ref/icon_heart_pink_1773301010222.png" alt="Cardio">
+                </button>
+                <button class="minimal-icon-btn" data-target="nervous">
+                    <img class="medical-icon-img" src="ref/icon_brain_purple_1773301031783.png" alt="Nervous">
+                </button>
+                <!-- Thêm 2 nút tắt giả lập cho giống hình -->
+                 <button class="minimal-icon-btn inactive-sim" data-target="lungs">
+                    <span class="dummy-icon">🫁</span>
+                </button>
+                <button class="minimal-icon-btn inactive-sim" data-target="stomach">
+                    <span class="dummy-icon">🫀</span> <!-- Dạ dày / tiêu hóa -->
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="anatomy.js"></script>
+</body>
+</html>

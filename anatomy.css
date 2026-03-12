@@ -1,0 +1,262 @@
+:root {
+  --bg-color: #FFFFFF;
+  
+  --text-primary: rgba(0, 0, 0, 0.9);
+  --text-secondary: rgba(0, 0, 0, 0.5);
+  --text-highlight: rgba(0, 0, 0, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none; /* Disable text selection for touch */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-primary);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    touch-action: none; /* Prevent browser handling of drag/zoom */
+}
+
+.model-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+model-viewer {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    touch-action: pan-y pan-x pinch-zoom;
+}
+
+.ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none; /* Passes touch to 3D model */
+}
+
+/* Reactivate touch only for buttons/controls */
+.bottom-controls, .camera-controls {
+    pointer-events: auto;
+}
+
+/* --- BOTTOM CONTROLS --- */
+.bottom-controls {
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px; /* Space between textual toggles row & icons row */
+    background: rgba(30, 35, 40, 0.85); /* Dark gray background */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 32px 48px;
+}
+
+.info-toggles-row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.context-info {
+    font-size: 1.25rem;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.5px;
+}
+
+.system-name {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.separator {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.part-name {
+    color: #FFF;
+    font-weight: 400;
+}
+
+/* Toggles */
+.toggles {
+    display: flex;
+    gap: 40px;
+}
+
+.toggle-control {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+}
+
+.toggle-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+    transition: color 0.3s;
+}
+
+.toggle-label.hidden {
+    opacity: 0.5;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 34px;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+    background-color: #FFF;
+}
+
+/* System Icons Row */
+.system-icons {
+    display: flex;
+    gap: 32px;
+}
+
+.minimal-icon-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.minimal-icon-btn.active {
+    opacity: 1;
+}
+
+/* Active Indicator (Underline) */
+.minimal-icon-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #FFF;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.minimal-icon-btn.active::after {
+    width: 24px;
+}
+
+/* Adjust colors of active underline based on target using custom props later if needed */
+.minimal-icon-btn[data-target="skeletal"].active::after { background-color: #00F0FF; }
+.minimal-icon-btn[data-target="muscular"].active::after { background-color: #FF2A54; }
+.minimal-icon-btn[data-target="cardio"].active::after { background-color: #FF0066; }
+.minimal-icon-btn[data-target="nervous"].active::after { background-color: #B53FFD; }
+
+.medical-icon-img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    mix-blend-mode: screen; 
+    filter: grayscale(1) brightness(1.5) opacity(0.5);
+    transition: all 0.3s ease;
+}
+
+.minimal-icon-btn.active .medical-icon-img {
+    filter: grayscale(0) drop-shadow(0 0 12px rgba(255, 255, 255, 0.2)) opacity(1);
+}
+
+.dummy-icon {
+    font-size: 32px;
+    filter: grayscale(1) brightness(2) opacity(0.8);
+}
+
+/* --- CAMERA CONTROLS --- */
+.camera-controls {
+    position: absolute;
+    top: 60px;
+    left: 60px; /* Put on the left for touchscreen symmetry if desired, or right? I'll keep top-left */
+    background: rgba(30, 35, 40, 0.85); /* Dark gray background */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 8px 24px;
+}
+
+.icon-text-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 12px 0;
+}
+
+.icon-text-btn:hover, .icon-text-btn:active {
+    color: #FFF;
+}

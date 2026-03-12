@@ -1,457 +1,243 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html class="dark" lang="vi">
 
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>CoreTeam HR - Logbook Chi Phí</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'sans-serif'] },
-          colors: { primary: '#6366f1', secondary: '#4f46e5' }
-        }
-      }
-    }
-  </script>
+  <title>REXON | Nền tảng Digital Twin cho doanh nghiệp Việt Nam</title>
+  <meta name="description"
+    content="REXON cung cấp nền tảng Digital Twin giúp doanh nghiệp mô phỏng, tối ưu và vận hành tài sản trong thời gian thực, tăng hiệu suất và giảm rủi ro." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link rel="preconnect" href="https://www.canva.com">
+  <link rel="preload" as="document" href="https://www.canva.com/design/DAG-d_ujYBM/Buywc8Tmv44Mp0qnom5-Vg/view?embed">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f3f4f6;
-    }
-
-    .glass-panel {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    }
-
-    .photo-preview {
-      width: 100%;
-      max-height: 200px;
-      object-fit: contain;
-      border-radius: 8px;
+    .group .group-hover\:block {
       display: none;
-      margin-top: 10px;
     }
 
-    .spinner {
-      animation: spin 1s linear infinite;
+    .group:hover .group-hover\:block {
+      display: block;
     }
 
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(360deg);
-      }
+    .group .group-hover\:flex {
+      display: none;
     }
 
-    #toast {
-      transition: opacity 0.3s ease-in-out;
+    .group:hover .group-hover\:flex {
+      display: flex;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
   </style>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#ffffff",
+            "background-light": "#ffffff",
+            "background-dark": "#000000",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
 </head>
 
-<body class="text-gray-800 antialiased min-h-screen pb-10">
-
-  <!-- Header -->
-  <header class="bg-primary text-white shadow-md sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="material-icons-round text-3xl">account_balance_wallet</span>
-        <span class="text-xl font-bold tracking-tight">Logbook Chi Phí</span>
-      </div>
-      <div class="text-sm border border-white/30 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm">
-        Nhân viên
-      </div>
-    </div>
-  </header>
-
-  <main class="container mx-auto max-w-lg mt-6 px-4 space-y-6">
-
-    <!-- Upload Form -->
-    <section class="glass-panel p-6">
-      <h2 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-700">
-        <span class="material-icons-round text-primary">add_circle</span> Tạo Báo Cáo Mới
-      </h2>
-      <form id="expense-form" class="space-y-4">
-        <input type="hidden" id="edit-id" value="">
-
-        <!-- Employee Name (Saved in local storage for convenience) -->
-        <div>
-          <label class="block text-sm font-semibold text-gray-600 mb-1">Tên của bạn</label>
-          <input id="emp-name" type="text" required placeholder="Nhập tên..."
-            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
-        </div>
-
-        <!-- Report Month -->
-        <div>
-          <label class="block text-sm font-semibold text-gray-600 mb-1">Tháng báo cáo</label>
-          <input id="exp-month" type="month" required
-            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
-        </div>
-
-        <!-- Amount -->
-        <div>
-          <label class="block text-sm font-semibold text-gray-600 mb-1">Số tiền (VNĐ)</label>
-          <input id="exp-amount" type="number" required placeholder="Ví dụ: 500000"
-            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
-        </div>
-
-        <!-- Note -->
-        <div>
-          <label class="block text-sm font-semibold text-gray-600 mb-1">Diễn giải</label>
-          <textarea id="exp-note" required rows="2" placeholder="Chi phí tiếp khách, mua văn phòng phẩm..."
-            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all resize-none"></textarea>
-        </div>
-
-        <!-- Photo Upload -->
-        <div>
-          <label class="block text-sm font-semibold text-gray-600 mb-1">Ảnh Bill / Hóa đơn</label>
-          <div
-            class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:bg-gray-50 transition-colors relative cursor-pointer"
-            onclick="document.getElementById('exp-photo').click()">
-            <div class="space-y-1 text-center" id="upload-placeholder">
-              <span class="material-icons-round text-4xl text-gray-400">add_a_photo</span>
-              <div class="flex text-sm text-gray-600 justify-center">
-                <span class="relative font-medium text-primary hover:text-secondary group-focus-within:outline-none">
-                  <span>Chụp ảnh hoặc chọn file</span>
-                </span>
-              </div>
-              <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-            </div>
-            <img id="photo-preview" class="photo-preview" />
+<body class="font-display">
+  <div class="relative flex h-auto min-h-screen w-full flex-col bg-black">
+    <header class="sticky top-4 z-50 mx-auto w-full max-w-5xl px-4">
+      <nav
+        class="flex items-center justify-between whitespace-nowrap rounded-full border border-white/10 bg-black/50 px-6 py-1 text-white backdrop-blur-md">
+        <div class="flex items-center gap-4">
+          <div class="size-6 text-white">
+            <a href="index.html">
+              <img src="logo.png" alt="Logo" class="ml-4"
+                style="max-width:100px; height:auto; object-fit:contain; margin-top:9px;" />
+            </a>
           </div>
-          <input id="exp-photo" type="file" accept="image/*" capture="environment" class="sr-only">
-          <input type="hidden" id="photo-base64">
+          <h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-white"></h2>
+        </div>
+        <!-- Hamburger button for mobile -->
+        <button id="hamburger-btn"
+          class="md:hidden flex items-center justify-center p-2 rounded text-white focus:outline-none"
+          aria-label="Mở menu">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        <div class="hidden items-center gap-8 md:flex justify-center w-full">
+          <a class="text-sm font-medium text-white/100 transition-colors hover:text-white" href="index.html">Home</a>
+          <div class="group relative">
+            <a class="flex cursor-pointer items-center gap-1 text-sm font-medium text-white/100 transition-colors hover:text-white"
+              href="solutions.html">
+              Solutions
+              <span
+                class="material-symbols-outlined text-base transition-transform group-hover:rotate-180">expand_more</span>
+            </a>
+            <div
+              class="group-hover:block absolute left-0 top-full hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
+              <div class="group/sub relative">
+                <a class="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                  href="solutions.html#digital-twin">
+                  Digital Twin
+                  <span
+                    class="material-symbols-outlined text-base transition-transform group-hover/sub:-rotate-90">chevron_right</span>
+                </a>
+                <div
+                  class="group-hover/sub:block absolute left-full top-0 hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
+                  <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                    href="waiting.html">Smart Campus</a>
+                  <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                    href="waiting.html">Smart Building</a>
+                  <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                    href="smart-infrastructure.html">Smart Infrastructure</a>
+                </div>
+              </div>
+              <div class="group/sub relative">
+                <a class="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                  href="solutions.html#interactive">
+                  Interactive Product Experience
+                  <span
+                    class="material-symbols-outlined text-base transition-transform group-hover/sub:-rotate-90">chevron_right</span>
+                </a>
+                <div
+                  class="group-hover/sub:block absolute left-full top-0 hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
+                  <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                    href="waiting.html">Virtual Showrooms & 3D Web1</a>
+                  <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+                    href="waiting.html">Interactive Product Configurator</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+            href="product.html">Product</a>
+          <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
+            href="presentation.html">Presentation</a>
+          <a class="text-sm font-medium text-white/100 transition-colors hover:text-white" href="about.html">About
+            Us</a>
+          <a class="text-sm font-medium text-white/100 transition-colors hover:text-white" href="contact.html">Contact
+            Us</a>
+        </div>
+      </nav>
+      <!-- Mobile menu, hidden by default -->
+      <div id="mobile-menu"
+        class="md:hidden absolute left-1/2 top-[60px] -translate-x-1/2 w-11/12 max-w-sm bg-black/90 border border-white/10 rounded-xl shadow-2xl z-[999] flex flex-col items-center gap-4 py-8 text-white text-lg font-medium transition-all duration-300 ease-in-out hidden backdrop-blur-lg">
+        <a href="index.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Home</a>
+        <div class="w-full">
+          <button id="mobile-solutions-btn"
+            class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded flex items-center justify-between">
+            <span class="block w-full text-center">Solutions</span>
+          </button>
+          <div id="mobile-solutions-menu" class="flex-col gap-2 mt-2 hidden">
+            <a class="block rounded-md px-6 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+              href="solutions.html#digital-twin">Digital Twin</a>
+            <a class="block rounded-md px-6 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
+              href="solutions.html#interactive">Interactive Product Experience</a>
+          </div>
+        </div>
+        <a href="product.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Product</a>
+        <a href="presentation.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Presentation</a>
+        <a href="about.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">About Us</a>
+        <a href="contact.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Contact Us</a>
+      </div>
+    </header>
+    <main class="flex flex-grow flex-col">
+      <div class="relative -mt-24 flex flex-grow flex-col">
+        <div class="@container flex flex-grow">
+          <div class="@[480px]:p-4 flex flex-grow">
+            <div
+              class="flex flex-grow flex-col items-center justify-center gap-6 rounded-lg bg-cover bg-center bg-no-repeat p-4 @[480px]:gap-8"
+              data-alt="Abstract monochrome background"
+              style="background-image: linear-gradient(to bottom, #000 40%, #111 70%, #222 100%);">
+              <div style="margin-top:80px;" class="text-center px-2 sm:px-0">
+                <h2 class="font-medium leading-normal text-white/100 text-center text-2xl sm:text-3xl md:text-4xl"
+                  style="font-size:clamp(1.5rem,5vw,2.5rem); font-family: 'Inter', sans-serif; font-weight: 500;">
+                  Nền tảng Digital Twin<br />
+                  cho doanh nghiệp Việt Nam
+                </h2>
+                <button onclick="window.location.href='solutions.html'"
+                  class="flex min-w-[84px] max-w-full sm:max-w-[480px] mx-auto cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 sm:h-12 px-4 sm:px-5 text-xs sm:text-base font-bold leading-normal tracking-[0.015em] text-white transition-colors hover:bg-white/20 border border-white/20"
+                  style="margin-top:20px; background: rgba(255,255,255,0.1);">
+                  <span class="truncate" style="color:#ffffff">Khám phá hệ sinh thái số</span>
+                </button>
+                <h2 class="font-normal leading-normal text-white/70 text-center text-xs sm:text-sm"
+                  style="margin-top:12px; font-size:clamp(0.7rem,2vw,0.95rem);">
+                  Nền tảng Digital Twin của REXON giúp doanh nghiệp<br />mô phỏng – tối ưu – vận hành tài sản trong thời
+                  gian thực,<br />tăng hiệu suất, giảm rủi ro và ra quyết định nhanh hơn.
+                </h2>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <button type="submit" id="submit-btn"
-          class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-4 rounded-lg shadow-md transition-all flex justify-center items-center gap-2 active:scale-95">
-          <span class="material-icons-round text-sm">send</span>
-          <span>Gửi Yêu Cầu</span>
-        </button>
-        <button type="button" id="cancel-edit-btn"
-          class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 px-4 rounded-lg shadow-sm transition-all flex justify-center items-center gap-2 hidden mt-2">
-          Hủy Cập Nhật
-        </button>
-      </form>
-    </section>
+        <!-- Features Teaser Section -->
+        <div class="w-full max-w-5xl mx-auto px-4 py-12">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a href="solutions.html#digital-twin"
+              class="group p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
+              <span class="material-symbols-outlined text-white text-3xl mb-4">hub</span>
+              <h3 class="text-lg font-bold text-white mb-2 group-hover:underline transition-colors">Digital Twin
+                Platform</h3>
+              <p class="text-white/60 text-sm">Quản lý và vận hành tài sản thông minh, trực quan trên nền tảng số.</p>
+            </a>
+            <a href="product.html"
+              class="group p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
+              <span class="material-symbols-outlined text-white text-3xl mb-4">view_in_ar</span>
+              <h3 class="text-lg font-bold text-white mb-2 group-hover:underline transition-colors">Platform & Tools
+              </h3>
+              <p class="text-white/60 text-sm">Hệ sinh thái sản phẩm từ 3D Viewer đến Mobile App hiện trường.</p>
+            </a>
+            <a href="about.html"
+              class="group p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
+              <span class="material-symbols-outlined text-white text-3xl mb-4">groups</span>
+              <h3 class="text-lg font-bold text-white mb-2 group-hover:underline transition-colors">Về REXON</h3>
+              <p class="text-white/60 text-sm">Đội ngũ chuyên gia công nghệ và artist hàng đầu Việt Nam.</p>
+            </a>
+          </div>
+        </div>
 
-    <!-- Listing -->
-    <section class="glass-panel p-6">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-lg font-bold flex items-center gap-2 text-gray-700">
-          <span class="material-icons-round text-primary">history</span> Lịch Sử Của Bạn
-        </h2>
-        <button onclick="fetchRequests()" class="text-gray-500 hover:text-primary"><span
-            class="material-icons-round">refresh</span></button>
-      </div>
-
-      <div id="requests-list" class="space-y-4">
-        <!-- Items will be injected here -->
-        <div class="text-center text-gray-500 text-sm py-4">Đang tải dữ liệu...</div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Toast Notification -->
-  <div id="toast"
-    class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 opacity-0 pointer-events-none z-50">
-    <span class="material-icons-round text-green-400" id="toast-icon">check_circle</span>
-    <span id="toast-msg">Thành công!</span>
+    </main>
+    <div class="mx-auto w-full max-w-5xl">
+      <footer
+        class="flex flex-col items-center gap-8 border-t border-gray-200 px-5 py-10 text-center dark:border-white/10 @container">
+        <div class="flex flex-col items-center gap-4 text-center text-sm text-gray-600 dark:text-gray-400">
+          <p>Contact: 0934 697 600 | Email: rexondigitaltwin.tech@gmail.com</p>
+          <p>© 2025 REXON. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
   </div>
-
   <script>
-    const dom = {
-      form: document.getElementById('expense-form'),
-      empName: document.getElementById('emp-name'),
-      month: document.getElementById('exp-month'),
-      amount: document.getElementById('exp-amount'),
-      note: document.getElementById('exp-note'),
-      photoInput: document.getElementById('exp-photo'),
-      photoPreview: document.getElementById('photo-preview'),
-      photoBase64: document.getElementById('photo-base64'),
-      placeholder: document.getElementById('upload-placeholder'),
-      list: document.getElementById('requests-list'),
-      submitBtn: document.getElementById('submit-btn'),
-      cancelEditBtn: document.getElementById('cancel-edit-btn'),
-      editId: document.getElementById('edit-id'),
-      toast: document.getElementById('toast'),
-      toastMsg: document.getElementById('toast-msg')
-    };
-
-    let requestsData = [];
-
-    // Formatting
-    const formatMoney = (n) => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(n);
-    const formatDate = (d) => new Date(d).toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' });
-    const formatMonth = (m) => {
-        if (!m) return 'Không rõ';
-        const parts = m.split('-');
-        if (parts.length === 2) return `Tháng ${parts[1]}/${parts[0]}`;
-        return m;
-    };
-
-    const BASE_URL = ''; // Gọi API nội bộ trên cùng Domain
-
-    // Show toast
-    const showToast = (msg, isError = false) => {
-      dom.toastMsg.textContent = msg;
-      document.getElementById('toast-icon').textContent = isError ? 'error' : 'check_circle';
-      document.getElementById('toast-icon').className = `material-icons-round ${isError ? 'text-red-400' : 'text-green-400'}`;
-      dom.toast.classList.remove('opacity-0');
-      setTimeout(() => dom.toast.classList.add('opacity-0'), 3000);
-    };
-
-    // Initialize Name
-    const savedName = localStorage.getItem('coreteam_emp_name');
-    if (savedName) dom.empName.value = savedName;
-
-    // Compress and encode image
-    dom.photoInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const img = new Image();
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          const MAX_WIDTH = 800;
-          const scaleSize = MAX_WIDTH / img.width;
-          canvas.width = MAX_WIDTH;
-          canvas.height = img.height * scaleSize;
-
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          const base64 = canvas.toDataURL('image/jpeg', 0.7);
-
-          dom.photoBase64.value = base64;
-          dom.photoPreview.src = base64;
-          dom.photoPreview.style.display = 'block';
-          dom.placeholder.style.display = 'none';
-        };
-        img.src = event.target.result;
-      };
-      reader.readAsDataURL(file);
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburgerBtn.addEventListener('click', function () {
+      mobileMenu.classList.toggle('hidden');
     });
 
-    // Fetch Requests
-    async function fetchRequests() {
-      try {
-        const res = await fetch(`${BASE_URL}/api/requests`);
-        requestsData = await res.json();
-        renderRequests();
-      } catch (err) {
-        dom.list.innerHTML = '<div class="text-center text-red-500 text-sm py-4">Lỗi kết nối máy chủ!</div>';
-      }
-    }
-
-    // Status Badge UI
-    const statusConfig = {
-      'pending': { color: 'bg-yellow-100 text-yellow-800 border-yellow-200', icon: 'pending', text: 'Chờ duyệt' },
-      'approved': { color: 'bg-green-100 text-green-800 border-green-200', icon: 'check_circle', text: 'Đã duyệt' },
-      'rejected': { color: 'bg-red-100 text-red-800 border-red-200', icon: 'cancel', text: 'Từ chối' }
-    };
-
-    function renderRequests() {
-      dom.list.innerHTML = '';
-      const myName = dom.empName.value.trim().toLowerCase();
-
-      // Filter by my name loosely, or show all if empty (just for demo simplicity)
-      let myReqs = requestsData;
-      if (myName) {
-        myReqs = requestsData.filter(r => r.employeeId.toLowerCase().includes(myName) || myName.includes(r.employeeId.toLowerCase()));
-      }
-
-      // Sort newest first
-      myReqs.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-
-      if (myReqs.length === 0) {
-        dom.list.innerHTML = `<div class="text-center text-gray-500 text-sm py-6">
-                    <span class="material-icons-round text-4xl block mb-2 opacity-50">receipt_long</span>
-                    Bạn chưa có báo cáo nào.
-                </div>`;
-        return;
-      }
-
-      myReqs.forEach(req => {
-        const conf = statusConfig[req.status] || statusConfig['pending'];
-        let rejectUI = '';
-        let updateUI = '';
-
-        if (req.status === 'rejected') {
-          rejectUI = `
-                        <div class="mt-3 p-3 bg-red-50 rounded-lg text-sm border border-red-100">
-                            <strong class="text-red-700">Lý do từ chối:</strong> 
-                            <span class="text-red-600">${req.reason || 'Không có lý do rõ ràng.'}</span>
-                        </div>
-                    `;
-          updateUI = `
-                        <button onclick="editRequest('${req.id}')" class="mt-3 w-full border border-primary text-primary hover:bg-primary/10 font-semibold py-2 rounded-lg text-sm transition-colors flex justify-center items-center gap-1">
-                            <span class="material-icons-round text-sm">edit</span> Cập nhật & Gửi lại
-                        </button>
-                    `;
-        } else if (req.status === 'pending') {
-          updateUI = `
-                        <button onclick="cancelRequest('${req.id}')" class="mt-3 w-full border border-red-400 text-red-500 hover:bg-red-50 font-semibold py-2 rounded-lg text-sm transition-colors flex justify-center items-center gap-1">
-                            <span class="material-icons-round text-sm">delete</span> Hủy Yêu Cầu
-                        </button>
-                    `;
-        }
-
-        const item = document.createElement('div');
-        item.className = 'border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow bg-white';
-        item.innerHTML = `
-                    <div class="flex justify-between items-start mb-2">
-                        <div class="flex-1">
-                            <div class="text-xs text-gray-500 font-bold mb-1"><span class="material-icons-round text-[12px] inline-block align-middle pb-[2px]">event</span> ${formatMonth(req.reportMonth)}</div>
-                            <div class="font-bold text-gray-800">${formatMoney(req.amount)}</div>
-                            <div class="text-sm text-gray-600 mt-1">${req.note}</div>
-                        </div>
-                        <div class="text-xs font-semibold px-2 py-1 rounded-full border flex items-center gap-1 ${conf.color}">
-                            <span class="material-icons-round text-[12px]">${conf.icon}</span> ${conf.text}
-                        </div>
-                    </div>
-                    ${req.photo ? `
-                        <div class="mt-3">
-                            <img src="${req.photo}" class="w-24 h-24 object-cover rounded-lg border border-gray-200 cursor-pointer hover:opacity-80 transition-opacity" onclick="window.open('${req.photo}')" alt="Bill Photo" />
-                        </div>
-                    `: ''}
-                    ${rejectUI}
-                    ${updateUI}
-                `;
-        dom.list.appendChild(item);
+    // Mobile accordion for solutions
+    const mobileSolutionsBtn = document.getElementById('mobile-solutions-btn');
+    const mobileSolutionsMenu = document.getElementById('mobile-solutions-menu');
+    if (mobileSolutionsBtn) {
+      mobileSolutionsBtn.addEventListener('click', function () {
+        if (mobileSolutionsMenu) mobileSolutionsMenu.classList.toggle('hidden');
       });
     }
-
-    dom.empName.addEventListener('input', () => {
-      renderRequests();
-    });
-
-    // Cancel Request
-    window.cancelRequest = async (id) => {
-      if (!confirm('Bạn có chắc chắn muốn hủy yêu cầu này không?')) return;
-      try {
-        const res = await fetch(`${BASE_URL}/api/requests/` + id, { method: 'DELETE' });
-        if (res.ok) {
-          showToast('Đã hủy yêu cầu!');
-          fetchRequests();
-        } else {
-          showToast('Có lỗi xảy ra', true);
-        }
-      } catch (err) {
-        showToast('Lỗi kết nối', true);
-      }
-    };
-
-    // Edit Mode
-    window.editRequest = (id) => {
-      const req = requestsData.find(r => r.id === id);
-      if (!req) return;
-
-      dom.editId.value = id;
-      dom.empName.value = req.employeeId;
-      dom.month.value = req.reportMonth || '';
-      dom.amount.value = req.amount;
-      dom.note.value = req.note;
-      dom.photoBase64.value = req.photo || '';
-
-      if (req.photo) {
-        dom.photoPreview.src = req.photo;
-        dom.photoPreview.style.display = 'block';
-        dom.placeholder.style.display = 'none';
-      } else {
-        dom.photoPreview.style.display = 'none';
-        dom.placeholder.style.display = 'block';
-      }
-
-      dom.submitBtn.innerHTML = '<span class="material-icons-round text-sm">update</span> <span>Cập Nhật Báo Cáo</span>';
-      dom.cancelEditBtn.classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
-    dom.cancelEditBtn.addEventListener('click', () => {
-      resetForm();
-    });
-
-    function resetForm() {
-      dom.editId.value = '';
-      dom.month.value = '';
-      dom.amount.value = '';
-      dom.note.value = '';
-      dom.photoInput.value = '';
-      dom.photoBase64.value = '';
-      dom.photoPreview.style.display = 'none';
-      dom.placeholder.style.display = 'block';
-      dom.submitBtn.innerHTML = '<span class="material-icons-round text-sm">send</span> <span>Gửi Yêu Cầu</span>';
-      dom.cancelEditBtn.classList.add('hidden');
-    }
-
-    // Submit Form
-    dom.form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const name = dom.empName.value.trim();
-      localStorage.setItem('coreteam_emp_name', name);
-
-      const payload = {
-        employeeId: name,
-        reportMonth: dom.month.value,
-        amount: Number(dom.amount.value),
-        note: dom.note.value.trim(),
-        photo: dom.photoBase64.value,
-        status: 'pending' // Force pending on new/update
-      };
-
-      const isEdit = dom.editId.value;
-
-      try {
-        dom.submitBtn.disabled = true;
-        dom.submitBtn.classList.add('opacity-50');
-
-        let res;
-        if (isEdit) {
-          res = await fetch(`${BASE_URL}/api/requests/` + isEdit, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-        } else {
-          res = await fetch(`${BASE_URL}/api/requests`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-        }
-
-        if (res.ok) {
-          showToast(isEdit ? 'Đã cập nhật!' : 'Đã gửi thành công!');
-          resetForm();
-          fetchRequests();
-        } else {
-          showToast('Có lỗi xảy ra', true);
-        }
-
-      } catch (err) {
-        showToast('Lỗi kết nối', true);
-      } finally {
-        dom.submitBtn.disabled = false;
-        dom.submitBtn.classList.remove('opacity-50');
-      }
-    });
-
-    // Init
-    fetchRequests();
-
   </script>
 </body>
 
