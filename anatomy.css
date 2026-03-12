@@ -1,6 +1,6 @@
 :root {
-  --bg-color: #000000;
-  --text-primary: #ffffff;
+  --bg-color: #ffffff;
+  --text-primary: #333333;
 }
 
 * {
@@ -47,95 +47,93 @@ model-viewer {
     pointer-events: none;
 }
 
-/* Bottom Controls */
-.bottom-controls {
+/* Side Controls - Touchscreen Vertical Layout */
+.side-controls {
     position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(20, 20, 25, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 24px 48px;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 28px;
+    padding: 24px 16px;
     pointer-events: auto;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.08); /* Bóng đổ cho khung lọt thỏm đẹp hơn */
 }
 
 .toggles-panel {
     display: flex;
-    gap: 48px;
+    flex-direction: column;
+    gap: 16px; /* Thay vì dàn ngang, xếp dọc cách nhau vừa phải */
     align-items: center;
-    justify-content: center;
 }
 
 .toggle-control {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
     cursor: pointer;
-}
-
-.toggle-label {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    transition: color 0.3s ease;
-}
-
-.toggle-switch {
     position: relative;
-    width: 60px;
-    height: 32px;
+    display: block;
 }
 
-.toggle-switch input {
+.toggle-control input {
     opacity: 0;
     width: 0;
     height: 0;
+    position: absolute; /* Giấu input checkbox gọn gàng */
 }
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 34px;
-    transition: .4s;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+/* Touch Tiles Button Box */
+.toggle-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 86px;
+    height: 86px;
+    background: rgba(255, 255, 255, 0.45);
+    border: 2px solid transparent; /* Chuẩn bị border cho active */
+    border-radius: 18px; /* Bo góc mạnh tạo nét nút iOS */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8), 0 4px 12px rgba(0, 0, 0, 0.03);
+    gap: 6px;
 }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 24px;
-    width: 24px;
-    left: 3px;
-    bottom: 3px;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
-    transition: .4s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+.toggle-icon {
+    width: 32px;
+    height: 32px;
+    opacity: 0.4;
+    color: #888888;
+    transition: all 0.3s ease;
 }
 
-input:checked + .slider {
-    background-color: #007aff;
-    border-color: #007aff;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-}
-
-input:checked + .slider:before {
-    transform: translateX(28px);
-    background-color: #FFF;
-}
-
-input:checked ~ * .toggle-label {
-    color: #fff;
+.toggle-label {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
     font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+}
+
+/* Hover - Báo hiệu có thể chạm */
+.toggle-control:hover .toggle-button {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 1), 0 8px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Active State Design */
+.toggle-control input:checked + .toggle-button {
+    background: #ffffff;
+    border-color: #00B4D8; /* Medical Teal border */
+    transform: scale(1.05); /* To lên mướt mát */
+    box-shadow: 0 8px 24px rgba(0, 180, 216, 0.2), inset 0 2px 4px rgba(255, 255, 255, 1);
+}
+
+.toggle-control input:checked + .toggle-button .toggle-icon,
+.toggle-control input:checked + .toggle-button .toggle-label {
+    opacity: 1;
+    color: #00B4D8; /* Cả icon và chữ đều nhuộm ngọc */
 }
 
 /* Hotspot & Organ Inline Panel */
@@ -149,24 +147,24 @@ input:checked ~ * .toggle-label {
 .hotspot-dot {
     width: 18px;
     height: 18px;
-    background-color: rgba(255, 42, 84, 0.6);
+    background-color: rgba(0, 180, 216, 0.6); /* Medical Teal */
     border: 2px solid #FFF;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 42, 84, 0.5);
+    box-shadow: 0 0 10px rgba(0, 180, 216, 0.5);
     transition: transform 0.2s, background-color 0.2s;
 }
 
 .hotspot:hover .hotspot-dot {
     transform: scale(1.2);
-    background-color: rgba(255, 42, 84, 1);
-    box-shadow: 0 0 16px rgba(255, 42, 84, 0.8);
+    background-color: rgba(0, 180, 216, 1);
+    box-shadow: 0 0 16px rgba(0, 180, 216, 0.8);
 }
 
 /* Khi hotspot được click đang mở panel */
 .hotspot-dot.active {
-    background-color: #00F0FF;
+    background-color: #00B4D8;
     border-color: #FFF;
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 180, 216, 0.8);
     transform: scale(1.3);
 }
 
@@ -204,7 +202,7 @@ input:checked ~ * .toggle-label {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #00F0FF; /* Đổi màu xanh nhẹ dạ quang */
+    color: #00B4D8; /* Medical Cyan/Teal */
 }
 
 .hotspot-panel p {
