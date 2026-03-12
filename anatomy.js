@@ -1,97 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.minimal-icon-btn');
-    const systemTitleObj = document.getElementById('system-title');
-    const partNameObj = document.getElementById('part-name');
-    
-    // Checkbox switches
-    const toggleOthers = document.getElementById('toggle-others');
-    const toggleSelected = document.getElementById('toggle-selected');
-    
-    // Model & Controls
+    const toggles = document.querySelectorAll('.part-toggle');
     const modelViewer = document.getElementById('anatomy-model');
-    const btnReset = document.getElementById('btn-reset');
+    const modelContainer = document.getElementById('model-container');
+    const hotspots = document.querySelectorAll('.hotspot');
 
-    // Data for UI update
-    const systemsInfo = {
-        skeletal: {
-            title: 'Skeletal system',
-            partName: 'Full Framework'
-        },
-        muscular: {
-            title: 'Muscular system',
-            partName: 'Right myomeres'
-        },
-        cardio: {
-            title: 'Cardiovascular system',
-            partName: 'Main Network'
-        },
-        nervous: {
-            title: 'Nervous system',
-            partName: 'Central Nervous'
-        },
-        lungs: { title: 'Respiratory system', partName: 'Lungs' },
-        stomach: { title: 'Digestive system', partName: 'Stomach' }
-    };
+    // Mặc định cho phép người dùng Double Click ở bất cứ khoảng trống nào trên màn hình để reset camera
+    modelContainer.addEventListener('dblclick', () => {
+        if(modelViewer) {
+            // Reset góc nhìn ban đầu
+            modelViewer.cameraOrbit = '0deg 75deg 105%';
+            modelViewer.cameraTarget = 'auto auto auto';
+        }
+    });
 
-    function applySystemChange(systemKey, buttonElement) {
-        if (!systemsInfo[systemKey]) return;
-        const data = systemsInfo[systemKey];
-        
-        // Update Buttons Classes (Visual Underline & Opacity)
-        buttons.forEach(btn => btn.classList.remove('active'));
-        buttonElement.classList.add('active');
-        
-        // Update Text Display via Fade Animation
-        systemTitleObj.style.opacity = 0;
-        partNameObj.style.opacity = 0;
-        
-        setTimeout(() => {
-            systemTitleObj.innerText = data.title;
-            partNameObj.innerText = data.partName;
-            
-            systemTitleObj.style.opacity = 1;
-            partNameObj.style.opacity = 1;
-
-            // Optional: reset toggles when changing system
-            // toggleOthers.checked = false;
-            // toggleSelected.checked = false;
-        }, 150);
-    }
-
-    // Attach Click Events to Menu
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            const target = button.getAttribute('data-target');
-            applySystemChange(target, button);
+    toggles.forEach(toggle => {
+        toggle.addEventListener('change', () => {
+             // Để mô hình tĩnh mô phỏng ẩn/hiện logic khi lập trình Blueprint ở UE5 sau này
+             // Ví dụ: Unreal Engine: if (toggle.value == 'bone' && checked == true) { SetVisibility(BoneMesh, True); }
         });
     });
 
-    // Reset Camera
-    if (btnReset) {
-        btnReset.addEventListener('click', () => {
-            if(modelViewer) {
-                modelViewer.cameraOrbit = '0deg 75deg 105%';
-                modelViewer.cameraTarget = 'auto auto auto';
+    // Cài đặt Hotspot click - Bật tắt Panel
+    hotspots.forEach(hotspot => {
+        hotspot.addEventListener('click', (e) => {
+            // Tắt nội dung của các tấm Hotspot panel khác đi trước
+            hotspots.forEach(otherHotspot => {
+                const otherPanel = otherHotspot.querySelector('.hotspot-panel');
+                if (otherHotspot !== hotspot && otherPanel) {
+                    otherPanel.classList.remove('visible');
+                    otherHotspot.querySelector('.hotspot-dot').classList.remove('active');
+                }
+            });
+
+            // Sau đó bật bảng panel của cái mà người dùng bấm vào
+            const panel = hotspot.querySelector('.hotspot-panel');
+            const dot = hotspot.querySelector('.hotspot-dot');
+            if (panel) {
+                panel.classList.toggle('visible');
+                dot.classList.toggle('active');
             }
+            e.stopPropagation(); // Ngăn kéo camera background
         });
-    }
+    });
 
-    // Toggles logic (for console/future implementation)
-    if (toggleOthers) {
-        toggleOthers.addEventListener('change', (e) => {
-            console.log('Hide other elements:', e.target.checked);
-            // Trigger mesh visibility update inside model-viewer here
-        });
-    }
+    // Nếu click chỗ khác không phải hotspot thì đóng tất cả panel lại
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.hotspot')) {
+             hotspots.forEach(hotspot => {
+                 const panel = hotspot.querySelector('.hotspot-panel');
+                 const dot = hotspot.querySelector('.hotspot-dot');
+                 if(panel) panel.classList.remove('visible');
+                 if(dot) dot.classList.remove('active');
+             });
+        }
+    });
 
-    if (toggleSelected) {
-        toggleSelected.addEventListener('change', (e) => {
-            console.log('Hide selected element:', e.target.checked);
-            // Trigger mesh visibility update inside model-viewer here
-        });
-    }
-
-    // Initialize with smooth transitions
-    systemTitleObj.style.transition = 'opacity 0.2s';
-    partNameObj.style.transition = 'opacity 0.2s';
 });

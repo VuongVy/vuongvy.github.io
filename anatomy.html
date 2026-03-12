@@ -11,81 +11,92 @@
 </head>
 <body>
     <!-- Fullscreen Model Viewer -->
-    <div class="model-container">
+    <div class="model-container" id="model-container">
         <model-viewer 
             id="anatomy-model"
             src="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb" 
             alt="3D Anatomy Model" 
             auto-rotate 
             camera-controls 
+            disable-tap 
             interaction-prompt="none"
             shadow-intensity="1"
             environment-image="neutral">
+            
+            <!-- Hotspot 1: Não bộ -->
+            <button class="hotspot" slot="hotspot-brain" data-position="0 1.9 0" data-normal="0 0 1">
+                <div class="hotspot-dot"></div>
+                <div class="hotspot-panel" id="panel-brain">
+                    <h3>Não bộ (Brain)</h3>
+                    <p>Trung tâm điều khiển hệ thần kinh trung ương, điều hòa cảm giác và vận động.</p>
+                </div>
+            </button>
+
+            <!-- Hotspot 2: Phổi -->
+            <button class="hotspot" slot="hotspot-lung" data-position="0.15 1.3 0.1" data-normal="0 0 1">
+                <div class="hotspot-dot"></div>
+                <div class="hotspot-panel" id="panel-lung">
+                    <h3>Phổi (Lungs)</h3>
+                    <p>Cơ quan hô hấp chính yếu, trao đổi khí O2 và CO2 với môi trường.</p>
+                </div>
+            </button>
+
+            <!-- Hotspot 3: Tim (Heart) -->
+            <button class="hotspot" slot="hotspot-heart" data-position="-0.05 1.25 0.15" data-normal="0 0 1">
+                <div class="hotspot-dot"></div>
+                <!-- Bảng hiển thị thông tin kế bên nội tạng -->
+                <div class="hotspot-panel" id="panel-heart">
+                    <h3>Tim (Heart)</h3>
+                    <p>Cơ quan sinh mạng trung tâm, bơm tuần hoàn đưa máu đi nuôi cơ thể.</p>
+                </div>
+            </button>
+            
+            <!-- Hotspot 4: Gan -->
+            <button class="hotspot" slot="hotspot-liver" data-position="0.1 1.05 0.15" data-normal="0 0 1">
+                <div class="hotspot-dot"></div>
+                <div class="hotspot-panel" id="panel-liver">
+                    <h3>Gan (Liver)</h3>
+                    <p>Nhà máy lọc độc tố cơ thể, chức năng lưu trữ dinh dưỡng và đào thải dịch mật.</p>
+                </div>
+            </button>
+
         </model-viewer>
     </div>
 
     <!-- Transparent Float UI -->
     <div class="ui-layer">
 
-        <!-- Top Right: Minimalist Camera Control -->
-        <div class="camera-controls">
-            <button class="icon-text-btn" id="btn-reset">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-                <span>Reset View</span>
-            </button>
-        </div>
-
-        <!-- Bottom Left: Main Interactive Panel -->
+        <!-- Bottom Controls: Toggle Switches -->
         <div class="bottom-controls">
-            <!-- Top Section of Bottom Panel: Information & Toggles -->
-            <div class="info-toggles-row">
-                <!-- Context Info (Like "Muscular system : Right myomeres") -->
-                <div class="context-info">
-                    <span id="system-title" class="system-name">Muscular system</span>
-                    <span class="separator"> : </span>
-                    <span id="part-name" class="part-name">Right myomeres</span>
-                </div>
-                
-                <!-- Toggles aligned to the right or next to it -->
-                <div class="toggles">
-                    <label class="toggle-control">
-                        <span class="toggle-label">Hide other elements</span>
-                        <div class="toggle-switch">
-                            <input type="checkbox" id="toggle-others">
-                            <span class="slider"></span>
-                        </div>
-                    </label>
-                    <label class="toggle-control">
-                        <span class="toggle-label">Hide selected element</span>
-                        <div class="toggle-switch">
-                            <input type="checkbox" id="toggle-selected">
-                            <span class="slider"></span>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <!-- Bottom Section: The System Icons Row -->
-            <div class="system-icons">
-                <button class="minimal-icon-btn" data-target="skeletal">
-                    <img class="medical-icon-img" src="ref/icon_skeletal_cyan_1773300966249.png" alt="Skeletal">
-                </button>
-                <button class="minimal-icon-btn active" data-target="muscular">
-                    <img class="medical-icon-img" src="ref/icon_muscular_red_1773300987462.png" alt="Muscular">
-                </button>
-                <button class="minimal-icon-btn" data-target="cardio">
-                    <img class="medical-icon-img" src="ref/icon_heart_pink_1773301010222.png" alt="Cardio">
-                </button>
-                <button class="minimal-icon-btn" data-target="nervous">
-                    <img class="medical-icon-img" src="ref/icon_brain_purple_1773301031783.png" alt="Nervous">
-                </button>
-                <!-- Thêm 2 nút tắt giả lập cho giống hình -->
-                 <button class="minimal-icon-btn inactive-sim" data-target="lungs">
-                    <span class="dummy-icon">🫁</span>
-                </button>
-                <button class="minimal-icon-btn inactive-sim" data-target="stomach">
-                    <span class="dummy-icon">🫀</span> <!-- Dạ dày / tiêu hóa -->
-                </button>
+            <div class="toggles-panel">
+                <label class="toggle-control">
+                    <span class="toggle-label">Da</span>
+                    <div class="toggle-switch">
+                        <input type="checkbox" class="part-toggle" value="skin">
+                        <span class="slider"></span>
+                    </div>
+                </label>
+                <label class="toggle-control">
+                    <span class="toggle-label">Cơ</span>
+                    <div class="toggle-switch">
+                        <input type="checkbox" class="part-toggle" value="muscle">
+                        <span class="slider"></span>
+                    </div>
+                </label>
+                <label class="toggle-control">
+                    <span class="toggle-label">Xương</span>
+                    <div class="toggle-switch">
+                        <input type="checkbox" class="part-toggle" value="bone">
+                        <span class="slider"></span>
+                    </div>
+                </label>
+                <label class="toggle-control">
+                    <span class="toggle-label">Nội Tạng</span>
+                    <div class="toggle-switch">
+                        <input type="checkbox" class="part-toggle" value="organs" checked>
+                        <span class="slider"></span>
+                    </div>
+                </label>
             </div>
         </div>
 
