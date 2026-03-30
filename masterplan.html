@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REXON — Master Plan & Marketing Plan 2026–2028</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.esm.min.mjs';
+  document.addEventListener("DOMContentLoaded", function() {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        fontFamily: 'Inter, sans-serif',
+        background: 'transparent',
+        primaryColor: '#1e293b',
+        primaryBorderColor: '#475569',
+        primaryTextColor: '#f8fafc',
+        secondaryColor: '#334155',
+        tertiaryColor: '#1e293b',
+        lineColor: '#475569',
+        fontSize: '14px',
+        // Khống chế bảng màu sắc viền của Pie/Mindmap thành các màu Accent của giao diện
+        cScale0: '#3b82f6', // Blue
+        cScale1: '#10b981', // Green
+        cScale2: '#8b5cf6', // Purple
+        cScale3: '#f59e0b', // Orange
+        cScale4: '#ef4444', // Red
+        cScale5: '#0ea5e9'  // Cyan
+      },
+      mindmap: { padding: 14 }
+    });
+  });
+</script>
+
+<style>
+:root {
+  --navy: #0f172a; --navy-light: #1e293b; --navy-mid: #334155;
+  --accent: #3b82f6; --accent-light: #60a5fa; --accent-glow: rgba(59,130,246,0.15);
+  --green: #10b981; --green-light: #34d399;
+  --red: #ef4444; --orange: #f59e0b; --purple: #8b5cf6;
+  --text: #ffffff; --text-dim: #cbd5e1; --text-muted: #94a3b8;
+  --card-bg: rgba(30,41,59,0.7); --border: rgba(148,163,184,0.12);
+  --gradient-1: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  --gradient-2: linear-gradient(135deg, #10b981, #3b82f6);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:var(--navy); color:var(--text); line-height:1.6; }
+.container { max-width:1200px; margin:0 auto; padding:0 40px; }
+
+/* HERO */
+.hero { background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#0f172a 100%); padding:80px 0 60px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+.hero::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle at 30% 50%,rgba(59,130,246,0.08),transparent 50%),radial-gradient(circle at 70% 50%,rgba(139,92,246,0.08),transparent 50%); }
+.hero * { position:relative; }
+.hero .badge { display:inline-block; background:var(--accent-glow); border:1px solid rgba(59,130,246,0.3); padding:6px 18px; border-radius:50px; font-size:13px; color:var(--accent-light); font-weight:500; margin-bottom:20px; letter-spacing:0.5px; }
+.hero h1 { font-size:48px; font-weight:800; background:var(--gradient-1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:12px; }
+.hero .subtitle { font-size:20px; color:var(--text-dim); font-weight:300; margin-bottom:8px; }
+.hero .meta { font-size:14px; color:var(--text-muted); margin-top:20px; }
+
+/* SECTIONS */
+section { padding:60px 0; border-bottom:1px solid var(--border); }
+.section-header { margin-bottom:40px; }
+.section-num { font-size:13px; font-weight:600; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+.section-title { font-size:32px; font-weight:700; color:var(--text); }
+.section-desc { font-size:16px; color:var(--text-dim); margin-top:8px; max-width:700px; }
+
+/* CARDS */
+.card-grid { display:grid; gap:20px; }
+.card-grid.cols-2 { grid-template-columns:1fr 1fr; }
+.card-grid.cols-3 { grid-template-columns:1fr 1fr 1fr; }
+.card-grid.cols-4 { grid-template-columns:1fr 1fr 1fr 1fr; }
+.card { background:var(--card-bg); border:1px solid var(--border); border-radius:16px; padding:28px; backdrop-filter:blur(10px); transition:transform 0.2s,border-color 0.2s; }
+.card:hover { transform:translateY(-2px); border-color:rgba(59,130,246,0.3); }
+.card .card-icon { font-size:28px; margin-bottom:12px; }
+.card .card-label { font-size:13px; color:var(--text-muted); font-weight:500; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+.card .card-value { font-size:28px; font-weight:700; color:var(--text); }
+.card .card-note { font-size:13px; color:var(--text-dim); margin-top:6px; }
+.card.accent { border-color:rgba(59,130,246,0.3); background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(139,92,246,0.05)); }
+.card.green { border-color:rgba(16,185,129,0.3); background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(59,130,246,0.05)); }
+
+/* DIAGRAM CONTAINER */
+.diagram-container { background:var(--navy-light); border:1px solid var(--border); border-radius:12px; padding:32px; margin:24px 0 40px; text-align:center; overflow-x:auto; }
+.diagram-container .mermaid svg { max-width:100%; height:auto; font-family:'Inter', sans-serif !important; }
+.diagram-container .mermaid .mindmap-node rect,
+.diagram-container .mermaid .mindmap-node circle,
+.diagram-container .mermaid .mindmap-node polygon { fill: var(--navy-mid) !important; stroke-width: 2px !important; }
+.diagram-container .mermaid .mindmap-node > circle { fill: var(--card-bg) !important; stroke: var(--accent) !important; stroke-width: 3px !important; }
+.diagram-container .mermaid .edge { stroke: var(--text-muted) !important; stroke-width: 2px !important; opacity:0.6; }
+.diagram-container .mermaid text, .diagram-container .mermaid tspan { fill: #f8fafc !important; font-weight: 500; font-family:'Inter', sans-serif !important; }
+.diagram-container .mermaid foreignObject div, .diagram-container .mermaid foreignObject span { color: #f8fafc !important; font-weight: 500; }
+
+/* TABLES */
+.table-wrap { overflow-x:auto; border-radius:12px; border:1px solid var(--border); margin-bottom: 24px; }
+table { width:100%; border-collapse:collapse; font-size:14px; }
+th { background:var(--navy-light); color:var(--accent-light); font-weight:600; text-align:left; padding:14px 16px; font-size:13px; letter-spacing:0.5px; text-transform:uppercase; white-space:nowrap; }
+td { padding:12px 16px; border-top:1px solid var(--border); color:var(--text-dim); }
+tr:hover td { background:rgba(59,130,246,0.03); }
+.tag { display:inline-block; padding:3px 10px; border-radius:6px; font-size:12px; font-weight:600; }
+.tag-green { background:rgba(16,185,129,0.15); color:var(--green-light); }
+.tag-red { background:rgba(239,68,68,0.15); color:#fca5a5; }
+.tag-blue { background:rgba(59,130,246,0.15); color:var(--accent-light); }
+.tag-orange { background:rgba(245,158,11,0.15); color:#fbbf24; }
+.tag-purple { background:rgba(139,92,246,0.15); color:#c4b5fd; }
+td.num { text-align:right; font-family:'JetBrains Mono',monospace; font-size:13px; }
+td.highlight { color:var(--green-light); font-weight:600; }
+
+/* TIMELINE & MORE... */
+.timeline { position:relative; padding-left:40px; }
+.timeline::before { content:''; position:absolute; left:15px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--accent),var(--purple),var(--green)); border-radius:2px; }
+.tl-item { position:relative; margin-bottom:32px; }
+.tl-item::before { content:''; position:absolute; left:-29px; top:6px; width:12px; height:12px; border-radius:50%; background:var(--accent); border:3px solid var(--navy); box-shadow:0 0 10px rgba(59,130,246,0.4); }
+.tl-item.green::before { background:var(--green); box-shadow:0 0 10px rgba(16,185,129,0.4); }
+.tl-item.purple::before { background:var(--purple); box-shadow:0 0 10px rgba(139,92,246,0.4); }
+.tl-date { font-size:13px; font-weight:600; color:var(--accent-light); margin-bottom:4px; }
+.tl-title { font-size:18px; font-weight:600; color:var(--text); margin-bottom:4px; }
+.tl-desc { font-size:14px; color:var(--text-dim); }
+
+.comp-bar { margin-bottom:16px; }
+.comp-label { display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px; }
+.comp-track { height:8px; background:var(--navy-light); border-radius:4px; overflow:hidden; position:relative; }
+.comp-fill { height:100%; border-radius:4px; transition:width 0.8s ease; }
+.comp-fill.blue { background:var(--gradient-1); }
+.comp-fill.green { background:var(--gradient-2); }
+
+.swot-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.swot-card { border-radius:12px; padding:24px; }
+.swot-card h4 { font-size:16px; font-weight:700; margin-bottom:12px; }
+.swot-card ul { list-style:none; }
+.swot-card li { padding:6px 0; font-size:14px; color:var(--text-dim); padding-left:20px; position:relative; }
+.swot-card li::before { content:''; position:absolute; left:0; top:12px; width:8px; height:8px; border-radius:50%; }
+.swot-s { background:rgba(16,185,129,0.06); border:1px solid rgba(16,185,129,0.2); }
+.swot-s h4 { color:var(--green-light); }
+.swot-s li::before { background:var(--green); }
+.swot-w { background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.2); }
+.swot-w h4 { color:#fca5a5; }
+.swot-w li::before { background:var(--red); }
+.swot-o { background:rgba(59,130,246,0.06); border:1px solid rgba(59,130,246,0.2); }
+.swot-o h4 { color:var(--accent-light); }
+.swot-o li::before { background:var(--accent); }
+.swot-t { background:rgba(245,158,11,0.06); border:1px solid rgba(245,158,11,0.2); }
+.swot-t h4 { color:#fbbf24; }
+.swot-t li::before { background:var(--orange); }
+
+.callout { border-radius:12px; padding:20px 24px; margin:24px 0; display:flex; gap:14px; align-items:flex-start; }
+.callout-icon { font-size:22px; flex-shrink:0; }
+.callout-body { font-size:14px; line-height:1.7; }
+.callout-body strong { color:var(--text); }
+.callout.info { background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.2); color:var(--accent-light); }
+.callout.success { background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.2); color:var(--green-light); }
+.callout.warning { background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.2); color:#fbbf24; }
+
+.pkg-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom: 24px; }
+.pkg-card { border-radius:16px; padding:28px 24px; text-align:center; border:1px solid var(--border); background:var(--card-bg); position:relative; overflow:hidden; }
+.pkg-card.featured { border-color:rgba(59,130,246,0.4); }
+.pkg-card.featured::before { content:'PHỔ BIẾN'; position:absolute; top:12px; right:-28px; background:var(--accent); color:white; font-size:10px; font-weight:700; padding:4px 32px; transform:rotate(45deg); }
+.pkg-name { font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px; }
+.pkg-price { font-size:24px; font-weight:800; margin:12px 0 8px; }
+.pkg-desc { font-size:13px; color:var(--text-muted); margin-bottom:16px; }
+.pkg-features { list-style:none; text-align:left; }
+.pkg-features li { font-size:13px; color:var(--text-dim); padding:5px 0; padding-left:20px; position:relative; }
+.pkg-features li::before { content:'✓'; position:absolute; left:0; color:var(--green); font-weight:700; }
+
+h3 { font-size:20px; font-weight:600; color:var(--text); margin:32px 0 16px; }
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 50px 0 40px; }
+  .hero h1 { font-size: 32px; }
+  .hero .subtitle { font-size: 16px; }
+  .card-grid.cols-2, .card-grid.cols-3, .card-grid.cols-4, .swot-grid { grid-template-columns: 1fr; gap: 12px; margin-bottom: 24px; }
+  .pkg-grid { grid-template-columns: 1fr; gap: 16px; }
+  .pkg-card.featured::before { right: -35px; }
+  .section-title { font-size: 24px; }
+  .diagram-container { padding: 16px; margin: 16px 0; border-radius: 8px; }
+  .callout { padding: 16px; flex-direction: column; gap: 8px; }
+  .table-wrap { font-size: 13px; margin-bottom: 16px; }
+  th, td { padding: 10px 12px; }
+  h3 { font-size: 18px; margin: 24px 0 12px; }
+}
+
+/* PRINT */
+@media print {
+  body { background:white; color:#1e293b; }
+  .hero { background:white !important; border-bottom:2px solid #e2e8f0; padding:40px 0 30px; }
+  .hero h1 { -webkit-text-fill-color:#1e293b; font-size:36px; }
+  .hero .badge, .hero .subtitle, .hero .meta { color:#475569; }
+  .card, .diagram-container { background:#f8fafc; border-color:#e2e8f0; }
+  .card-value, .card-label, .card-note { color:#0f172a !important; }
+  section { border-color:#cbd5e1; }
+  .section-title { color:#0f172a; }
+  .section-desc, td, .tl-desc, .swot-card li, .pkg-desc, .pkg-features li, .callout-body { color:#1e293b !important; }
+  th { background:#f1f5f9; color:#1e293b; }
+  td { color:#334155; }
+  tr:hover td { background:transparent; }
+  .table-wrap { border-color:#e2e8f0; }
+  td { border-color:#e2e8f0 !important; }
+}
+@page { size:A4; margin:15mm; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="badge">CONFIDENTIAL — INTERNAL USE ONLY</div>
+    <h1>REXON</h1>
+    <div class="subtitle">Master Plan & Marketing Plan 2026–2028</div>
+    <div class="subtitle" style="font-size:16px;">Ứng Dụng Tương Tác Bất Động Sản — Unreal Engine 5</div>
+    <div class="meta">Phiên bản 1.0 &nbsp;•&nbsp; Tháng 3/2026 &nbsp;•&nbsp; Đối sánh: IDEAMAKE (Shenzhen, China)</div>
+  </div>
+</div>
+
+<!-- 1. THỊ TRƯỜNG -->
+<section>
+<div class="container">
+  <div class="section-header">
+    <div class="section-num">Phần 01</div>
+    <div class="section-title">Tổng Quan Thị Trường Việt Nam</div>
+    <div class="section-desc">Thị trường BĐS Việt Nam đang bước vào chu kỳ phục hồi 2026, PropTech tăng trưởng mạnh</div>
+  </div>
+
+  <h3>Xu Hướng Chính Tác Động Giai Đoạn 2026</h3>
+  <div class="diagram-container">
+    <div class="mermaid">
+      mindmap
+        root((Xu Hướng BĐS VN 2026))
+          Chuyển đổi số
+            Digital Twin
+            AI-powered CRM
+            Virtual Tour 3D/VR
+            Performance Marketing
+          Minh bạch hóa
+            Pháp lý rõ ràng
+            Data-driven decisions
+            Trải nghiệm thực tế
+          Phân khúc trọng tâm
+            Nhà ở trung cấp
+            KĐT phức hợp
+            BĐS công nghiệp
+            Resort & Nghỉ dưỡng
+          Thay đổi hành vi
+            Mua online tăng
+            So sánh kỹ lưỡng
+            Yêu cầu trải nghiệm
+    </div>
+  </div>
+
+  <div class="card-grid cols-4" style="margin-bottom:32px;">
+    <div class="card accent">
+      <div class="card-icon">📊</div>
+      <div class="card-label">PropTech Market</div>
+      <div class="card-value">$512M</div>
+      <div class="card-note">CAGR 15–18.7% đến 2029</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏗️</div>
+      <div class="card-label">Mega-Projects</div>
+      <div class="card-value">27</div>
+      <div class="card-note">Tổng vốn > $115 tỷ</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏢</div>
+      <div class="card-label">Nguồn cung HN 2026</div>
+      <div class="card-value">18,400+</div>
+      <div class="card-note">Căn hộ mới</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚀</div>
+      <div class="card-label">PropTech Startups</div>
+      <div class="card-value">200+</div>
+      <div class="card-note">Đang hoạt động tại VN</div>
+    </div>
+  </div>
+
+  <h3>Khách Hàng Mục Tiêu</h3>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Tier</th><th>Đối tượng</th><th>Ví dụ</th><th>Deal Size</th></tr>
+      <tr><td><span class="tag tag-purple">Tier 1</span></td><td>Chủ đầu tư lớn</td><td>Vinhomes, Masterise, Ecopark, BIM Land</td><td class="num">1.5 – 5 tỷ</td></tr>
+      <tr><td><span class="tag tag-blue">Tier 2</span></td><td>CĐT trung bình</td><td>Nam Long, Phát Đạt, Hưng Thịnh, Đất Xanh</td><td class="num">500M – 1.5 tỷ</td></tr>
+      <tr><td><span class="tag tag-green">Tier 3</span></td><td>Agency & Sàn BĐS</td><td>DKRA, CenLand, Sàn khu vực</td><td class="num">200 – 800M</td></tr>
+    </table>
+  </div>
+
+  <h3>Tổng Thị Trường Khả Dụng (TAM → SAM → SOM)</h3>
+  <div class="diagram-container">
+    <div class="mermaid">
+      graph LR
+          TAM["TAM<br/>Toàn bộ dự án BĐS mới<br/>VN 2026–2028<br/>~2,000 dự án"] -->|Lọc| SAM["SAM<br/>Dự án >= 50 tỷ<br/>có nhu cầu tech<br/>~500 dự án"]
+          SAM -->|Mục tiêu REXON| SOM["SOM<br/>Year 1: 5–8 dự án<br/>Year 2: 12–20 dự án<br/>Year 3: 25–40 dự án"]
+          style TAM fill:#1e293b,stroke:#3b82f6,stroke-width:2px,color:#f8fafc
+          style SAM fill:#1e293b,stroke:#8b5cf6,stroke-width:2px,color:#f8fafc
+          style SOM fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#f8fafc
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 2. ĐỐI THỦ -->
+<section style="background:linear-gradient(180deg,var(--navy),rgba(15,23,42,0.95));">
+<div class="container">
+  <div class="section-header">
+    <div class="section-num">Phần 02</div>
+    <div class="section-title">Phân Tích Đối Thủ & Cạnh Tranh</div>
+  </div>
+
+  <div class="table-wrap" style="margin-bottom:32px;">
+    <table>
+      <tr><th>Tiêu chí</th><th>IDEAMAKE 🇨🇳</th><th>VR360</th><th>VRPlus</th><th>StarGlobal3D</th><th style="color:#34d399;">REXON ⭐</th></tr>
+      <tr><td>Engine</td><td>UE4/UE5</td><td>WebGL/360</td><td>WebGL/360</td><td>3D Scan</td><td class="highlight">UE5</td></tr>
+      <tr><td>Chất lượng hình ảnh</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td><td class="highlight">⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>Tương tác Realtime</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐</td><td>⭐⭐</td><td class="highlight">⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>Giá</td><td><span class="tag tag-red">$$$$$</span></td><td><span class="tag tag-green">$$</span></td><td><span class="tag tag-green">$$</span></td><td><span class="tag tag-orange">$$$</span></td><td><span class="tag tag-blue">$$$</span></td></tr>
+      <tr><td>Hỗ trợ VN</td><td>Qua Agent</td><td>Trực tiếp</td><td>Trực tiếp</td><td>Trực tiếp</td><td class="highlight">Trực tiếp</td></tr>
+      <tr><td>Sales Office Tools</td><td>✅ Full</td><td>❌</td><td>Partial</td><td>❌</td><td class="highlight">✅ Full</td></tr>
+    </table>
+  </div>
+
+  <h3>Chiến Lược Giá</h3>
+  <div class="diagram-container">
+    <div class="mermaid">
+      graph LR
+          A["IDEAMAKE Price<br/>USD + 13% VAT<br/>= 100%"] -->|Cạnh tranh bằng chi phí nhân lực| B["REXON Target<br/>Giảm 20-35% giá bán"]
+          B --> C["Đảm bảo<br/>Margin >= 35%<br/>trên mỗi module"]
+          C --> D["Lợi nhuận bền vững<br/>+ Tái đầu tư RnD"]
+          style A fill:#475569,stroke:#94a3b8,color:#f8fafc
+          style B fill:#3b82f6,stroke:#60a5fa,color:#f8fafc
+          style C fill:#8b5cf6,stroke:#a78bfa,color:#f8fafc
+          style D fill:#10b981,stroke:#34d399,color:#f8fafc
+    </div>
+  </div>
+
+  <div class="callout success">
+    <div class="callout-icon">💡</div>
+    <div class="callout-body"><strong>Chiến lược giá cốt lõi:</strong> Rẻ hơn IDEAMAKE 20–35%, vẫn đảm bảo margin ≥ 35%. Lợi thế: Chi phí nhân sự VN thấp hơn nhiều so với Trung Quốc. Dự án mẫu 500 căn: IDEAMAKE ~2.5–3 tỷ → REXON ~1.7–2 tỷ.</div>
+  </div>
+</div>
+</section>
+
+<!-- 3. SẢN PHẨM SẢN PHẨM & ROADMAP -->
+<section>
+<div class="container">
+  <div class="section-header">
+    <div class="section-num">Phần 03</div>
+    <div class="section-title">Hệ Sinh Thái Sản Phẩm REXON</div>
+  </div>
+
+  <div class="diagram-container">
+    <div class="mermaid">
+      graph TB
+          subgraph Layer 1: Sales Office
+              direction LR
+              A["Sa Bàn Ảo 3D<br/>Touchscreen lớn"]
+              B["Digital Twin<br/>Khu vực 3D"]
+              C["Interactive<br/>Floor Plan"]
+          end
+          subgraph Layer 2: Multi-Platform
+              direction LR
+              D["iPad App<br/>Agent Tool"]
+              E["Mobile App<br/>Buyer Experience"]
+              F["Web 360<br/>Online Tour"]
+          end
+          subgraph Layer 3: Data & AI
+              direction LR
+              G["CRM Integration<br/>Lead Tracking"]
+              H["Analytics<br/>Heat Map"]
+              I["AI Chatbot<br/>Tư vấn tự động"]
+          end
+          A --> D
+          A --> E
+          A --> F
+          B --> G
+          C --> H
+          D --> G
+          E --> G
+          F --> I
+    </div>
+  </div>
+
+  <h3>Gói Sản Phẩm & Roadmap</h3>
+  <div class="pkg-grid">
+    <div class="pkg-card">
+      <div class="pkg-name" style="color:var(--text-muted);">🥉 Essential</div>
+      <div class="pkg-price" style="color:var(--text);">500–700M</div>
+      <div class="pkg-desc">CĐT nhỏ, dự án đơn giản</div>
+      <ul class="pkg-features"><li>Khung hệ thống UE5</li><li>Giao diện chính</li><li>Sa bàn khu vực 3D</li><li>Digital Twin 3km</li><li>Công trình + Cảnh quan</li><li>Bố trí căn hộ cơ bản</li></ul>
+    </div>
+    <div class="pkg-card featured">
+      <div class="pkg-name" style="color:var(--accent-light);">🥈 Professional</div>
+      <div class="pkg-price" style="color:var(--accent-light);">1.2–1.8 tỷ</div>
+      <div class="pkg-desc">CĐT trung bình, KĐT</div>
+      <ul class="pkg-features"><li>Tất cả Essential +</li><li>Brochure số hóa</li><li>Vị trí 3 cấp + Animation</li><li>Nội thất 3D</li><li>Góc nhìn 720°</li><li>Hiệu ứng ngày/đêm</li></ul>
+    </div>
+    <div class="pkg-card">
+      <div class="pkg-name" style="color:var(--orange);">🥇 Premium</div>
+      <div class="pkg-price" style="color:var(--orange);">2–3.5 tỷ</div>
+      <div class="pkg-desc">Mega-project, CĐT tier 1</div>
+      <ul class="pkg-features"><li>Tất cả Professional +</li><li>Walkthrough cảnh quan</li><li>One Unit One View</li><li>Quản lý bán hàng CRM</li><li>Hầm xe thông minh</li><li>Port lên iPad</li></ul>
+    </div>
+    <div class="pkg-card">
+      <div class="pkg-name" style="color:var(--purple);">💎 Enterprise</div>
+      <div class="pkg-price" style="color:var(--purple);">3.5–6 tỷ</div>
+      <div class="pkg-desc">Multi-project, SaaS</div>
+      <ul class="pkg-features"><li>Tất cả Premium +</li><li>Port lên Mobile</li><li>Custom modules</li><li>AI Analytics</li><li>Multi-project platform</li><li>SLA & Support 24/7</li></ul>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">Q2/2026</div><div class="tl-title">Core Framework v1 + Sa bàn ảo v1</div><div class="tl-desc">Engine nền tảng UE5, UI system, Digital Twin khu vực 3km</div></div>
+    <div class="tl-item"><div class="tl-date">Q3/2026</div><div class="tl-title">🎯 1st Pilot Project + Sales Office Suite</div><div class="tl-desc">Dự án pilot đầu tiên — Touchscreen app, floor plan system</div></div>
+    <div class="tl-item green"><div class="tl-date">Q4/2026</div><div class="tl-title">iPad Deployment + Showreel v1</div><div class="tl-desc">Port to iPad, video marketing từ pilot project</div></div>
+    <div class="tl-item green"><div class="tl-date">Q1-Q2/2027</div><div class="tl-title">Mobile App + CRM + Pixel Streaming</div><div class="tl-desc">Pano 360° cho buyer, kết nối CRM, 3D trên browser</div></div>
+    <div class="tl-item purple"><div class="tl-date">Q3-Q4/2027</div><div class="tl-title">Partnership Program + Analytics</div><div class="tl-desc">Agency referral network, heat map, visitor tracking</div></div>
+    <div class="tl-item purple"><div class="tl-date">2028</div><div class="tl-title">🚀 AI + VR/AR + SEA Expansion</div><div class="tl-desc">AI chatbot, Apple Vision Pro, mở rộng Đông Nam Á</div></div>
+  </div>
+</div>
+</section>
+
+<!-- 4. MARKETING & SALES -->
+<section style="background:linear-gradient(180deg,var(--navy),rgba(15,23,42,0.95));">
+<div class="container">
+  <div class="section-header">
+    <div class="section-num">Phần 04</div>
+    <div class="section-title">Kế Hoạch Marketing & Sales</div>
+  </div>
+
+  <h3>Marketing & Sales Funnel</h3>
+  <div class="diagram-container">
+    <div class="mermaid">
+      graph LR
+          subgraph AWARENESS
+              A1["LinkedIn Ads"]
+              A2["Showreel YouTube"]
+          end
+          subgraph CONSIDERATION
+              B1["Case Study"]
+              B2["Demo Live"]
+          end
+          subgraph DECISION
+              C1["Proposal"]
+              C2["Pilot Deal (Giảm 40%)"]
+          end
+          subgraph RETENTION
+              D1["Bảo hành"]
+              D2["Referral Program"]
+          end
+          A1 --> B1
+          A2 --> B2
+          B1 --> C1
+          B2 --> C1
+          C1 --> C2
+          C2 --> D1
+          D1 --> D2
+    </div>
+  </div>
+
+  <h3>Kênh Marketing Digital (Ngân sách Q2: 140M)</h3>
+  <div class="table-wrap" style="margin-bottom:24px;">
+    <table>
+      <tr><th>Kênh</th><th>Mục tiêu</th><th>Budget/tháng</th><th>KPI</th></tr>
+      <tr><td>LinkedIn</td><td>Decision makers CĐT</td><td class="num">15M</td><td>50 leads/tháng</td></tr>
+      <tr><td>Google Ads</td><td>Intent-based leads</td><td class="num">10M</td><td>30 leads/tháng</td></tr>
+      <tr><td>Facebook/IG</td><td>Brand awareness</td><td class="num">10M</td><td>10K impressions</td></tr>
+      <tr><td>YouTube</td><td>Showreel, demo</td><td class="num">5M</td><td>5K views/video</td></tr>
+      <tr><td>SEO/Blog</td><td>Organic traffic</td><td class="num">5M</td><td>Page 1: 10 keywords</td></tr>
+    </table>
+  </div>
+
+  <h3>Sales Targets Year 1</h3>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Metric</th><th>Q2/2026</th><th>Q3/2026</th><th>Q4/2026</th><th>Tổng Y1</th></tr>
+      <tr><td>Leads</td><td class="num">80</td><td class="num">100</td><td class="num">120</td><td class="num highlight">300</td></tr>
+      <tr><td>Qualified</td><td class="num">20</td><td class="num">30</td><td class="num">35</td><td class="num highlight">85</td></tr>
+      <tr><td>Proposals</td><td class="num">8</td><td class="num">12</td><td class="num">15</td><td class="num highlight">35</td></tr>
+      <tr><td>Deals closed</td><td class="num">1</td><td class="num">2</td><td class="num">3</td><td class="num highlight">5–6</td></tr>
+      <tr><td>Revenue</td><td class="num">500M</td><td class="num">2 tỷ</td><td class="num">3 tỷ</td><td class="num highlight">5–6 tỷ</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- 5. TÀI CHÍNH & ACTION ITEMS -->
+<section>
+<div class="container">
+  <div class="section-header">
+    <div class="section-num">Phần 05</div>
+    <div class="section-title">Tài Chính & Action Items</div>
+  </div>
+
+  <div class="table-wrap" style="margin-bottom:32px;">
+    <table>
+      <tr><th>Metric</th><th>2026</th><th>2027</th><th>2028</th></tr>
+      <tr><td>Số dự án</td><td class="num">5–6</td><td class="num">12–15</td><td class="num">25–30</td></tr>
+      <tr><td>Avg deal size</td><td class="num">1 tỷ</td><td class="num">1.2 tỷ</td><td class="num">1.5 tỷ</td></tr>
+      <tr style="background:rgba(59,130,246,0.05);"><td><strong>Doanh thu</strong></td><td class="num highlight">5–6 tỷ</td><td class="num highlight">15–18 tỷ</td><td class="num highlight">37–45 tỷ</td></tr>
+      <tr><td>COGS (40%)</td><td class="num">2–2.4 tỷ</td><td class="num">6–7.2 tỷ</td><td class="num">15–18 tỷ</td></tr>
+      <tr><td>Gross Margin</td><td class="num">60%</td><td class="num">60%</td><td class="num">60%</td></tr>
+      <tr><td>OPEX</td><td class="num">2.5 tỷ</td><td class="num">6 tỷ</td><td class="num">12 tỷ</td></tr>
+      <tr style="background:rgba(16,185,129,0.05);"><td><strong>Net Profit</strong></td><td class="num highlight">0.5–1.1 tỷ</td><td class="num highlight">3–4.8 tỷ</td><td class="num highlight">10–15 tỷ</td></tr>
+      <tr style="background:rgba(16,185,129,0.05);"><td><strong>Net Margin</strong></td><td class="num highlight">10–18%</td><td class="num highlight">20–27%</td><td class="num highlight">27–33%</td></tr>
+    </table>
+  </div>
+
+  <div class="card-grid cols-3" style="margin-bottom:40px;">
+    <div class="card"><div class="card-icon">💰</div><div class="card-label">Fixed Cost/tháng</div><div class="card-value" style="font-size:22px;">~180M</div><div class="card-note">Lương + VP + License</div></div>
+    <div class="card green"><div class="card-icon">📈</div><div class="card-label">Break-Even</div><div class="card-value" style="font-size:22px;">4 dự án</div><div class="card-note">Profitable from Y1 ✅</div></div>
+    <div class="card"><div class="card-icon">🏦</div><div class="card-label">Cash Reserve cần</div><div class="card-value" style="font-size:22px;">1.1 tỷ</div><div class="card-note">6 tháng OPEX chống rủi ro</div></div>
+  </div>
+
+  <h3>Action Items — 30 Ngày Tới</h3>
+  <div class="table-wrap">
+    <table>
+      <tr><th>#</th><th>Task</th><th>Owner</th><th>Deadline</th></tr>
+      <tr><td>1</td><td>Hoàn thiện Framework UE5 v1 (demo-ready)</td><td>Dev Team</td><td>30/04/2026</td></tr>
+      <tr><td>2</td><td>Build showreel video (2-3 phút)</td><td>CEO + Art</td><td>15/04/2026</td></tr>
+      <tr><td>3</td><td>Launch website REXON portfolio</td><td>UI/UX</td><td>30/04/2026</td></tr>
+      <tr><td>4</td><td>Setup LinkedIn Company + 10 bài viết</td><td>CEO</td><td>15/04/2026</td></tr>
+      <tr><td>5</td><td>Lập danh sách 100 CĐT mục tiêu</td><td>CEO</td><td>20/04/2026</td></tr>
+      <tr><td>6</td><td>Outreach 30 CĐT đầu tiên</td><td>CEO</td><td>30/04/2026</td></tr>
+    </table>
+  </div>
+
+  <div class="callout info" style="margin-top:32px;">
+    <div class="callout-icon">🎯</div>
+    <div class="callout-body"><strong>Tóm tắt chiến lược:</strong> REXON = "IDEAMAKE Việt hóa" — Cùng chất lượng Unreal Engine 5, rẻ hơn 25-35%, hỗ trợ trực tiếp bằng tiếng Việt, hiểu thị trường local — nhắm vào thị trường BĐS Việt Nam đang bùng nổ nhu cầu digital transformation với 27 mega-project và 500+ dự án trung-lớn mỗi năm.</div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:40px 0;border-top:1px solid var(--border);color:var(--text-muted);font-size:13px;">
+  <strong style="color:var(--text);">REXON</strong> &nbsp;•&nbsp; Confidential &nbsp;•&nbsp; Q1/2026<br/>
+  <span style="font-size:12px;margin-margin-top:8px;display:inline-block;">Tài liệu này cần được review & cập nhật hàng quý</span>
+</div>
+
+</body>
+</html>
