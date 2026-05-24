@@ -188,8 +188,8 @@
             </div>
         </section>
 
-        <!-- Implementation Process -->
-        <section class="section">
+        <!-- Implementation Process (Used as Insights/Process) -->
+        <section id="insights" class="section">
             <div class="container">
                 <div class="section-header center fade-in-up">
                     <h2>Quy Trình Triển Khai</h2>
@@ -244,7 +244,7 @@
                         <p>Đón đầu nhu cầu trực quan hóa, REXON tập trung phát triển lõi công nghệ Digital Twin — bản sao số giúp chuyển đổi dự án, dữ liệu và không gian thành trải nghiệm 3D tương tác theo thời gian thực.</p>
                         <p>Không chỉ dừng lại ở bất động sản, chúng tôi hướng đến việc mở rộng giải pháp sang các lĩnh vực doanh nghiệp, công nghiệp, nông nghiệp và hạ tầng thông minh.</p>
                     </div>
-                    <div class="partners-block glass-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div id="partners" class="partners-block glass-card fade-in-up" style="animation-delay: 0.2s; scroll-margin-top: 80px;">
                         <h3>Hợp tác cùng REXON</h3>
                         <p>Chúng tôi đồng hành cùng các studio, agency, nhà cung cấp công nghệ để tối ưu hệ sinh thái bất động sản.</p>
                         <ul class="partner-list">
@@ -273,28 +273,28 @@
                     </div>
                     <div class="demo-form-wrapper">
                         <h3>Book a Demo</h3>
-                        <form class="demo-form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Đăng ký đã được gửi thành công.');">
+                        <form id="demoForm" class="demo-form">
                             <div class="form-row">
                                 <div class="form-group">
                                     <label>First Name*</label>
-                                    <input type="text" required>
+                                    <input type="text" id="firstName" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Last Name*</label>
-                                    <input type="text" required>
+                                    <input type="text" id="lastName" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Business Email*</label>
-                                <input type="email" required>
+                                <input type="email" id="email" required>
                             </div>
                             <div class="form-group">
                                 <label>Company Name*</label>
-                                <input type="text" required>
+                                <input type="text" id="company" required>
                             </div>
                             <div class="form-group">
                                 <label>Phone Number</label>
-                                <input type="tel">
+                                <input type="tel" id="phone">
                             </div>
                             <button type="submit" class="btn-primary w-100">Submit</button>
                         </form>

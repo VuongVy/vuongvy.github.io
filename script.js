@@ -48,4 +48,68 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach(el => {
         appearOnScroll.observe(el);
     });
+
+    // 4. Telegram Form Submission
+    const demoForm = document.getElementById('demoForm');
+    if (demoForm) {
+        demoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = demoForm.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = 'Đang gửi...';
+            btn.disabled = true;
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const phone = document.getElementById('phone').value;
+
+            const text = `🔔 *CÓ NGƯỜI ĐĂNG KÝ DEMO MỚI*\n\n` +
+                         `👤 *Tên:* ${firstName} ${lastName}\n` +
+                         `📧 *Email:* ${email}\n` +
+                         `🏢 *Công ty:* ${company}\n` +
+                         `📞 *SĐT:* ${phone || 'Không có'}`;
+
+            const token = '8720241884:AAGRHB2vIeoCmAnolFOwBmbQH6igZ5jMVuo';
+            const chat_id = '1420783300'; // Đã cập nhật Chat ID của bạn
+            
+            if (chat_id === 'YOUR_CHAT_ID_HERE') {
+                alert('Chưa cấu hình CHAT_ID. Vui lòng nhắn tin cho Bot và lấy Chat ID điền vào file script.js!');
+                btn.innerText = originalText;
+                btn.disabled = false;
+                return;
+            }
+
+            const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chat_id,
+                    text: text,
+                    parse_mode: 'Markdown'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    alert('Cảm ơn bạn! Thông tin đăng ký đã được gửi thành công.');
+                    demoForm.reset();
+                } else {
+                    alert('Lỗi gửi tin nhắn: ' + data.description);
+                }
+            })
+            .catch(error => {
+                alert('Có lỗi xảy ra khi gửi tin nhắn.');
+                console.error(error);
+            })
+            .finally(() => {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            });
+        });
+    }
 });
