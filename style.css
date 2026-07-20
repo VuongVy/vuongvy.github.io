@@ -943,3 +943,9 @@ p {
     padding: 0 1.5rem 2rem 1.5rem;
     margin: 0;
 }
+
+/* Fix select dropdown options visibility */
+select option {
+    background-color: #0b1121; /* Dark background */
+    color: #f8fafc; /* Light text */
+}
