@@ -1,244 +1,450 @@
 <!DOCTYPE html>
-<html class="dark" lang="vi">
+<html lang="vi">
 
 <head>
   <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>REXON | Nền tảng Digital Twin cho doanh nghiệp Việt Nam</title>
   <meta name="description"
     content="REXON cung cấp nền tảng Digital Twin giúp doanh nghiệp mô phỏng, tối ưu và vận hành tài sản trong thời gian thực, tăng hiệu suất và giảm rủi ro." />
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-    rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-    rel="stylesheet" />
-  <link rel="preconnect" href="https://www.canva.com">
-  <link rel="preload" as="document" href="https://www.canva.com/design/DAG-d_ujYBM/Buywc8Tmv44Mp0qnom5-Vg/view?embed">
-  <style>
-    .group .group-hover\:block {
-      display: none;
-    }
 
-    .group:hover .group-hover\:block {
-      display: block;
-    }
+  <!-- Open Graph -->
+  <meta property="og:title" content="REXON | Nền tảng Digital Twin cho doanh nghiệp Việt Nam" />
+  <meta property="og:description"
+    content="Nền tảng Digital Twin giúp doanh nghiệp mô phỏng, tối ưu và vận hành tài sản trong thời gian thực." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vuongvy.github.io/" />
 
-    .group .group-hover\:flex {
-      display: none;
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "REXON",
+    "description": "Nền tảng Digital Twin cho doanh nghiệp Việt Nam — mô phỏng, tối ưu và vận hành tài sản trong thời gian thực.",
+    "url": "https://vuongvy.github.io/",
+    "logo": "https://vuongvy.github.io/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+84-934-697-600",
+      "email": "rexondigitaltwin.tech@gmail.com",
+      "contactType": "customer service"
     }
-
-    .group:hover .group-hover\:flex {
-      display: flex;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            "primary": "#ffffff",
-            "background-light": "#ffffff",
-            "background-dark": "#000000",
-          },
-          fontFamily: {
-            "display": ["Inter", "sans-serif"]
-          },
-          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
-        },
-      },
-    }
+  }
   </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.json" />
 </head>
 
-<body class="font-display">
-  <div class="relative flex h-auto min-h-screen w-full flex-col bg-black">
-    <header class="sticky top-4 z-50 mx-auto w-full max-w-5xl px-4">
-      <nav
-        class="flex items-center justify-between whitespace-nowrap rounded-full border border-white/10 bg-black/50 px-6 py-1 text-white backdrop-blur-md">
-        <div class="flex items-center gap-4">
-          <div class="size-6 text-white">
-            <a href="index.html">
-              <img src="logo.png" alt="Logo" class="ml-4"
-                style="max-width:100px; height:auto; object-fit:contain; margin-top:9px;" />
-            </a>
-          </div>
-          <h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-white"></h2>
-        </div>
-        <!-- Hamburger button for mobile -->
-        <button id="hamburger-btn"
-          class="md:hidden flex items-center justify-center p-2 rounded text-white focus:outline-none"
-          aria-label="Mở menu">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-        <div class="hidden items-center gap-8 md:flex justify-center w-full">
-          <a class="text-sm font-medium text-white/100 transition-colors hover:text-white" href="index.html">Home</a>
-          <div class="group relative">
-            <a class="flex cursor-pointer items-center gap-1 text-sm font-medium text-white/100 transition-colors hover:text-white"
-              href="solutions.html">
-              Solutions
-              <span
-                class="material-symbols-outlined text-base transition-transform group-hover:rotate-180">expand_more</span>
-            </a>
-            <div
-              class="group-hover:block absolute left-0 top-full hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
-              <div class="group/sub relative">
-                <a class="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
-                  href="solutions.html#digital-twin">
-                  Digital Twin
-                  <span
-                    class="material-symbols-outlined text-base transition-transform group-hover/sub:-rotate-90">chevron_right</span>
-                </a>
-                <div
-                  class="group-hover/sub:block absolute left-full top-0 hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
-                  <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
-                    href="waiting.html">Smart Campus</a>
-                  <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
-                    href="waiting.html">Smart Building</a>
-                  <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
-                    href="smart-infrastructure.html">Smart Infrastructure</a>
-                </div>
-              </div>
-              <div class="group/sub relative">
-                <a class="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
-                  href="solutions.html#interactive">
-                  Interactive Product Experience
-                  <span
-                    class="material-symbols-outlined text-base transition-transform group-hover/sub:-rotate-90">chevron_right</span>
-                </a>
-                <div
-                  class="group-hover/sub:block absolute left-full top-0 hidden min-w-[200px] rounded-lg border border-white/10 bg-black/50 p-2 shadow-lg backdrop-blur-md">
-                  <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
-                    href="waiting.html">Virtual Showrooms & 3D Web1</a>
-                  <a class="block rounded-md px-3 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
-                    href="waiting.html">Interactive Product Configurator</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
-            href="product.html">Product</a>
-          <a class="text-sm font-medium text-white/100 transition-colors hover:text-white"
-            href="presentation.html">Presentation</a>
-          <a class="text-sm font-medium text-white/100 transition-colors hover:text-white" href="about.html">About
-            Us</a>
-          <a class="text-sm font-medium text-white/100 transition-colors hover:text-white" href="contact.html">Contact
-            Us</a>
-        </div>
-      </nav>
-      <!-- Mobile menu, hidden by default -->
-      <div id="mobile-menu"
-        class="md:hidden absolute left-1/2 top-[60px] -translate-x-1/2 w-11/12 max-w-sm bg-black/90 border border-white/10 rounded-xl shadow-2xl z-[999] flex flex-col items-center gap-4 py-8 text-white text-lg font-medium transition-all duration-300 ease-in-out hidden backdrop-blur-lg">
-        <a href="index.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Home</a>
-        <div class="w-full">
-          <button id="mobile-solutions-btn"
-            class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded flex items-center justify-between">
-            <span class="block w-full text-center">Solutions</span>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVBAR
+       ═══════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <img src="logo.png" alt="REXON Logo" />
+      </a>
+
+      <div class="navbar__links" id="navbar-links">
+        <a href="index.html" class="navbar__link active">Trang chủ</a>
+
+        <div class="navbar__dropdown">
+          <button class="navbar__dropdown-toggle">
+            Giải pháp
+            <svg class="navbar__dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
           </button>
-          <div id="mobile-solutions-menu" class="flex-col gap-2 mt-2 hidden">
-            <a class="block rounded-md px-6 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
-              href="solutions.html#digital-twin">Digital Twin</a>
-            <a class="block rounded-md px-6 py-2 text-sm text-white/80 hover:bg-primary/30 hover:text-white"
-              href="solutions.html#interactive">Interactive Product Experience</a>
-          </div>
-        </div>
-        <a href="product.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Product</a>
-        <a href="presentation.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Presentation</a>
-        <a href="about.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">About Us</a>
-        <a href="contact.html" class="py-2 px-4 w-full text-center hover:bg-primary/30 rounded">Contact Us</a>
-      </div>
-    </header>
-    <main class="flex flex-grow flex-col">
-      <div class="relative -mt-24 flex flex-grow flex-col">
-        <div class="@container flex flex-grow">
-          <div class="@[480px]:p-4 flex flex-grow">
-            <div
-              class="flex flex-grow flex-col items-center justify-center gap-6 rounded-lg bg-cover bg-center bg-no-repeat p-4 @[480px]:gap-8"
-              data-alt="Abstract monochrome background"
-              style="background-image: linear-gradient(to bottom, #000 40%, #111 70%, #222 100%);">
-              <div style="margin-top:80px;" class="text-center px-2 sm:px-0">
-                <h2 class="font-medium leading-normal text-white/100 text-center text-2xl sm:text-3xl md:text-4xl"
-                  style="font-size:clamp(1.5rem,5vw,2.5rem); font-family: 'Inter', sans-serif; font-weight: 500;">
-                  Nền tảng Digital Twin<br />
-                  cho doanh nghiệp Việt Nam
-                </h2>
-                <button onclick="window.location.href='solutions.html'"
-                  class="flex min-w-[84px] max-w-full sm:max-w-[480px] mx-auto cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 sm:h-12 px-4 sm:px-5 text-xs sm:text-base font-bold leading-normal tracking-[0.015em] text-white transition-colors hover:bg-white/20 border border-white/20"
-                  style="margin-top:20px; background: rgba(255,255,255,0.1);">
-                  <span class="truncate" style="color:#ffffff">Khám phá hệ sinh thái số</span>
-                </button>
-                <h2 class="font-normal leading-normal text-white/70 text-center text-xs sm:text-sm"
-                  style="margin-top:12px; font-size:clamp(0.7rem,2vw,0.95rem);">
-                  Nền tảng Digital Twin của REXON giúp doanh nghiệp<br />mô phỏng – tối ưu – vận hành tài sản trong thời
-                  gian thực,<br />tăng hiệu suất, giảm rủi ro và ra quyết định nhanh hơn.
-                </h2>
+          <div class="navbar__dropdown-menu">
+            <a href="solutions.html#digital-twin" class="navbar__dropdown-item">
+              <div class="navbar__dropdown-item-icon">
+                <span class="material-symbols-outlined">hub</span>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Features Teaser Section -->
-        <div class="w-full max-w-5xl mx-auto px-4 py-12">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <a href="solutions.html#digital-twin"
-              class="group p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
-              <span class="material-symbols-outlined text-white text-3xl mb-4">hub</span>
-              <h3 class="text-lg font-bold text-white mb-2 group-hover:underline transition-colors">Digital Twin
-                Platform</h3>
-              <p class="text-white/60 text-sm">Quản lý và vận hành tài sản thông minh, trực quan trên nền tảng số.</p>
+              <div class="navbar__dropdown-item-text">
+                <span class="navbar__dropdown-item-label">Digital Twin</span>
+                <span class="navbar__dropdown-item-desc">Mô phỏng và quản lý tài sản</span>
+              </div>
             </a>
-            <a href="product.html"
-              class="group p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
-              <span class="material-symbols-outlined text-white text-3xl mb-4">view_in_ar</span>
-              <h3 class="text-lg font-bold text-white mb-2 group-hover:underline transition-colors">Platform & Tools
-              </h3>
-              <p class="text-white/60 text-sm">Hệ sinh thái sản phẩm từ 3D Viewer đến Mobile App hiện trường.</p>
+            <a href="solutions.html#interactive" class="navbar__dropdown-item">
+              <div class="navbar__dropdown-item-icon">
+                <span class="material-symbols-outlined">view_in_ar</span>
+              </div>
+              <div class="navbar__dropdown-item-text">
+                <span class="navbar__dropdown-item-label">Interactive Experience</span>
+                <span class="navbar__dropdown-item-desc">Trải nghiệm tương tác 3D</span>
+              </div>
             </a>
-            <a href="about.html"
-              class="group p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
-              <span class="material-symbols-outlined text-white text-3xl mb-4">groups</span>
-              <h3 class="text-lg font-bold text-white mb-2 group-hover:underline transition-colors">Về REXON</h3>
-              <p class="text-white/60 text-sm">Đội ngũ chuyên gia công nghệ và artist hàng đầu Việt Nam.</p>
+            <a href="smart-infrastructure.html" class="navbar__dropdown-item">
+              <div class="navbar__dropdown-item-icon">
+                <span class="material-symbols-outlined">apartment</span>
+              </div>
+              <div class="navbar__dropdown-item-text">
+                <span class="navbar__dropdown-item-label">Smart Infrastructure</span>
+                <span class="navbar__dropdown-item-desc">Hạ tầng thông minh</span>
+              </div>
             </a>
           </div>
         </div>
 
-    </main>
-    <div class="mx-auto w-full max-w-5xl">
-      <footer
-        class="flex flex-col items-center gap-8 border-t border-gray-200 px-5 py-10 text-center dark:border-white/10 @container">
-        <div class="flex flex-col items-center gap-4 text-center text-sm text-gray-600 dark:text-gray-400">
-          <p>Contact: 0934 697 600 | Email: rexondigitaltwin.tech@gmail.com</p>
-          <p>© 2025 REXON. All rights reserved.</p>
-        </div>
-      </footer>
+        <a href="product.html" class="navbar__link">Sản phẩm</a>
+        <a href="presentation.html" class="navbar__link">Demo</a>
+        <a href="about.html" class="navbar__link">Về chúng tôi</a>
+        <a href="contact.html" class="btn btn--primary btn--sm">Liên hệ tư vấn</a>
+      </div>
+
+      <button class="navbar__toggle" id="nav-toggle" aria-label="Mở menu">
+        <span></span>
+      </button>
     </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu__close" id="mobile-close" aria-label="Đóng menu">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <a href="index.html" class="mobile-menu__link">Trang chủ</a>
+    <a href="solutions.html" class="mobile-menu__link">Giải pháp</a>
+    <a href="product.html" class="mobile-menu__link">Sản phẩm</a>
+    <a href="presentation.html" class="mobile-menu__link">Demo</a>
+    <a href="about.html" class="mobile-menu__link">Về chúng tôi</a>
+    <a href="contact.html" class="btn btn--primary btn--lg" style="margin-top: var(--space-4);">Liên hệ tư vấn</a>
   </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__orb hero__orb--1"></div>
+      <div class="hero__orb hero__orb--2"></div>
+      <div class="hero__orb hero__orb--3"></div>
+      <div class="hero__grid"></div>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__badge reveal">
+        <span class="hero__badge-dot"></span>
+        Digital Twin Platform
+      </div>
+
+      <h1 class="hero__title reveal reveal-delay-1">
+        Nền tảng<br />
+        <span class="hero__title-accent">Digital Twin</span><br />
+        cho doanh nghiệp Việt Nam
+      </h1>
+
+      <p class="hero__subtitle reveal reveal-delay-2">
+        Mô phỏng, tối ưu và vận hành tài sản trong thời gian thực.
+        Tăng hiệu suất, giảm rủi ro, ra quyết định nhanh hơn.
+      </p>
+
+      <div class="hero__actions reveal reveal-delay-3">
+        <a href="solutions.html" class="btn btn--primary btn--lg">Khám phá giải pháp</a>
+        <a href="contact.html" class="btn btn--outline btn--lg">Liên hệ tư vấn</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <span>Cuộn xuống</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       VIDEO SHOWCASE
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Dự án tiêu biểu</p>
+        <h2 class="section-title">Trải nghiệm Digital Twin thực tế</h2>
+        <p class="section-desc">Xem cách REXON biến các dự án bất động sản thành trải nghiệm tương tác sống động.</p>
+      </div>
+
+      <div class="video-grid">
+        <div class="video-card reveal">
+          <div class="video-card__embed">
+            <iframe src="https://www.youtube.com/embed/PHU43jULDUw" title="REXON - Nhà mẫu Digital Twin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-card__info">
+            <h3 class="video-card__title">Nhà mẫu Digital Twin</h3>
+            <p class="video-card__desc">Trải nghiệm tham quan nhà mẫu ảo tương tác 3D</p>
+          </div>
+        </div>
+
+        <div class="video-card reveal reveal-delay-1">
+          <div class="video-card__embed">
+            <iframe src="https://www.youtube.com/embed/XZ6O4h4C5-k" title="REXON - Giải pháp Showroom ảo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-card__info">
+            <h3 class="video-card__title">Showroom ảo tương tác</h3>
+            <p class="video-card__desc">Giải pháp trình bày dự án bất động sản hiện đại</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SOLUTIONS OVERVIEW
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Giải pháp</p>
+        <h2 class="section-title">Hệ sinh thái Digital Twin toàn diện</h2>
+        <p class="section-desc">Từ mô phỏng 3D đến vận hành thời gian thực, REXON cung cấp giải pháp chuyên biệt cho
+          từng nhu cầu.</p>
+      </div>
+
+      <div class="solutions-grid">
+        <a href="solutions.html#digital-twin" class="card reveal">
+          <div class="card__icon">
+            <span class="material-symbols-outlined">hub</span>
+          </div>
+          <h3 class="card__title">Digital Twin Platform</h3>
+          <p class="card__desc">Quản lý và vận hành tài sản thông minh trên nền tảng số. Tích hợp dữ liệu IoT, BIM và
+            GIS trong một giao diện trực quan.</p>
+        </a>
+
+        <a href="solutions.html#interactive" class="card reveal reveal-delay-1">
+          <div class="card__icon">
+            <span class="material-symbols-outlined">view_in_ar</span>
+          </div>
+          <h3 class="card__title">Interactive Experience</h3>
+          <p class="card__desc">Trải nghiệm tương tác 3D cho bất động sản, showroom ảo và cấu hình sản phẩm. Khách
+            hàng khám phá sản phẩm mọi lúc, mọi nơi.</p>
+        </a>
+
+        <a href="smart-infrastructure.html" class="card reveal reveal-delay-2">
+          <div class="card__icon">
+            <span class="material-symbols-outlined">apartment</span>
+          </div>
+          <h3 class="card__title">Smart Infrastructure</h3>
+          <p class="card__desc">Hạ tầng thông minh cho tòa nhà, khu đô thị và khu công nghiệp. Giám sát, phân tích và
+            tối ưu hóa vận hành tự động.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FEATURE HIGHLIGHTS
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Tính năng</p>
+        <h2 class="section-title">Công nghệ đẳng cấp, trải nghiệm vượt trội</h2>
+      </div>
+
+      <!-- Feature 1 -->
+      <div class="feature-split reveal">
+        <div class="feature-split__visual">
+          <div class="feature-split__visual-inner">
+            <span class="material-symbols-outlined feature-split__visual-icon">3d_rotation</span>
+          </div>
+        </div>
+        <div class="feature-split__content">
+          <p class="feature-split__label">3D Visualization</p>
+          <h3 class="feature-split__title">Mô phỏng 3D chất lượng cao</h3>
+          <p class="feature-split__desc">Render thời gian thực với chất lượng hình ảnh điện ảnh. Hỗ trợ duyệt nội
+            ngoại thất, chuyển đổi vật liệu, ánh sáng ngày/đêm — tất cả trên trình duyệt web.</p>
+          <a href="product.html" class="btn btn--ghost btn--sm" style="align-self: flex-start;">Tìm hiểu thêm →</a>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-split feature-split--reverse reveal">
+        <div class="feature-split__visual">
+          <div class="feature-split__visual-inner">
+            <span class="material-symbols-outlined feature-split__visual-icon">monitoring</span>
+          </div>
+        </div>
+        <div class="feature-split__content">
+          <p class="feature-split__label">Real-time Monitoring</p>
+          <h3 class="feature-split__title">Giám sát thời gian thực</h3>
+          <p class="feature-split__desc">Tích hợp dữ liệu IoT sensors, BMS và SCADA vào mô hình 3D. Dashboard trực
+            quan giúp phát hiện sự cố sớm, tối ưu năng lượng và bảo trì dự đoán.</p>
+          <a href="solutions.html#digital-twin" class="btn btn--ghost btn--sm" style="align-self: flex-start;">Tìm hiểu
+            thêm →</a>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-split reveal">
+        <div class="feature-split__visual">
+          <div class="feature-split__visual-inner">
+            <span class="material-symbols-outlined feature-split__visual-icon">devices</span>
+          </div>
+        </div>
+        <div class="feature-split__content">
+          <p class="feature-split__label">Cross-platform</p>
+          <h3 class="feature-split__title">Đa nền tảng, truy cập mọi nơi</h3>
+          <p class="feature-split__desc">Chạy mượt mà trên desktop, tablet và mobile. Hỗ trợ màn hình cảm ứng lớn cho
+            sales gallery, kiosk tương tác và web browser chuẩn.</p>
+          <a href="product.html" class="btn btn--ghost btn--sm" style="align-self: flex-start;">Tìm hiểu thêm →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CTA STRIP
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-strip reveal">
+        <div class="cta-strip__bg"></div>
+        <div class="cta-strip__content">
+          <h2 class="cta-strip__title">Sẵn sàng khám phá<br /><span class="hero__title-accent">Digital Twin</span>?
+          </h2>
+          <p class="cta-strip__desc">Liên hệ ngay để nhận tư vấn miễn phí và xem demo trực tiếp từ đội ngũ REXON.</p>
+          <a href="contact.html" class="btn btn--primary btn--lg">Liên hệ ngay</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <!-- Brand column -->
+        <div>
+          <a href="index.html" class="navbar__logo">
+            <img src="logo.png" alt="REXON Logo" />
+          </a>
+          <p class="footer__brand-desc">Nền tảng Digital Twin giúp doanh nghiệp Việt Nam mô phỏng, tối ưu và vận hành
+            tài sản trong thời gian thực.</p>
+        </div>
+
+        <!-- Solutions -->
+        <div>
+          <h4 class="footer__col-title">Giải pháp</h4>
+          <div class="footer__col-links">
+            <a href="solutions.html#digital-twin" class="footer__col-link">Digital Twin</a>
+            <a href="solutions.html#interactive" class="footer__col-link">Interactive Experience</a>
+            <a href="smart-infrastructure.html" class="footer__col-link">Smart Infrastructure</a>
+            <a href="masterplan.html" class="footer__col-link">Masterplan</a>
+          </div>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <h4 class="footer__col-title">Công ty</h4>
+          <div class="footer__col-links">
+            <a href="about.html" class="footer__col-link">Về chúng tôi</a>
+            <a href="product.html" class="footer__col-link">Sản phẩm</a>
+            <a href="presentation.html" class="footer__col-link">Demo</a>
+            <a href="contact.html" class="footer__col-link">Liên hệ</a>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="footer__col-title">Liên hệ</h4>
+          <div class="footer__col-links">
+            <a href="tel:0934697600" class="footer__col-link">0934 697 600</a>
+            <a href="mailto:rexondigitaltwin.tech@gmail.com" class="footer__col-link">rexondigitaltwin.tech@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2025 REXON. All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="https://www.youtube.com/@rexondigitaltwin" class="footer__social-link" target="_blank"
+            rel="noopener noreferrer" aria-label="YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SCRIPTS
+       ═══════════════════════════════════════════════════════ -->
   <script>
-    const hamburgerBtn = document.getElementById('hamburger-btn');
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    const scrollThreshold = 60;
+    function onScroll() {
+      if (window.scrollY > scrollThreshold) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Mobile menu
+    const navToggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-    hamburgerBtn.addEventListener('click', function () {
-      mobileMenu.classList.toggle('hidden');
+    const mobileClose = document.getElementById('mobile-close');
+
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileClose.addEventListener('click', () => {
+      navToggle.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+    // Close menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
     });
 
-    // Mobile accordion for solutions
-    const mobileSolutionsBtn = document.getElementById('mobile-solutions-btn');
-    const mobileSolutionsMenu = document.getElementById('mobile-solutions-menu');
-    if (mobileSolutionsBtn) {
-      mobileSolutionsBtn.addEventListener('click', function () {
-        if (mobileSolutionsMenu) mobileSolutionsMenu.classList.toggle('hidden');
+    // Scroll reveal with IntersectionObserver
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
       });
-    }
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+    revealElements.forEach(el => revealObserver.observe(el));
   </script>
+
 </body>
 
 </html>
