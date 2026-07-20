@@ -898,3 +898,27 @@ p {
     justify-content: center;
     border: 1px solid rgba(0, 255, 255, 0.2);
 }
+
+/* Refined Solution Cards (Full width image) */
+.value-card {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.value-card .solution-img {
+    width: 100%;
+    height: 240px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 0;
+}
+.value-card h3 {
+    padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+    margin: 0;
+}
+.value-card p {
+    padding: 0 1.5rem 2rem 1.5rem;
+    margin: 0;
+}
