@@ -64,13 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const lastName = document.getElementById('lastName').value;
             const email = document.getElementById('email').value;
             const company = document.getElementById('company').value;
-            const phone = document.getElementById('phone').value;
+            const interestElement = document.getElementById('interest');
+            const interest = interestElement ? interestElement.options[interestElement.selectedIndex].text : 'Không có';
 
             const text = `🔔 *CÓ NGƯỜI ĐĂNG KÝ DEMO MỚI*\n\n` +
                          `👤 *Tên:* ${firstName} ${lastName}\n` +
                          `📧 *Email:* ${email}\n` +
                          `🏢 *Công ty:* ${company}\n` +
-                         `📞 *SĐT:* ${phone || 'Không có'}`;
+                         `🎯 *Lĩnh vực quan tâm:* ${interest}`;
 
             const token = '8720241884:AAGRHB2vIeoCmAnolFOwBmbQH6igZ5jMVuo';
             const chat_id = '1420783300'; // Đã cập nhật Chat ID của bạn
