@@ -1,9 +1,12 @@
 {
-  "dependencies": {
-    "express": "^5.2.1",
-    "multer": "^2.1.1"
-  },
+  "name": "rexon-website",
+  "version": "1.0.0",
+  "description": "REXON Digital Twin Website",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }
