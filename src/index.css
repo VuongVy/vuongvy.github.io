@@ -1,0 +1,118 @@
+@import '@astryxdesign/core/reset.css';
+@import '@astryxdesign/core/astryx.css';
+@import '@astryxdesign/theme-neutral/theme.css';
+
+/* ============================================
+   REXON Custom Design System
+   Dark theme overrides + custom properties
+   ============================================ */
+
+:root {
+  --rexon-bg: #000000;
+  --rexon-bg-light: #070707;
+  --rexon-bg-card: rgba(255, 255, 255, 0.04);
+  --rexon-text: #ffffff;
+  --rexon-text-muted: #9a9a9a;
+  --rexon-border: rgba(255, 255, 255, 0.08);
+  --rexon-border-hover: rgba(255, 255, 255, 0.18);
+  --rexon-glass-blur: blur(24px);
+  --rexon-accent: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+  --rexon-accent-soft: rgba(99, 102, 241, 0.15);
+  --rexon-radius: 20px;
+  --rexon-radius-sm: 12px;
+  --rexon-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --rexon-transition: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--rexon-font);
+  background-color: var(--rexon-bg);
+  color: var(--rexon-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Force Astryx to use dark mode visuals */
+[data-astryx-theme] {
+  color-scheme: dark;
+}
+
+/* Override Astryx card backgrounds for dark theme */
+.astryx-card {
+  background: var(--rexon-bg-card) !important;
+  border-color: var(--rexon-border) !important;
+  backdrop-filter: var(--rexon-glass-blur);
+  -webkit-backdrop-filter: var(--rexon-glass-blur);
+}
+
+/* Override Astryx section backgrounds */
+.astryx-section {
+  background: transparent !important;
+}
+
+/* Override Astryx button for dark mode */
+.astryx-button[data-variant="primary"] {
+  background: var(--rexon-accent) !important;
+  border: none !important;
+  color: #fff !important;
+}
+
+.astryx-button[data-variant="secondary"] {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: var(--rexon-border) !important;
+  color: #fff !important;
+}
+
+.astryx-button[data-variant="ghost"] {
+  color: #fff !important;
+}
+
+/* Override Astryx text colors for dark mode */
+.astryx-text,
+.astryx-heading {
+  color: var(--rexon-text);
+}
+
+.astryx-text[data-color="secondary"] {
+  color: var(--rexon-text-muted) !important;
+}
+
+/* Override Astryx TopNav for dark mode */
+.astryx-top-nav {
+  background: transparent !important;
+  border-bottom: none !important;
+}
+
+/* Override Astryx inputs for dark mode */
+.astryx-text-input input,
+.astryx-text-area textarea {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: var(--rexon-border) !important;
+  color: #fff !important;
+}
+
+.astryx-text-input input:focus,
+.astryx-text-area textarea:focus {
+  border-color: rgba(99, 102, 241, 0.5) !important;
+}
+
+.astryx-field label {
+  color: var(--rexon-text-muted) !important;
+}
+
+/* Override Astryx divider for dark mode */
+.astryx-divider {
+  background-color: var(--rexon-border) !important;
+}
