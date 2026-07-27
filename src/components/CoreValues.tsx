@@ -1,51 +1,27 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
-const values = [
-  {
-    title: 'Đồng nhất trải nghiệm',
-    desc: 'Biến bản vẽ dự án thành những bản sao kỹ thuật số tương tác thông minh, tạo dựng niềm tin tuyệt đối cho khách hàng.',
-  },
-  {
-    title: 'Đồng bộ đội ngũ',
-    desc: 'Giúp toàn bộ nhân sự kinh doanh truyền tải chung một thông điệp rõ ràng.',
-  },
-  {
-    title: 'Thúc đẩy quyết định',
-    desc: 'Tạo ấn tượng mạnh mẽ với khách hàng và tăng tốc tỷ lệ chuyển đổi.',
-  },
-]
-
 export function CoreValues() {
-  const revealHeader = useScrollReveal()
+  const revealSection = useScrollReveal()
 
   return (
-    <section id="core-values" className="rexon-section" style={{ scrollMarginTop: 80 }}>
-      <div className="container">
-        <div ref={revealHeader} className="reveal section-header">
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: 800, letterSpacing: '-0.02em' }}>
-            Một nền tảng cho toàn bộ<br />trải nghiệm giới thiệu dự án
-          </h2>
-          <p>
-            Từ bản vẽ, dữ liệu sản phẩm đến trải nghiệm tư vấn, REXON giúp mọi thông tin
-            dự án được trình bày rõ ràng, nhất quán và dễ hiểu hơn trên từng điểm chạm bán hàng.
-          </p>
+    <section id="the-3-ones" className="section">
+        <div className="container">
+            <div ref={revealSection} className="solution-row fade-in-up">
+                <div className="solution-text">
+                    <div className="section-label">Triết lý thiết kế nền tảng</div>
+                    <h2>THE 3 ONES</h2>
+                    <p className="subtitle">Nguyên tắc cốt lõi trên toàn bộ sản phẩm của REXON</p>
+                    <ul className="feature-list">
+                        <li><strong>ONE DATA SOURCE:</strong> Một nguồn dữ liệu tập trung duy nhất, kết nối mượt mà với các hệ thống phân mảnh của doanh nghiệp.</li>
+                        <li><strong>ONE EXPERIENCE:</strong> Một trải nghiệm trực quan thống nhất trên mọi thiết bị và điểm chạm (PC, Tablet, Touchscreen, LED Wall).</li>
+                        <li><strong>ONE VERSION OF TRUTH:</strong> Một phiên bản dữ liệu minh bạch, đồng nhất tuyệt đối cho mọi người dùng và đối tác tham gia hệ thống.</li>
+                    </ul>
+                </div>
+                <div className="solution-visual glass-card">
+                    <div className="mockup-table"></div>
+                </div>
+            </div>
         </div>
-        <div className="grid-3">
-          {values.map((v, i) => (
-            <ValueCard key={v.title} {...v} delay={i + 1} />
-          ))}
-        </div>
-      </div>
     </section>
-  )
-}
-
-function ValueCard({ title, desc, delay }: { title: string; desc: string; delay: number }) {
-  const ref = useScrollReveal()
-  return (
-    <div ref={ref} className={`reveal reveal-delay-${delay} glass-card value-card`}>
-      <h3>{title}</h3>
-      <p>{desc}</p>
-    </div>
   )
 }

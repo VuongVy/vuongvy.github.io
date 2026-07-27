@@ -1,93 +1,37 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 export function Solutions() {
+  const revealHeader = useScrollReveal()
   const reveal1 = useScrollReveal()
   const reveal2 = useScrollReveal()
+  const reveal3 = useScrollReveal()
 
   return (
-    <section id="solutions" className="rexon-section" style={{ scrollMarginTop: 80 }}>
-      <div className="container">
-        {/* REXON Experience Gallery */}
-        <div ref={reveal1} className="reveal solution-block">
-          <div className="solution-text">
-            <span className="solution-tag">Solution</span>
-            <h2 className="solution-title">Rexon Experience Gallery</h2>
-            <p className="solution-subtitle">
-              Trải nghiệm 3D tương tác dành cho không gian bán hàng bất động sản hiện đại.
-            </p>
-            <p className="solution-desc">
-              Công cụ bán hàng cho mọi đội ngũ từ chuyên viên tại showroom, đại lý cho thuê
-              cho đến các môi giới trực tuyến.
-            </p>
-            <ul className="feature-list">
-              <li>
-                <strong>Vận hành linh hoạt:</strong> Tối ưu cho màn hình cảm ứng, LED wall,
-                touchpad và trình chiếu online.
-              </li>
-              <li>
-                <strong>Chi tiết trong từng góc nhìn:</strong> Tái hiện căn hộ, góc view,
-                mặt bằng sắc nét.
-              </li>
-              <li>
-                <strong>Tư vấn nhất quán:</strong> Hỗ trợ dẫn dắt câu chuyện dự án theo
-                luồng rõ ràng.
-              </li>
-              <li>
-                <strong>Đồng hành vận hành:</strong> Hỗ trợ hướng dẫn đào tạo giúp sales
-                tự tin.
-              </li>
-            </ul>
-            <a href="#demo" className="btn-outline">
-              Trải nghiệm demo ngay
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-          <div className="glass-card solution-visual">
-            <div className="mockup-screen">
-              <div className="screen-content" />
+    <section id="solutions" className="section bg-light">
+        <div className="container">
+            <div ref={revealHeader} className="section-header center fade-in-up">
+                <div className="section-label">Hệ sinh thái Giải pháp</div>
+                <h2>Đa dạng hóa ứng dụng Digital Twin</h2>
+                <p>Từ điểm chạm đầu tiên trong bán hàng đến vận hành hệ thống thành phố thông minh.</p>
             </div>
-          </div>
+            <div className="grid-3 mt-4">
+                <div ref={reveal1} className="glass-card value-card fade-in-up" style={{ animationDelay: '0.1s' }}>
+                    <img src="images/presales.png" alt="Presales" className="solution-img" />
+                    <h3>Presales Real Estate</h3>
+                    <p><strong>Beachhead Market:</strong> REXON Experience Gallery - Giải pháp Sale Gallery số hóa, giải quyết bài toán trải nghiệm & dữ liệu phân mảnh cho Chủ đầu tư BĐS.</p>
+                </div>
+                <div ref={reveal2} className="glass-card value-card fade-in-up" style={{ animationDelay: '0.2s' }}>
+                    <img src="images/operations.png" alt="Operations" className="solution-img" />
+                    <h3>Operations & Smart Campus</h3>
+                    <p>Quản lý vận hành tài sản thực tế qua Dashboard 3D. Tích hợp IoT để theo dõi thông số, cảnh báo an ninh và tối ưu hóa năng lượng cho tòa nhà/campus.</p>
+                </div>
+                <div ref={reveal3} className="glass-card value-card fade-in-up" style={{ animationDelay: '0.3s' }}>
+                    <img src="images/smartcity.png" alt="Smart City" className="solution-img" />
+                    <h3>Smart City & Industry</h3>
+                    <p>Mở rộng nền tảng để quy hoạch đô thị, công nghiệp, nông nghiệp và năng lượng bền vững thông qua kiến trúc dữ liệu quy mô lớn.</p>
+                </div>
+            </div>
         </div>
-
-        {/* IoT Interactive */}
-        <div ref={reveal2} className="reveal solution-block reverse" style={{ marginTop: 100 }}>
-          <div className="solution-text">
-            <span className="solution-tag">Solution</span>
-            <h2 className="solution-title">IoT Interactive</h2>
-            <p className="solution-subtitle">
-              Kết nối trải nghiệm 3D với sa bàn, thiết bị và các điểm chạm vật lý
-              trong không gian thật.
-            </p>
-            <ul className="feature-list">
-              <li>
-                <strong>Chạm để thấy phản hồi:</strong> Mỗi thao tác trên sa bàn/thiết bị
-                kích hoạt nội dung 3D.
-              </li>
-              <li>
-                <strong>Kết nối vật lý – số:</strong> Liên kết với đèn, cảm biến, mô hình.
-              </li>
-              <li>
-                <strong>Dễ hiểu khi thuyết trình:</strong> Minh họa khu vực, tiện ích sinh động.
-              </li>
-              <li>
-                <strong>Linh hoạt theo kịch bản:</strong> Tùy biến cho smart building, campus,
-                hạ tầng.
-              </li>
-            </ul>
-            <a href="#demo" className="btn-outline">
-              Trải nghiệm demo ngay
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-          <div className="glass-card solution-visual">
-            <div className="mockup-table" />
-          </div>
-        </div>
-      </div>
     </section>
   )
 }

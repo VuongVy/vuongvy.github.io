@@ -72,66 +72,57 @@ export function DemoForm() {
 
   return (
     <>
-      <section id="demo" className="rexon-section" style={{ scrollMarginTop: 80 }}>
+    <section id="demo" className="section">
         <div className="container">
-          <div ref={revealSection} className="reveal glass-card demo-grid">
-            <div className="demo-info">
-              <h2>Trải nghiệm thực tế cùng REXON</h2>
-              <p>
-                Đăng ký demo để khám phá cách REXON giúp đội ngũ bất động sản trình bày
-                dự án bằng trải nghiệm Digital Twin tương tác.
-              </p>
-              <ul className="demo-checklist">
-                <li>Trải nghiệm giao diện thực tế.</li>
-                <li>Linh hoạt lựa chọn giải pháp hiển thị.</li>
-                <li>Tương tác trực quan với tổng thể dự án.</li>
-                <li>Đề xuất lộ trình triển khai phù hợp.</li>
-              </ul>
+            <div ref={revealSection} className="demo-container glass-card fade-in-up">
+                <div className="demo-info">
+                    <h2>Sẵn sàng chuyển đổi số cùng REXON</h2>
+                    <p>Đăng ký tư vấn để khám phá cách REXON thiết kế giải pháp Bản sao số phù hợp với mô hình kinh doanh của bạn.</p>
+                    <ul>
+                        <li>Giải pháp Presales cho dự án BĐS.</li>
+                        <li>Tư vấn quy trình số hóa tài sản, tòa nhà.</li>
+                        <li>Demo tích hợp CRM và IoT.</li>
+                        <li>Phát triển các module chức năng mở rộng.</li>
+                    </ul>
+                </div>
+                <div className="demo-form-wrapper">
+                    <h3>Book a Demo / Tư vấn</h3>
+                    <form id="demoForm" className="demo-form" onSubmit={handleSubmit}>
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label>First Name*</label>
+                                <input type="text" name="firstName" required />
+                            </div>
+                            <div className="form-group">
+                                <label>Last Name*</label>
+                                <input type="text" name="lastName" required />
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <label>Business Email*</label>
+                            <input type="email" name="email" required />
+                        </div>
+                        <div className="form-group">
+                            <label>Company Name / Dự án*</label>
+                            <input type="text" name="company" required />
+                        </div>
+                        <div className="form-group">
+                            <label>Lĩnh vực quan tâm*</label>
+                            <select name="interest" required style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', color: '#fff' }}>
+                                <option value="" disabled selected>Chọn lĩnh vực...</option>
+                                <option value="Bất động sản (Presales)">Bất động sản (Presales)</option>
+                                <option value="Quản lý Vận hành Tòa nhà">Quản lý Vận hành Tòa nhà</option>
+                                <option value="Smart City / Industry">Smart City / Industry</option>
+                            </select>
+                        </div>
+                        <button type="submit" className="btn-primary w-100" disabled={loading}>
+                          {loading ? 'Đang gửi...' : 'Gửi Yêu Cầu'}
+                        </button>
+                    </form>
+                </div>
             </div>
-            <div className="demo-form-section">
-              <h3>Book a Demo</h3>
-              <form onSubmit={handleSubmit}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="firstName">First Name*</label>
-                    <input type="text" id="firstName" name="firstName" required placeholder="Họ" />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="lastName">Last Name*</label>
-                    <input type="text" id="lastName" name="lastName" required placeholder="Tên" />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email">Business Email*</label>
-                  <input type="email" id="email" name="email" required placeholder="email@company.com" />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="company">Company Name*</label>
-                  <input type="text" id="company" name="company" required placeholder="Tên công ty" />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="phone">Phone Number</label>
-                  <input type="tel" id="phone" name="phone" placeholder="0xxx xxx xxx" />
-                </div>
-                <button
-                  type="submit"
-                  className={`submit-btn${loading ? ' submit-btn--loading' : ''}`}
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <>
-                      Đang gửi...
-                      <span className="submit-btn-spinner" />
-                    </>
-                  ) : (
-                    'Submit'
-                  )}
-                </button>
-              </form>
-            </div>
-          </div>
         </div>
-      </section>
+    </section>
 
       {/* Toast Notifications */}
       {toast.visible && (
