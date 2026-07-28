@@ -27,7 +27,7 @@ export function Navbar() {
         <div className="nav-container">
             <div className="nav-brand">
                 <a href="#" className="logo" onClick={handleLinkClick}>
-                    <img src="logo.png" alt="REXON" onError={(e) => {
+                    <img src="/logo.png" alt="REXON" onError={(e) => {
                       (e.target as HTMLImageElement).src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMzAiPjx0ZXh0IHk9IjIwIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNmZmZmZmYiPlJFWE9OPC90ZXh0Pjwvc3ZnPg=='
                     }} />
                 </a>
