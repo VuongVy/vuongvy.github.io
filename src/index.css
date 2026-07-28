@@ -216,11 +216,11 @@ strong, b {
 .glass-card,
 .astryx-card,
 [class*="Card"] {
-  background: rgba(12, 18, 36, 0.82) !important;
+  background-color: rgba(12, 18, 36, 0.82) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 16px !important;
   padding: 2rem;
-  transition: transform var(--duration) var(--ease-out), border-color var(--duration) var(--ease-out), box-shadow var(--duration) var(--ease-out) !important;
+  transition: transform var(--duration) var(--ease-out), border-color var(--duration) var(--ease-out), box-shadow var(--duration) var(--ease-out), background-color var(--duration) var(--ease-out) !important;
   position: relative;
   overflow: hidden;
   transform: translateZ(0);
@@ -230,7 +230,7 @@ strong, b {
 .glass-card:hover,
 .astryx-card:hover,
 [class*="Card"]:hover {
-  background: rgba(16, 24, 48, 0.92) !important;
+  background-color: rgba(16, 24, 48, 0.92) !important;
   border-color: rgba(0, 212, 255, 0.4) !important;
   transform: translateY(-4px) translateZ(0) !important;
   box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15) !important;
@@ -418,11 +418,19 @@ strong, b {
   border-radius: 20px !important;
   position: relative;
   overflow: hidden;
-  background: url('/images/hero_bg.png') no-repeat center center !important;
+  background-image: url('/images/hero_bg.png') !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
   background-size: cover !important;
   border: 1px solid rgba(0, 212, 255, 0.3) !important;
   box-shadow: 0 0 40px rgba(0, 212, 255, 0.18) !important;
   transform: translateZ(0);
+}
+
+.hero-image:hover {
+  background-image: url('/images/hero_bg.png') !important;
+  border-color: rgba(0, 212, 255, 0.6) !important;
+  box-shadow: 0 0 50px rgba(0, 212, 255, 0.35) !important;
 }
 
 .hero-image .placeholder-3d { display: none; }
@@ -503,12 +511,20 @@ strong, b {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('/images/mockup.png') no-repeat center center !important;
+  background-image: url('/images/mockup.png') !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
   background-size: cover !important;
   border: 1px solid rgba(0, 212, 255, 0.3) !important;
   border-radius: 20px !important;
   box-shadow: 0 0 40px rgba(0, 212, 255, 0.15) !important;
   transform: translateZ(0);
+}
+
+.solution-visual:hover {
+  background-image: url('/images/mockup.png') !important;
+  border-color: rgba(0, 212, 255, 0.6) !important;
+  box-shadow: 0 0 50px rgba(0, 212, 255, 0.35) !important;
 }
 
 /* ---------- Video Showcase ---------- */
