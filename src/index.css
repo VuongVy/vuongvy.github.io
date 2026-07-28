@@ -31,7 +31,7 @@
   --gradient-text:       linear-gradient(135deg, #ffffff 40%, #00d4ff 100%);
 
   /* Typography */
-  --font-main:           'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-main:           'Roboto', system-ui, -apple-system, sans-serif;
   --spacing-section:     110px;
   --ease-out:            cubic-bezier(0.16, 1, 0.3, 1);
   --duration:            300ms;
@@ -48,8 +48,8 @@
   --color-border-emphasized:  rgba(0, 212, 255, 0.3) !important;
   --radius-element:           9999px !important;
   --radius-container:         16px !important;
-  --font-family-body:         'Outfit', 'Inter', system-ui, sans-serif !important;
-  --font-family-heading:      'Outfit', 'Inter', system-ui, sans-serif !important;
+  --font-family-body:         'Roboto', system-ui, sans-serif !important;
+  --font-family-heading:      'Roboto', system-ui, sans-serif !important;
 }
 
 /* ---------- Global Reset & Fonts ---------- */
