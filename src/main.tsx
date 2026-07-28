@@ -1,5 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import '@astryxdesign/core/astryx.css'
+import '@astryxdesign/theme-neutral/theme.css'
 import { Providers } from './providers'
 import App from './App'
 import './index.css'

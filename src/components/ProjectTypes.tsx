@@ -1,4 +1,6 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { Heading } from '@astryxdesign/core/Heading'
+import { Text } from '@astryxdesign/core/Text'
 
 export function ProjectTypes() {
   const revealHeader = useScrollReveal()
@@ -9,9 +11,9 @@ export function ProjectTypes() {
     <section id="showcase" className="section">
         <div className="container">
             <div ref={revealHeader} className="section-header center fade-in-up">
-                <div className="section-label">Showcase</div>
-                <h2>Trải nghiệm Nhà mẫu Digital Twin</h2>
-                <p>Khám phá không gian tương tác 3D chân thực dành riêng cho phân khúc Real Estate do REXON phát triển.</p>
+                <Text type="supporting" color="secondary" className="section-label">Showcase</Text>
+                <Heading level={2}>Trải nghiệm Nhà mẫu Digital Twin</Heading>
+                <Text type="body" color="secondary">Khám phá không gian tương tác 3D chân thực dành riêng cho phân khúc Real Estate do REXON phát triển.</Text>
             </div>
             <div className="video-grid">
                 <div ref={revealVideo1} className="video-wrapper fade-in-up" style={{ animationDelay: '0.1s' }}>

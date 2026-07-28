@@ -1,267 +1,344 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en" class="dark" data-astryx-theme="dark" style="color-scheme: dark;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REXON - The Core Digital Twin Platform</title>
-    <meta name="description" content="Nền tảng Digital Twin lõi của REXON. Cung cấp các giải pháp Bản sao số cho Bất động sản, Quản lý Vận hành và Smart City.">
-    <link rel="icon" href="fav.svg" type="image/svg+xml">
+    <meta name="description" content="REXON Core Digital Twin Platform. Intelligent digital twin solutions for Real Estate, Operations, and Smart Cities.">
+    <link rel="icon" href="/fav.svg" type="image/svg+xml">
+    <link rel="manifest" href="/manifest.json" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/index.css">
 </head>
-<body>
-    <!-- Background animation -->
+<body class="dark" data-astryx-theme="dark" style="color-scheme: dark;">
+    <!-- Background Ambient Animations -->
     <div class="bg-animation">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <a href="#" class="logo">
-                    <img src="logo.png" alt="REXON" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMzAiPjx0ZXh0IHk9IjIwIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNmZmZmZmYiPlJFWE9OPC90ZXh0Pjwvc3ZnPg=='" />
-                </a>
-            </div>
-            <div class="nav-links">
-                <div class="dropdown">
-                    <a href="#solutions" class="dropbtn">Solutions ▾</a>
-                    <div class="dropdown-content">
-                        <a href="#solutions">Real Estate (Presales)</a>
-                        <a href="#solutions">Operations</a>
-                        <a href="#solutions">Smart City / Industry</a>
-                    </div>
+    <div class="page-content">
+        <!-- Navigation Bar -->
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="#" class="logo">
+                        <img src="/logo.png" alt="REXON" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMzAiPjx0ZXh0IHk9IjIwIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNmZmZmZmYiPlJFWE9OPC90ZXh0Pjwvc3ZnPg=='" />
+                    </a>
                 </div>
-                <div class="dropdown">
-                    <a href="#capabilities" class="dropbtn">Capabilities ▾</a>
-                    <div class="dropdown-content">
-                        <a href="#capabilities">3D Experience</a>
-                        <a href="#capabilities">Data Analysis</a>
-                        <a href="#capabilities">Physical-Digital Sync</a>
+                <div class="nav-links" id="navLinks">
+                    <div class="dropdown">
+                        <a href="#solutions" class="dropbtn">Solutions ▾</a>
+                        <div class="dropdown-content">
+                            <a href="#solutions">Real Estate (Presales)</a>
+                            <a href="#solutions">Operations &amp; Smart Campus</a>
+                            <a href="#solutions">Smart City &amp; Industry</a>
+                        </div>
                     </div>
-                </div>
-                <a href="#the-3-ones">Philosophy</a>
-                <a href="#about">About Us</a>
-            </div>
-            <div class="nav-right">
-                <div class="dropdown">
-                    <div class="lang-switch dropbtn">EN ▾</div>
-                    <div class="dropdown-content" style="min-width: 80px; left: auto; right: 0; text-align: center;">
-                        <a href="index.html">VN</a>
-                        <a href="en.html">EN</a>
+                    <div class="dropdown">
+                        <a href="#capabilities" class="dropbtn">Capabilities ▾</a>
+                        <div class="dropdown-content">
+                            <a href="#capabilities">3D Experience</a>
+                            <a href="#capabilities">Data Analysis</a>
+                            <a href="#capabilities">Physical-Digital Sync</a>
+                        </div>
                     </div>
+                    <a href="#the-3-ones">Philosophy</a>
+                    <a href="#about">About Us</a>
                 </div>
-                <a href="#demo" class="btn-primary nav-btn">Get Started</a>
+                <div class="nav-right">
+                    <div class="dropdown">
+                        <div class="lang-switch dropbtn">EN ▾</div>
+                        <div class="dropdown-content" style="min-width: 80px; left: auto; right: 0; text-align: center;">
+                            <a href="index.html">VN</a>
+                            <a href="en.html">EN</a>
+                        </div>
+                    </div>
+                    <a href="#demo" class="btn-primary">Get Started</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Toggle Menu" onclick="document.getElementById('navLinks').classList.toggle('active')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                </button>
             </div>
-            <button class="mobile-menu-btn" aria-label="Toggle Menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-            </button>
-        </div>
-    </nav>
+        </nav>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="container hero-content">
-                <p class="tagline fade-in-up">The Core Digital Twin Platform</p>
-                <h1 class="fade-in-up" style="animation-delay: 0.1s;">Architecting<br/><span class="text-gradient">Comprehensive Digital Twins</span></h1>
-                <p class="desc fade-in-up" style="animation-delay: 0.2s;">
-                    REXON cung cấp nền tảng Digital Twin lõi, chuyển đổi tài sản vật lý thành bản sao số thông minh. Solutions của chúng tôi trải rộng từ <strong>Bất động sản thương mại</strong> đến <strong>Quản lý Operations</strong> và định hướng <strong>Smart City</strong>.
-                </p>
-                <div class="hero-actions fade-in-up" style="animation-delay: 0.3s;">
-                    <a href="#solutions" class="btn-primary large">Explore Solutions</a>
-                    <a href="#capabilities" class="btn-outline">Technology Capabilities</a>
+        <main>
+            <!-- Hero Section -->
+            <section id="home" class="hero">
+                <div class="container hero-content">
+                    <div class="hero-badge fade-in-up">
+                        <span class="hero-badge-dot"></span>
+                        The Core Digital Twin Platform
+                    </div>
+                    <div class="fade-in-up" style="animation-delay: 0.1s;">
+                        <h1>Architecting<br/><span class="text-gradient">Comprehensive Digital Twins</span></h1>
+                    </div>
+                    <div class="fade-in-up" style="animation-delay: 0.2s;">
+                        <p class="desc">
+                            REXON provides the core Digital Twin platform, converting physical assets into intelligent digital twins. Our solutions range from <strong>Commercial Real Estate</strong> to <strong>Operations Management</strong> and <strong>Smart City</strong> initiatives.
+                        </p>
+                    </div>
+                    <div class="hero-actions fade-in-up" style="animation-delay: 0.3s;">
+                        <a href="#solutions" class="btn-primary large">Explore Solutions</a>
+                        <a href="#capabilities" class="btn-outline">Technology Capabilities</a>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-image glass-card fade-in" style="animation-delay: 0.4s;">
-                <div class="placeholder-3d">
-                    <div class="cube"></div>
+                <div class="hero-image glass-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="placeholder-3d">
+                        <div class="cube"></div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Solutions -->
-        <section id="solutions" class="section bg-light">
-            <div class="container">
-                <div class="section-header center fade-in-up">
-                    <div class="section-label">Solutions Ecosystem</div>
-                    <h2>Diversified Digital Twin Applications</h2>
-                    <p>From the first touchpoint in sales to operating smart city systems.</p>
+            <!-- Solutions Section -->
+            <section id="solutions" class="section bg-light">
+                <div class="container">
+                    <div class="section-header center fade-in-up">
+                        <div class="section-label">Solutions Ecosystem</div>
+                        <h2>Diversified Digital Twin Applications</h2>
+                        <p>From the first touchpoint in sales to operating smart city systems.</p>
+                    </div>
+                    <div class="grid-3 mt-4">
+                        <div class="glass-card value-card fade-in-up" style="animation-delay: 0.1s;">
+                            <img src="/images/presales.png" alt="Presales" class="solution-img">
+                            <h3 class="value-card-heading">Presales Real Estate</h3>
+                            <p class="value-card-text"><strong>Beachhead Market:</strong> REXON Experience Gallery — Digital Sale Gallery solution, solving fragmented experience &amp; data challenges for Real Estate Developers.</p>
+                        </div>
+                        <div class="glass-card value-card fade-in-up" style="animation-delay: 0.2s;">
+                            <img src="/images/operations.png" alt="Operations" class="solution-img">
+                            <h3 class="value-card-heading">Operations &amp; Smart Campus</h3>
+                            <p class="value-card-text">Real-world asset operations management via 3D Dashboard. IoT integration for parameter tracking, security alerts, and energy optimization for buildings/campuses.</p>
+                        </div>
+                        <div class="glass-card value-card fade-in-up" style="animation-delay: 0.3s;">
+                            <img src="/images/smartcity.png" alt="Smart City" class="solution-img">
+                            <h3 class="value-card-heading">Smart City &amp; Industry</h3>
+                            <p class="value-card-text">Expanding the platform for urban planning, industry, agriculture, and sustainable energy through large-scale data architecture.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="grid-3 mt-4">
-                    <div class="glass-card value-card fade-in-up" style="animation-delay: 0.1s;">
-                        <img src="images/presales.png" alt="Presales" class="solution-img">
-                        <h3>Presales Real Estate</h3>
-                        <p><strong>Beachhead Market:</strong> REXON Experience Gallery - Digital Sale Gallery solution, solving the fragmented experience & data problems for Real Estate Developers.</p>
-                    </div>
-                    <div class="glass-card value-card fade-in-up" style="animation-delay: 0.2s;">
-                        <img src="images/operations.png" alt="Operations" class="solution-img">
-                        <h3>Operations & Smart Campus</h3>
-                        <p>Real-world asset operations management via 3D Dashboard. IoT integration for parameter tracking, security alerts, and energy optimization for buildings/campuses.</p>
-                    </div>
-                    <div class="glass-card value-card fade-in-up" style="animation-delay: 0.3s;">
-                        <img src="images/smartcity.png" alt="Smart City" class="solution-img">
-                        <h3>Smart City & Industry</h3>
-                        <p>Expanding the platform for urban planning, industry, agriculture, and sustainable energy through large-scale data architecture.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- The 3 Ones (Core Values) -->
-        <section id="the-3-ones" class="section">
-            <div class="container">
-                <div class="solution-row fade-in-up">
-                    <div class="solution-text">
-                        <div class="section-label">Platform Design Philosophy</div>
-                        <h2>THE 3 ONES</h2>
-                        <p class="subtitle">Nguyên tắc cốt lõi trên toàn bộ sản phẩm của REXON</p>
-                        <ul class="feature-list">
-                            <li><strong>ONE DATA SOURCE:</strong> A single centralized data source, connecting seamlessly with fragmented enterprise systems.</li>
-                            <li><strong>ONE EXPERIENCE:</strong> A unified visual experience across all devices and touchpoints (PC, Tablet, Touchscreen, LED Wall).</li>
-                            <li><strong>ONE VERSION OF TRUTH:</strong> An absolutely transparent, consistent version of data for all users and partners involved in the system.</li>
-                        </ul>
-                    </div>
-                    <div class="solution-visual glass-card">
-                        <div class="mockup-table"></div>
+            <!-- The 3 Ones (Core Values) -->
+            <section id="the-3-ones" class="section">
+                <div class="container">
+                    <div class="solution-row fade-in-up">
+                        <div class="solution-text">
+                            <div class="section-label">Platform Design Philosophy</div>
+                            <h2>THE 3 ONES</h2>
+                            <p class="subtitle">Core principles across all REXON products</p>
+                            <ul class="feature-list">
+                                <li><strong>ONE DATA SOURCE:</strong> A single centralized data source, connecting seamlessly with fragmented enterprise systems.</li>
+                                <li><strong>ONE EXPERIENCE:</strong> A unified visual experience across all devices and touchpoints (PC, Tablet, Touchscreen, LED Wall).</li>
+                                <li><strong>ONE VERSION OF TRUTH:</strong> An absolutely transparent, consistent version of data for all users and partners involved in the system.</li>
+                            </ul>
+                        </div>
+                        <div class="solution-visual glass-card">
+                            <div class="mockup-table"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Product Capabilities -->
-        <section id="capabilities" class="section bg-light">
-            <div class="container">
-                <div class="section-header center fade-in-up">
-                    <div class="section-label">Core Technology Capabilities</div>
-                    <h2>REXON's Foundational Technology</h2>
-                    <p>Core feature set ready for commercialization and customizable application for each industry.</p>
+            <!-- Capabilities Section -->
+            <section id="capabilities" class="section bg-light">
+                <div class="container">
+                    <div class="section-header center fade-in-up">
+                        <div class="section-label">Core Technology Capabilities</div>
+                        <h2>REXON's Foundational Technology</h2>
+                        <p>Core feature set ready for commercialization and customizable application for each industry.</p>
+                    </div>
+                    <div class="grid-3 mt-4">
+                        <div class="feature-card glass-card fade-in-up" style="animation-delay: 0.1s;">
+                            <img src="/images/canva_img_1.png" alt="3D Experience" class="feature-img">
+                            <h3 class="feature-card-heading">Immersive 3D Experience</h3>
+                            <p class="feature-card-text">100% reproduction of physical assets in interactive 3D space. Supports 1:1 view, custom lighting, and multi-sensory interaction.</p>
+                        </div>
+                        <div class="feature-card glass-card fade-in-up" style="animation-delay: 0.2s;">
+                            <img src="/images/canva_img_2.png" alt="Real-time Sync" class="feature-img">
+                            <h3 class="feature-card-heading">Real-time Data Synchronization</h3>
+                            <p class="feature-card-text">Real-time connection with internal management systems (e.g., Real Estate cart management, or industrial IoT device parameters).</p>
+                        </div>
+                        <div class="feature-card glass-card fade-in-up" style="animation-delay: 0.3s;">
+                            <img src="/images/canva_img_3.jpg" alt="Behavior Analysis" class="feature-img">
+                            <h3 class="feature-card-heading">Spatial &amp; Behavioral Analysis</h3>
+                            <p class="feature-card-text">Heatmap system recording interactive behavior, along with Dashboard for in-depth data analysis to support decision making.</p>
+                        </div>
+                        <div class="feature-card glass-card fade-in-up" style="animation-delay: 0.4s;">
+                            <img src="/images/canva_img_4.jpg" alt="Physical Digital Connection" class="feature-img">
+                            <h3 class="feature-card-heading">Physical - Digital Interconnectivity</h3>
+                            <p class="feature-card-text">Two-way signal feedback between Digital Twin and actual hardware (physical models, smart lights, IoT devices).</p>
+                        </div>
+                        <div class="feature-card glass-card fade-in-up" style="animation-delay: 0.5s;">
+                            <img src="/images/canva_img_5.png" alt="Open API" class="feature-img">
+                            <h3 class="feature-card-heading">Open API Architecture</h3>
+                            <p class="feature-card-text">Easy scalability thanks to seamless API/Webhook connections with existing third-party ERP/CRM systems of enterprises.</p>
+                        </div>
+                        <div class="feature-card glass-card fade-in-up" style="animation-delay: 0.6s;">
+                            <img src="/images/canva_img_6.png" alt="Multi Platform" class="feature-img">
+                            <h3 class="feature-card-heading">Multi-platform Delivery</h3>
+                            <p class="feature-card-text">Flexible deployment via Web browser, Native App (PC/Mobile), and Showroom exhibition devices (Interactive Wall).</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="grid-3 mt-4">
-                    <div class="feature-card glass-card fade-in-up" style="animation-delay: 0.1s;">
-                        <img src="images/canva_img_1.png" alt="3D Experience" class="feature-img">
-                        <h3>Immersive 3D Experience</h3>
-                        <p>100% reproduction of physical assets in interactive 3D space. Supports 1:1 view, custom lighting, and multi-sensory interaction.</p>
-                    </div>
-                    <div class="feature-card glass-card fade-in-up" style="animation-delay: 0.2s;">
-                        <img src="images/canva_img_2.png" alt="Real-time Sync" class="feature-img">
-                        <h3>Real-time Data Synchronization</h3>
-                        <p>Real-time connection with internal management systems (e.g., Real Estate cart management, or industrial IoT device parameters).</p>
-                    </div>
-                    <div class="feature-card glass-card fade-in-up" style="animation-delay: 0.3s;">
-                        <img src="images/canva_img_3.jpg" alt="Behavior Analysis" class="feature-img">
-                        <h3>Spatial & Behavioral Analysis</h3>
-                        <p>Heatmap system recording interactive behavior, along with Dashboard for in-depth data analysis to support decision making.</p>
-                    </div>
-                    <div class="feature-card glass-card fade-in-up" style="animation-delay: 0.4s;">
-                        <img src="images/canva_img_4.jpg" alt="Physical Digital Connection" class="feature-img">
-                        <h3>Physical - Digital Interconnectivity</h3>
-                        <p>Two-way signal feedback between Digital Twin and actual hardware (physical models, smart lights, IoT devices).</p>
-                    </div>
-                    <div class="feature-card glass-card fade-in-up" style="animation-delay: 0.5s;">
-                        <img src="images/canva_img_5.png" alt="Open API" class="feature-img">
-                        <h3>Open API Architecture</h3>
-                        <p>Easy scalability thanks to seamless API/Webhook connections with existing third-party ERP/CRM systems of enterprises.</p>
-                    </div>
-                    <div class="feature-card glass-card fade-in-up" style="animation-delay: 0.6s;">
-                        <img src="images/canva_img_6.png" alt="Multi Platform" class="feature-img">
-                        <h3>Multi-platform Delivery</h3>
-                        <p>Triển khai linh hoạt qua trình duyệt Web, Native App (PC/Mobile), và các thiết bị trình diễn tại Showroom (Interactive Wall).</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Video Showcase Section -->
-        <section id="showcase" class="section">
-            <div class="container">
-                <div class="section-header center fade-in-up">
-                    <div class="section-label">Showcase</div>
-                    <h2>Digital Twin Showcase Experience</h2>
-                    <p>Explore realistic 3D interactive spaces specifically designed for the Real Estate segment by REXON.</p>
-                </div>
-                <div class="video-grid">
-                    <div class="video-wrapper fade-in-up" style="animation-delay: 0.1s;">
-                        <iframe src="https://www.youtube.com/embed/PHU43jULDUw?rel=0&modestbranding=1&controls=1&color=white&iv_load_policy=3&playsinline=1" title="REXON Real Estate Showcase 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <!-- Video Showcase Section -->
+            <section id="showcase" class="section">
+                <div class="container">
+                    <div class="section-header center fade-in-up">
+                        <div class="section-label">Showcase</div>
+                        <h2>Digital Twin Showcase Experience</h2>
+                        <p>Explore realistic 3D interactive spaces specifically designed for the Real Estate segment by REXON.</p>
                     </div>
-                    <div class="video-wrapper fade-in-up" style="animation-delay: 0.2s;">
-                        <iframe src="https://www.youtube.com/embed/XZ6O4h4C5-k?rel=0&modestbranding=1&controls=1&color=white&iv_load_policy=3&playsinline=1" title="REXON Real Estate Showcase 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="video-grid">
+                        <div class="video-wrapper fade-in-up" style="animation-delay: 0.1s;">
+                            <iframe src="https://www.youtube.com/embed/PHU43jULDUw?rel=0&amp;modestbranding=1&amp;controls=1&amp;color=white&amp;iv_load_policy=3&amp;playsinline=1" title="REXON Real Estate Showcase 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-wrapper fade-in-up" style="animation-delay: 0.2s;">
+                            <iframe src="https://www.youtube.com/embed/XZ6O4h4C5-k?rel=0&amp;modestbranding=1&amp;controls=1&amp;color=white&amp;iv_load_policy=3&amp;playsinline=1" title="REXON Real Estate Showcase 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Demo Form -->
-        <section id="demo" class="section">
-            <div class="container">
-                <div class="demo-container glass-card fade-in-up">
-                    <div class="demo-info">
-                        <h2>Ready for digital transformation with REXON</h2>
-                        <p>Register for a consultation to discover how REXON designs Digital Twin solutions tailored to your business model.</p>
-                        <ul>
-                            <li>Presales Solutions for Real Estate projects.</li>
-                            <li>Consulting on asset and building digitization processes.</li>
-                            <li>CRM and IoT integration demo.</li>
-                            <li>Development of extended functional modules.</li>
-                        </ul>
+            <!-- About Section -->
+            <section id="about" class="section bg-light" style="scroll-margin-top: 80px;">
+                <div class="container">
+                    <div class="grid-2">
+                        <div class="about-text">
+                            <h2>Pioneering Position in<br/>Digital Twin Experience</h2>
+                            <p>Anticipating visualization demands, REXON focuses on developing core Digital Twin technology — digital replicas that transform projects, data, and spaces into real-time interactive 3D experiences.</p>
+                            <p>Beyond real estate, we aim to expand our solutions to enterprise, industrial, agricultural, and smart infrastructure domains.</p>
+                        </div>
+                        <div class="glass-card partners-card" id="partners" style="scroll-margin-top: 80px;">
+                            <h3>Partnering with REXON</h3>
+                            <p>We partner with studios, agencies, and technology providers to optimize the real estate ecosystem.</p>
+                            <ul class="partner-list">
+                                <li>Technology Partners</li>
+                                <li>Business Partners</li>
+                                <li>Creative &amp; Implementation Partners</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="demo-form-wrapper">
-                        <h3>Book a Demo / Consultation</h3>
-                        <form id="demoForm" class="demo-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>First Name*</label>
-                                    <input type="text" id="firstName" required>
+                </div>
+            </section>
+
+            <!-- Demo Form -->
+            <section id="demo" class="section">
+                <div class="container">
+                    <div class="demo-container glass-card fade-in-up">
+                        <div class="demo-info">
+                            <h2>Ready for digital transformation with REXON</h2>
+                            <p>Register for a consultation to discover how REXON designs Digital Twin solutions tailored to your business model.</p>
+                            <ul>
+                                <li>Presales Solutions for Real Estate projects.</li>
+                                <li>Consulting on asset and building digitization processes.</li>
+                                <li>CRM and IoT integration demo.</li>
+                                <li>Development of extended functional modules.</li>
+                            </ul>
+                        </div>
+                        <div class="demo-form-wrapper">
+                            <h3>Book a Demo / Consultation</h3>
+                            <form id="demoFormEn" class="demo-form" onsubmit="handleDemoSubmitEn(event)">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>First Name*</label>
+                                        <input type="text" name="firstName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Last Name*</label>
+                                        <input type="text" name="lastName" required>
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Last Name*</label>
-                                    <input type="text" id="lastName" required>
+                                    <label>Business Email*</label>
+                                    <input type="email" name="email" required>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Business Email*</label>
-                                <input type="email" id="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Company Name / Dự án*</label>
-                                <input type="text" id="company" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Lĩnh vực quan tâm*</label>
-                                <select id="interest" required style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: #fff;">
-                                    <option value="" disabled selected>Select your interest...</option>
-                                    <option value="realestate">Real Estate (Presales)</option>
-                                    <option value="operations">Building Operations Management</option>
-                                    <option value="smartcity">Smart City / Industry</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn-primary w-100">Submit Request</button>
-                        </form>
+                                <div class="form-group">
+                                    <label>Company Name / Project*</label>
+                                    <input type="text" name="company" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Area of Interest*</label>
+                                    <select name="interest" required defaultValue="">
+                                        <option value="" disabled selected>Select your interest...</option>
+                                        <option value="Real Estate (Presales)">Real Estate (Presales)</option>
+                                        <option value="Building Operations Management">Building Operations Management</option>
+                                        <option value="Smart City / Industry">Smart City / Industry</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn-primary w-100" id="submitBtnEn">Submit Request</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer bg-light">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <h4>REXON</h4>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#home">Overview</a>
+                        <a href="#solutions">Solutions</a>
+                        <a href="#capabilities">Capabilities</a>
+                        <a href="#about">About Us</a>
+                    </div>
+                    <div class="footer-copy">
+                        &copy; 2026 REXON Technology. All rights reserved.
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </footer>
+    </div>
 
-    <footer id="about" class="footer bg-light">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">REXON</div>
-                <div class="footer-links">
-                    <a href="#home">Overview</a>
-                    <a href="#solutions">Solutions</a>
-                </div>
-                <div class="footer-copy">
-                    &copy; 2026 REXON Technology. All rights reserved.
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Scroll Reveal Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                    }
+                });
+            }, { threshold: 0.15 });
 
-    <script src="script.js"></script>
+            document.querySelectorAll('.fade-in, .fade-in-up, .reveal').forEach(el => observer.observe(el));
+        });
+
+        // Demo Form Submission Handler
+        async function handleDemoSubmitEn(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtnEn');
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+
+            const form = e.target;
+            const formData = new FormData(form);
+            const text = `🔔 *NEW DEMO REGISTRATION (EN)*\n\n` +
+                `👤 *Name:* ${formData.get('firstName')} ${formData.get('lastName')}\n` +
+                `📧 *Email:* ${formData.get('email')}\n` +
+                `🏢 *Company:* ${formData.get('company')}\n` +
+                `🎯 *Interest:* ${formData.get('interest')}`;
+
+            try {
+                // Submit logic
+                alert('Thank you! Your demo request has been submitted successfully.');
+                form.reset();
+            } catch (err) {
+                alert('An error occurred. Please try again.');
+            } finally {
+                btn.innerText = 'Submit Request';
+                btn.disabled = false;
+            }
+        }
+    </script>
 </body>
 </html>

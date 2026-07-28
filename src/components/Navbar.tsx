@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Button } from '@astryxdesign/core/Button'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -50,7 +51,7 @@ export function Navbar() {
                         <a href="en.html">EN</a>
                     </div>
                 </div>
-                <a href="#demo" className="btn-primary nav-btn" onClick={handleLinkClick}>Get Started</a>
+                <Button label="Get Started" variant="primary" size="sm" href="#demo" />
             </div>
             <button
                 className="mobile-menu-btn"

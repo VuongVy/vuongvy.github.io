@@ -1,5 +1,9 @@
-import { useState, type FormEvent } from 'react'
+import { useState, useRef, useEffect, type FormEvent } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { Button } from '@astryxdesign/core/Button'
+import { Heading } from '@astryxdesign/core/Heading'
+import { Text } from '@astryxdesign/core/Text'
+import { Card } from '@astryxdesign/core/Card'
 
 interface ToastState {
   visible: boolean
@@ -11,10 +15,18 @@ export function DemoForm() {
   const revealSection = useScrollReveal()
   const [loading, setLoading] = useState(false)
   const [toast, setToast] = useState<ToastState>({ visible: false, type: 'success', message: '' })
+  const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    return () => {
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current)
+    }
+  }, [])
 
   const showToast = (type: 'success' | 'error', message: string) => {
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current)
     setToast({ visible: true, type, message })
-    setTimeout(() => setToast(prev => ({ ...prev, visible: false })), 4000)
+    toastTimerRef.current = setTimeout(() => setToast(prev => ({ ...prev, visible: false })), 4000)
   }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -74,10 +86,11 @@ export function DemoForm() {
     <>
     <section id="demo" className="section">
         <div className="container">
-            <div ref={revealSection} className="demo-container glass-card fade-in-up">
+            <div ref={revealSection} className="fade-in-up">
+              <Card className="demo-container">
                 <div className="demo-info">
-                    <h2>Sẵn sàng chuyển đổi số cùng REXON</h2>
-                    <p>Đăng ký tư vấn để khám phá cách REXON thiết kế giải pháp Bản sao số phù hợp với mô hình kinh doanh của bạn.</p>
+                    <Heading level={2}>Sẵn sàng chuyển đổi số cùng REXON</Heading>
+                    <Text type="body" color="secondary">Đăng ký tư vấn để khám phá cách REXON thiết kế giải pháp Bản sao số phù hợp với mô hình kinh doanh của bạn.</Text>
                     <ul>
                         <li>Giải pháp Presales cho dự án BĐS.</li>
                         <li>Tư vấn quy trình số hóa tài sản, tòa nhà.</li>
@@ -86,7 +99,7 @@ export function DemoForm() {
                     </ul>
                 </div>
                 <div className="demo-form-wrapper">
-                    <h3>Book a Demo / Tư vấn</h3>
+                    <Heading level={3}>Book a Demo / Tư vấn</Heading>
                     <form id="demoForm" className="demo-form" onSubmit={handleSubmit}>
                         <div className="form-row">
                             <div className="form-group">
@@ -108,18 +121,23 @@ export function DemoForm() {
                         </div>
                         <div className="form-group">
                             <label>Lĩnh vực quan tâm*</label>
-                            <select name="interest" required style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', color: '#fff' }}>
-                                <option value="" disabled selected>Chọn lĩnh vực...</option>
+                            <select name="interest" required defaultValue="" style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', color: '#fff' }}>
+                                <option value="" disabled>Chọn lĩnh vực...</option>
                                 <option value="Bất động sản (Presales)">Bất động sản (Presales)</option>
                                 <option value="Quản lý Vận hành Tòa nhà">Quản lý Vận hành Tòa nhà</option>
                                 <option value="Smart City / Industry">Smart City / Industry</option>
                             </select>
                         </div>
-                        <button type="submit" className="btn-primary w-100" disabled={loading}>
-                          {loading ? 'Đang gửi...' : 'Gửi Yêu Cầu'}
-                        </button>
+                        <Button
+                          label={loading ? 'Đang gửi...' : 'Gửi Yêu Cầu'}
+                          variant="primary"
+                          type="submit"
+                          isDisabled={loading}
+                          isLoading={loading}
+                        />
                     </form>
                 </div>
+              </Card>
             </div>
         </div>
     </section>

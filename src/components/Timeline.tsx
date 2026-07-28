@@ -1,4 +1,7 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { Heading } from '@astryxdesign/core/Heading'
+import { Text } from '@astryxdesign/core/Text'
+import { Card } from '@astryxdesign/core/Card'
 
 const steps = [
   {
@@ -30,12 +33,12 @@ export function Timeline() {
     <section id="insights" className="rexon-section" style={{ scrollMarginTop: 80 }}>
       <div className="container">
         <div ref={revealHeader} className="reveal section-header">
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: 800, letterSpacing: '-0.02em' }}>
+          <Heading level={2} type="display-3">
             Quy Trình Triển Khai
-          </h2>
-          <p>
+          </Heading>
+          <Text type="body" color="secondary">
             REXON đồng hành để tối ưu trải nghiệm tư vấn theo đúng quy trình bán hàng của bạn.
-          </p>
+          </Text>
         </div>
         <div className="timeline">
           {steps.map((step, i) => (
@@ -52,10 +55,10 @@ function TimelineItem({ title, desc, delay }: { title: string; desc: string; del
   return (
     <div ref={ref} className={`reveal reveal-delay-${delay} timeline-item`}>
       <div className="timeline-dot" />
-      <div className="glass-card timeline-content">
-        <h3>{title}</h3>
-        <p>{desc}</p>
-      </div>
+      <Card className="timeline-content">
+        <Heading level={3}>{title}</Heading>
+        <Text type="body" color="secondary">{desc}</Text>
+      </Card>
     </div>
   )
 }
