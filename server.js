@@ -9,12 +9,17 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-// Serve static files
-app.use(express.static(__dirname));
+// Serve built React app from dist/
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Telegram form handler
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// SPA fallback — serve index.html for all non-file routes
+app.get('{*path}', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`REXON server running on port ${PORT}`);
